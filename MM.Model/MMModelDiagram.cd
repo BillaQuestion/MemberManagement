@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MM.Model.Member">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAACAAAgBAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Member.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MM.Model.Lecture">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Lecture.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Sessions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MM.Model.BusinessCard">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAABQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>BusinessCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MM.Model.Tutor">
+    <Position X="2.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAACAAAAAAAYAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Tutor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MM.Model.Trial">
+    <Position X="4.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Trial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MM.Model.Session">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAEAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Session.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tutor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MM.Model.Visitor">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Visitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MM.Model.Student">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAAACAAABAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Student.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Lectures" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MM.Model.OneTimeCustomer">
+    <Position X="4.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OneTimeCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="MM.Model.Gender" Collapsed="true">
+    <Position X="4.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Gender.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MM.Model.SessionStates" Collapsed="true">
+    <Position X="4.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SessionStates.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
