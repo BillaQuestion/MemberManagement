@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MM.Model
+namespace MM.Model.Enums
 {
-    public class Visitor
+    public enum SessionStates
     {
+        Avaliable,
+        Done
     }
 }

@@ -10,9 +10,9 @@ namespace MM.Model
         #region
         public string Name { get; set; }
 
-        public string Media { get; set; }
+        public string Medium { get; set; }
 
-        public int CountOfMedia { get; set; }
+        public int CountOfMedium { get; set; }
 
         public decimal Cost { get; set; }
         #endregion

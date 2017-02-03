@@ -1,17 +1,19 @@
-﻿using System;
+﻿using MM.Model.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MM.Model.Enums;
 
 namespace MM.Model
 {
-    public class Member : Visitor
+    public class Member
     {
         /// <summary>
-        /// string meida, int count.
+        /// string medium, int count.
         /// </summary>
-        private IDictionary<string, int> _balance;
+        private IDictionary<string, int> _remainingMedium;
 
         #region Properties
         public String Name { get; set; }
@@ -22,37 +24,70 @@ namespace MM.Model
 
         public String Address { get; set; }
 
-        public IDictionary<string, int> Balance { get; }
+        public IDictionary<string, int> RemainingMedium { get { return _remainingMedium; } }
         #endregion
-        
+
+        public Member()
+        {
+            _remainingMedium = new Dictionary<string, int>();
+        }
+
         #region Public Methods
         public void BuyBusinessCard(BusinessCard businessCard)
         {
-            this._balance.Add(businessCard.Media, businessCard.CountOfMedia);
+            var result = _remainingMedium.FirstOrDefault(x => x.Key == businessCard.Medium);
+            if (result.Equals(new KeyValuePair<string, int>(null, 0)))
+            {
+                _remainingMedium.Add(businessCard.Medium, businessCard.CountOfMedium);
+            }
+            else
+            {
+                _remainingMedium[result.Key] = result.Value + businessCard.CountOfMedium;
+            }
+        }
+
+        /// <summary>
+        /// Decrease the Balance with a specific medium.
+        /// Throw exception when there's no enough specific medium.
+        /// </summary>
+        /// <param name="medium">medium to be used</param>
+        public void UseBusinessCard(string medium)
+        {
+            var result = _remainingMedium.FirstOrDefault(x => x.Key == medium);
+            //not found
+            if (result.Equals(new KeyValuePair<string, int>(null, 0)))
+            {
+                throw new CountNotEnoughException();
+            }
+            //balance not enough
+            if (result.Value == 0)
+            {
+                throw new CountNotEnoughException();
+            }
+            _remainingMedium[result.Key] = result.Value - 1;
+
         }
 
         /// <summary>
         /// Use business card from the BusinessCard collection.
-        /// Throw excpetion when there's no card.
-        /// Throw exception when cards has no enough Media.
-        /// Remove card with no Media left.
         /// </summary>
-        public void UseBusinessCard()
+        /// <param name="number">number of medium to be used</param>
+        /// <param name="medium">medium to be used</param>
+        public void UseBusinessCard(string medium, int number)
         {
-
+            var result = _remainingMedium.FirstOrDefault(x => x.Key == medium);
+            //not found
+            if (result.Equals(new KeyValuePair<string, int>(null, 0)))
+            {
+                throw new CountNotEnoughException();
+            }
+            //balance not enough
+            if (result.Value < number)
+            {
+                throw new CountNotEnoughException(result.Value.ToString());
+            }
+            _remainingMedium[result.Key] = result.Value - number;
         }
-
-        /// <summary>
-        /// Use business card from the BusinessCard collection.
-        /// </summary>
-        /// <param name="number">number of Media to be used</param>
-        public void UseBusinessCard(int number)
-        {
-
-        }
-        #endregion
-
-        #region Prrivate Methods
         #endregion
     }
 }

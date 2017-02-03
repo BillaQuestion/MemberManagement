@@ -7,5 +7,8 @@ namespace MM.Model
 {
     public class Trial
     {
+        public string Cost { get; set; }
+
+        public string Medium { get; set; }
     }
 }
