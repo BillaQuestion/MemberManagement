@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.Model", "MM.Model\MM.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.Business", "MM.Business\MM.Business.csproj", "{64DB52CE-3A1A-4597-A5A3-D839CF960151}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "公共类库文件", "公共类库文件", "{3C0429F6-5A4D-4048-81A7-3275622A5773}"
+	ProjectSection(SolutionItems) = preProject
+		公共类库文件\Dayi.Data.Domain.Seedwork.dll = 公共类库文件\Dayi.Data.Domain.Seedwork.dll
+		公共类库文件\Dayi.Infrastructure.Data.Seedwork.dll = 公共类库文件\Dayi.Infrastructure.Data.Seedwork.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

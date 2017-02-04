@@ -18,6 +18,11 @@ namespace MM.Model
 
         public string Address { get; set; }
 
+        /// <summary>
+        /// 是否是管理员
+        /// </summary>
+        public bool IsManager { get; set; }
+
         public ICollection<Session> TaughtSessions { get { return _sessionsToBeTaught; } }
 
         public void ChooseASession(string contactNumber, string lectureName, int sessionNumber)
