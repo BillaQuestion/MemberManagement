@@ -26,6 +26,11 @@ namespace MM.Model
         public ICollection<Balance> Balances { get { return _balances; } }
 
         /// <summary>
+        /// 购买记录
+        /// </summary>
+        public ICollection<Purchase> PurchaseRecords { get; set; }
+
+        /// <summary>
         /// 消费记录
         /// </summary>
         public ICollection<Consumption> ConsumeRecords { get; set; }
