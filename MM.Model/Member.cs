@@ -39,6 +39,13 @@ namespace MM.Model
         public ICollection<Consumption> ConsumeRecords { get { return _consumeRecords; } }
         #endregion
 
+        public Member()
+        {
+            _balances = new List<Balance>();
+            _purchaseRecords = new List<Purchase>();
+            _consumeRecords = new List<Consumption>();
+        }
+
         #region Public Methods
         public void BuyProduct(Purchase purchase)
         {
