@@ -44,8 +44,6 @@
     <Compile Include="OneTimeExperience.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Consumption.cs" />
-    <Compile Include="CountNotEnoughtException.cs" />
-    <Compile Include="Gender.cs" />
     <Compile Include="Lecture.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

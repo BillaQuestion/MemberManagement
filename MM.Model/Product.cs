@@ -8,7 +8,7 @@ namespace MM.Model
     /// <summary>
     /// 销售产品
     /// </summary>
-    public class Product
+    public abstract class Product
     {
         /// <summary>
         /// 名称

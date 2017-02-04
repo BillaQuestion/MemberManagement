@@ -1,5 +1,4 @@
-﻿using MM.Model.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +11,7 @@ namespace MM.Model
 
         public string Name { get; set; }
 
-        public Gender Gender { get; set; }
+        //public Gender Gender { get; set; }
 
         public string ContactNumber { get; set; }
 

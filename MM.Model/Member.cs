@@ -18,7 +18,7 @@ namespace MM.Model
 
         public string PhoneNumber { get; set; }
 
-        public Gender Gender { get; set; }
+        //public Gender Gender { get; set; }
 
         public String Address { get; set; }
 
@@ -34,7 +34,7 @@ namespace MM.Model
         #endregion
         
         #region Public Methods
-        public void BuyBusinessCard(Product businessCard)
+        public void BuyBusinessCard(TimesCard businessCard)
         {
             this._balance.Add(businessCard.Media, businessCard.CountOfMedia);
         }
