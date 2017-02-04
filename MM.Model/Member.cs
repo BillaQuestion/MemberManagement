@@ -5,10 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MM.Model.Exceptions;
+using Dayi.Data.Domain.Seedwork;
+using System.ComponentModel.DataAnnotations;
 
 namespace MM.Model
 {
-    public class Member
+    public class Member : Entity
     {
         private ICollection<Balance> _balances;
         private ICollection<Purchase> _purchaseRecords;
@@ -77,6 +79,14 @@ namespace MM.Model
             };
             _consumeRecords.Add(consumption);
             if (balance.Remainder == 0) _balances.Remove(balance);
+        }
+
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var result = new List<ValidationResult>();
+            if (string.IsNullOrEmpty(PhoneNumber))
+                result.Add(new ValidationResult("PhoneNumber必须赋值！", new string[] { "PhoneNumber" }));
+            return result;
         }
 
 

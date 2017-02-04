@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using Dayi.Data.Domain.Seedwork;
+
 
 namespace MM.Model
 {
     /// <summary>
     /// 购买
     /// </summary>
-    public class Purchase
+    public class Purchase : Entity
     {
+        #region
         /// <summary>
         /// 顾客姓名
         /// </summary>
@@ -39,10 +43,25 @@ namespace MM.Model
         /// 经手人
         /// </summary>
         public string Handler { get; set; }
+        #endregion
 
         public Purchase()
         {
             PurchaseDate = DateTime.Now;
+        }
+
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var result = new List<ValidationResult>();
+            if (string.IsNullOrEmpty(PhoneNumber))
+                result.Add(new ValidationResult("PhoneNumber必须赋值！", new string[] { "PhoneNumber" }));
+            if (Product == null)
+                result.Add(new ValidationResult("Product必须赋值！", new string[] { "Product" }));
+            if (Price < 0)
+                result.Add(new ValidationResult("Price必须赋值！", new string[] { "Price" }));
+            if (string.IsNullOrEmpty(Handler))
+                result.Add(new ValidationResult("Handler必须赋值！", new string[] { "Handler" }));
+            return result;
         }
     }
 }

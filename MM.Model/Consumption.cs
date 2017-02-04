@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using Dayi.Data.Domain.Seedwork;
 
 namespace MM.Model
 {
     /// <summary>
     /// 消费
     /// </summary>
-    public class Consumption
+    public class Consumption : Entity
     {
         /// <summary>
         /// 会员卡
@@ -28,6 +30,16 @@ namespace MM.Model
         public Consumption()
         {
             ConsumeDate = DateTime.Now;
+        }
+
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var result = new List<ValidationResult>();
+            if (MemberProduct == null)
+                result.Add(new ValidationResult("MemberProduct必须赋值！", new string[] { "MemberProduct" }));
+            if (Tutor == null)
+                result.Add(new ValidationResult("Tutor必须赋值！", new string[] { "Tutor" }));
+            return result;
         }
     }
 }
