@@ -8,7 +8,7 @@ namespace MM.Model
 {
     public class Tutor
     {
-        private ICollection<Session> _sessionsToBeTaught;
+        private ICollection<Consumption> _taughtConsumptions;
 
         public string Name { get; set; }
 
@@ -23,11 +23,11 @@ namespace MM.Model
         /// </summary>
         public bool IsManager { get; set; }
 
-        public ICollection<Session> TaughtSessions { get { return _sessionsToBeTaught; } }
+        public ICollection<Consumption> TaughtConsumptions { get { return _taughtConsumptions; } }
 
-        public void ChooseASession(string contactNumber, string lectureName, int sessionNumber)
+        public void DeclareAConsumption(Consumption consumption)
         {
-
+            _taughtConsumptions.Add(consumption);
         }
     }
 }

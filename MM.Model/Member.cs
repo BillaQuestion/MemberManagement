@@ -11,6 +11,9 @@ namespace MM.Model
     public class Member
     {
         private ICollection<Balance> _balances;
+        private ICollection<Purchase> _purchaseRecords;
+        private ICollection<Consumption> _consumeRecords;
+
         #region Properties
         public String Name { get; set; }
 
@@ -28,39 +31,48 @@ namespace MM.Model
         /// <summary>
         /// 购买记录
         /// </summary>
-        public ICollection<Purchase> PurchaseRecords { get; set; }
+        public ICollection<Purchase> PurchaseRecords { get { return _purchaseRecords; } }
 
         /// <summary>
         /// 消费记录
         /// </summary>
-        public ICollection<Consumption> ConsumeRecords { get; set; }
+        public ICollection<Consumption> ConsumeRecords { get { return _consumeRecords; } }
         #endregion
 
         #region Public Methods
-        public void AddProduct(MemberProduct memberProduct)
+        public void BuyProduct(Purchase purchase)
         {
-
+            var memberProduct = purchase.Product as MemberProduct;
             var result = _balances.FirstOrDefault(x => x.MemberProduct.Name == memberProduct.Name);
             if (result == null)
             {
-                Balance balance = new Balance();
-                balance.MemberProduct = memberProduct;
-                balance.Remainder = memberProduct.Count;
+                Balance balance = new Balance()
+                {
+                    MemberProduct = memberProduct,
+                    Remainder = memberProduct.Count
+                };
                 _balances.Add(balance);
             }
             else
             {
                 result.Remainder = result.Remainder + memberProduct.Count;
             }
+            _purchaseRecords.Add(purchase);
         }
 
-        public void UseBalance(string productName)
+        public void Consume(Balance balance, Tutor tutor)
         {
-            var result = _balances.FirstOrDefault(x => x.MemberProduct.Name == productName);
-            if (result == null) throw new ProductNotExistException();
-            result.Remainder--;
-            if (result.Remainder == 0) _balances.Remove(result);
+            balance.Remainder--;
+            Consumption consumption = new Consumption()
+            {
+                Tutor = tutor,
+                MemberProduct = balance.MemberProduct
+            };
+            _consumeRecords.Add(consumption);
+            if (balance.Remainder == 0) _balances.Remove(balance);
         }
+
+
         #endregion
     }
 }

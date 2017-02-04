@@ -18,11 +18,18 @@ namespace MM.Model
         /// <summary>
         /// 购买日期
         /// </summary>
-        public DateTime ConsumeDate { get; set; }
+        public DateTime ConsumeDate { get; }
 
         /// <summary>
         /// 教师
         /// </summary>
         public Tutor Tutor { get; set; }
+
+        public Consumption(Tutor tutor)
+        {
+            ConsumeDate = DateTime.Now;
+            Tutor = tutor;
+            tutor.DeclareAConsumption(this);
+        }
     }
 }

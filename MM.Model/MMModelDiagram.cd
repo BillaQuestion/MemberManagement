@@ -1,54 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="MM.Model.Member">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAEAAAAAEACAAAAAQAQACAAAAAACAAAQAAAAAAA=</HashCode>
+      <HashCode>EAAAgAEIAAACEACAQAAAQAQAAAAAAAACAAAQAAAAAAA=</HashCode>
       <FileName>Member.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Balances" />
-      <Property Name="ConsumeRecords" />
       <Property Name="PurchaseRecords" />
+      <Property Name="ConsumeRecords" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MM.Model.Lecture">
-    <Position X="4.75" Y="7.5" Width="1.5" />
+    <Position X="3.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Lecture.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Product">
-    <Position X="2.75" Y="3.5" Width="1.5" />
+    <Position X="1.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Product.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Tutor">
-    <Position X="8.75" Y="6.5" Width="1.5" />
+    <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAABAAgAAgAACAAAAAEAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAAAAQgAACAAAAAAAYAAAAAAAACAAAAAAAAIAA=</HashCode>
       <FileName>Tutor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Session">
-    <Position X="6.75" Y="6.5" Width="1.5" />
+    <Position X="8" Y="4.75" Width="1.5" />
+    <InheritanceLine Type="MM.Model.Consumption" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="8.75" Y="3.688" />
+        <Point X="8.75" Y="4.08" />
+        <Point X="8.75" Y="4.08" />
+        <Point X="8.75" Y="4.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Session.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.TimesCard">
-    <Position X="2.75" Y="7.5" Width="1.5" />
+    <Position X="1.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>TimesCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Purchase">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="1.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAQAIAAAAAIAAQAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Purchase.cs</FileName>
@@ -58,7 +66,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MM.Model.Consumption">
-    <Position X="6.75" Y="4.5" Width="1.5" />
+    <Position X="7.75" Y="2" Width="1.5" />
+    <AssociationLine Name="Tutor" Type="MM.Model.Tutor" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="3.062" />
+        <Point X="6.75" Y="3.062" />
+        <Point X="6.75" Y="4.75" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAABAAQAAAAAAAAAA=</HashCode>
       <FileName>Consumption.cs</FileName>
@@ -68,7 +83,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MM.Model.Balance">
-    <Position X="8.5" Y="4.5" Width="1.5" />
+    <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAA=</HashCode>
       <FileName>Balance.cs</FileName>
@@ -82,7 +97,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.MemberProduct">
-    <Position X="3.75" Y="5.75" Width="1.5" />
+    <Position X="2.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MemberProduct.cs</FileName>

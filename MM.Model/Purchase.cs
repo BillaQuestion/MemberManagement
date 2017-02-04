@@ -33,11 +33,16 @@ namespace MM.Model
         /// <summary>
         /// 购买日期
         /// </summary>
-        public DateTime PurchaseDate { get; set; }
+        public DateTime PurchaseDate { get; }
 
         /// <summary>
         /// 经手人
         /// </summary>
         public string Handler { get; set; }
+
+        public Purchase()
+        {
+            PurchaseDate = DateTime.Now;
+        }
     }
 }

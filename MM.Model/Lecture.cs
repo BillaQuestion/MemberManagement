@@ -14,10 +14,5 @@ namespace MM.Model
         /// 课程描述
         /// </summary>
         public string Description { get; set; }
-
-        /// <summary>
-        /// 学时
-        /// </summary>
-        public int Hourse { get; set; }
     }
 }
