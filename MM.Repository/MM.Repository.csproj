@@ -59,7 +59,9 @@
     <Compile Include="BalanceRepository.cs" />
     <Compile Include="ConsumptionRepository.cs" />
     <Compile Include="LectureRepository.cs" />
+    <Compile Include="Mappings\MemberProductConfiguration.cs" />
     <Compile Include="Mappings\ProductConfiguration.cs" />
+    <Compile Include="Mappings\TimesCardConfiguration.cs" />
     <Compile Include="MemberProductRepository.cs" />
     <Compile Include="MemberRepository.cs" />
     <Compile Include="Mappings\OneTimeExperienceConfiguration.cs" />

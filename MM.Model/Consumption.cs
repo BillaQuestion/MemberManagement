@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Dayi.Data.Domain.Seedwork;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using Dayi.Data.Domain.Seedwork;
 
 namespace MM.Model
 {
@@ -26,6 +24,11 @@ namespace MM.Model
         /// 教师
         /// </summary>
         public Tutor Tutor { get; set; }
+
+        /// <summary>
+        /// 教师的Id
+        /// </summary>
+        public Guid TutorId { get; set; }
 
         public Consumption()
         {

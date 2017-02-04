@@ -13,7 +13,7 @@ namespace MM.Model
     /// </summary>
     public class Purchase : Entity
     {
-        #region
+        #region Properties
         /// <summary>
         /// 顾客姓名
         /// </summary>
@@ -28,6 +28,11 @@ namespace MM.Model
         /// 购买产品
         /// </summary>
         public Product Product { get; set; }
+
+        /// <summary>
+        /// 购买产品的Id
+        /// </summary>
+        public Guid ProductId { get; set; }
 
         /// <summary>
         /// 费用

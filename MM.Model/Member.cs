@@ -12,9 +12,9 @@ namespace MM.Model
 {
     public class Member : Entity
     {
-        private ICollection<Balance> _balances;
-        private ICollection<Purchase> _purchaseRecords;
-        private ICollection<Consumption> _consumeRecords;
+        private HashSet<Balance> _balances;
+        private HashSet<Purchase> _purchaseRecords;
+        private HashSet<Consumption> _consumeRecords;
 
         #region Properties
         public String Name { get; set; }
@@ -28,25 +28,42 @@ namespace MM.Model
         /// <summary>
         /// 会员卡余额
         /// </summary>  
-        public ICollection<Balance> Balances { get { return _balances; } }
+        public ICollection<Balance> Balances
+        {
+            get
+            {
+                if (_balances == null)
+                    _balances = new HashSet<Balance>();
+                return _balances;
+            }
+        }
 
         /// <summary>
         /// 购买记录
         /// </summary>
-        public ICollection<Purchase> PurchaseRecords { get { return _purchaseRecords; } }
+        public ICollection<Purchase> PurchaseRecords
+        {
+            get
+            {
+                if (_purchaseRecords == null)
+                    _purchaseRecords = new HashSet<Purchase>();
+                return _purchaseRecords;
+            }
+        }
 
         /// <summary>
         /// 消费记录
         /// </summary>
-        public ICollection<Consumption> ConsumeRecords { get { return _consumeRecords; } }
-        #endregion
-
-        public Member()
+        public ICollection<Consumption> ConsumeRecords
         {
-            _balances = new List<Balance>();
-            _purchaseRecords = new List<Purchase>();
-            _consumeRecords = new List<Consumption>();
+            get
+            {
+                if (_consumeRecords == null)
+                    _consumeRecords = new HashSet<Consumption>();
+                return _consumeRecords;
+            }
         }
+        #endregion
 
         #region Public Methods
         public void BuyProduct(Purchase purchase)

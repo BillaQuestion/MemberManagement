@@ -17,6 +17,9 @@ namespace MM.Model
         [DataMember]
         public Medium Medium { get; set; }
 
+        [DataMember]
+        public Guid MediumId { get; set; }
+
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = base.Validate(validationContext).ToList();
