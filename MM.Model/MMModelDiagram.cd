@@ -51,13 +51,6 @@
       <FileName>Tutor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MM.Model.Trial">
-    <Position X="10.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>Trial.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="MM.Model.Session">
     <Position X="6.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>

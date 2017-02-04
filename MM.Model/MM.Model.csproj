@@ -54,7 +54,6 @@
     <Compile Include="Purchase.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="TimesCard.cs" />
-    <Compile Include="Trial.cs" />
     <Compile Include="Tutor.cs" />
   </ItemGroup>
   <ItemGroup>
