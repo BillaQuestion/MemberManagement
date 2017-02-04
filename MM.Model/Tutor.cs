@@ -30,5 +30,25 @@ namespace MM.Model
                 result.Add(new ValidationResult("ContactNumber必须赋值！", new string[] { "ContactNumber" }));
             return result;
         }
+
+        /// <summary>
+        /// 销售产品
+        /// </summary>
+        /// <param name="product">所销售产品</param>
+        /// <param name="customer">顾客姓名</param>
+        /// <param name="phoneNumber">顾客手机号码</param>
+        /// <returns>购买记录</returns>
+        public Purchase Sell(Product product, string customer, string phoneNumber)
+        {
+            Purchase purchase = new Model.Purchase()
+            {
+                CustomerName = customer,
+                PhoneNumber = phoneNumber,
+                Product = product,
+                Tutor = this,
+                Price = product.Price
+            };
+            return purchase;
+        }
     }
 }

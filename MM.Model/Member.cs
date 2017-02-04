@@ -66,13 +66,13 @@ namespace MM.Model
         #endregion
 
         #region Public Methods
-        public void BuyProduct(Purchase purchase)
+        public Balance Buy(Purchase purchase)
         {
             var memberProduct = purchase.Product as MemberProduct;
-            var result = _balances.FirstOrDefault(x => x.MemberProduct.Name == memberProduct.Name);
-            if (result == null)
+            var balance = _balances.FirstOrDefault(x => x.MemberProduct.Name == memberProduct.Name);
+            if (balance == null)
             {
-                Balance balance = new Balance()
+                balance = new Balance()
                 {
                     MemberProduct = memberProduct,
                     Remainder = memberProduct.Count
@@ -81,9 +81,11 @@ namespace MM.Model
             }
             else
             {
-                result.Remainder = result.Remainder + memberProduct.Count;
+                balance.Remainder = balance.Remainder + memberProduct.Count;
             }
             _purchaseRecords.Add(purchase);
+
+            return balance;
         }
 
         public void Consume(Balance balance, Tutor tutor)

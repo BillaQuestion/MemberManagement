@@ -14,7 +14,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>EAAAgAEIAACCEACAQAAAQAQAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <HashCode>EAIAgAEIAACCEACAAAAAQAQAAAAAAAACAAAQAAAAAAA=</HashCode>
       <FileName>Member.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -48,7 +48,7 @@
   <Class Name="MM.Model.Tutor">
     <Position X="7.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACgAACAAAAAQAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACgAACAQAAAQAQAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Tutor.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,7 +87,7 @@
     <AssociationLine Name="Tutor" Type="MM.Model.Tutor" FixedToPoint="true">
       <Path>
         <Point X="8.625" Y="5.5" />
-        <Point X="8.625" Y="3.872" />
+        <Point X="8.625" Y="4.057" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="MemberProduct" Type="MM.Model.MemberProduct" FixedFromPoint="true">

@@ -60,6 +60,7 @@
     <Compile Include="IRepositories\IMemberRepository.cs" />
     <Compile Include="IRepositories\IOneTimeExperienceRepository.cs" />
     <Compile Include="IRepositories\IProductRepository.cs" />
+    <Compile Include="IRepositories\IPurchaseRepository.cs" />
     <Compile Include="IRepositories\ISessionRepository.cs" />
     <Compile Include="IRepositories\ITimesCardRepository.cs" />
     <Compile Include="IRepositories\ITutorRepository.cs" />
