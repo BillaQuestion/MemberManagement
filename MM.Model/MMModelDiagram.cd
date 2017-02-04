@@ -66,7 +66,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MM.Model.Consumption">
-    <Position X="7.75" Y="2" Width="1.5" />
+    <Position X="7.75" Y="2" Width="1.75" />
     <AssociationLine Name="Tutor" Type="MM.Model.Tutor" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="7.75" Y="3.062" />
@@ -83,7 +83,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MM.Model.Balance">
-    <Position X="9" Y="0.5" Width="1.5" />
+    <Position X="7.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAA=</HashCode>
       <FileName>Balance.cs</FileName>
@@ -104,7 +104,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Media">
-    <Position X="1.5" Y="9.25" Width="1.5" />
+    <Position X="5.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Media.cs</FileName>
