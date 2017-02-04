@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Dayi.Data.Domain.Seedwork;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using Dayi.Data.Domain.Seedwork;
 
 namespace MM.Model
 {
@@ -13,9 +11,14 @@ namespace MM.Model
     public class Balance : Entity
     {
         /// <summary>
-        /// 会员卡
+        /// 会员产品
         /// </summary>
         public MemberProduct MemberProduct { get; set; }
+
+        /// <summary>
+        /// 会员产品的Id
+        /// </summary>
+        public Guid MemberProductId { get; set; }
 
         /// <summary>
         /// 余额
@@ -25,8 +28,9 @@ namespace MM.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
-            if (MemberProduct == null)
-                result.Add(new ValidationResult("MemberProduct必须赋值！", new string[] { "MemberProduct" }));
+            if (MemberProduct == null && MemberProductId == Guid.Empty)
+                result.Add(new ValidationResult("MemberProduct或MemberProductId必须赋值！", 
+                    new string[] { "MemberProduct", "MemberProductId" }));
             return result; 
         }
     }

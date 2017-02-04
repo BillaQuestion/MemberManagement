@@ -45,9 +45,14 @@ namespace MM.Model
         public DateTime PurchaseDate { get; }
 
         /// <summary>
-        /// 经手人
+        /// 经手教师
         /// </summary>
-        public string Handler { get; set; }
+        public Tutor Tutor { get; set; }
+
+        /// <summary>
+        /// 经手教师的Id
+        /// </summary>
+        public Guid TutorId { get; set; }
         #endregion
 
         public Purchase()
@@ -63,9 +68,8 @@ namespace MM.Model
             if (Product == null)
                 result.Add(new ValidationResult("Product必须赋值！", new string[] { "Product" }));
             if (Price < 0)
-                result.Add(new ValidationResult("Price必须赋值！", new string[] { "Price" }));
-            if (string.IsNullOrEmpty(Handler))
-                result.Add(new ValidationResult("Handler必须赋值！", new string[] { "Handler" }));
+                result.Add(new ValidationResult("Price必须大于等于零！", new string[] { "Price" }));
+
             return result;
         }
     }

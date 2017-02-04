@@ -14,7 +14,7 @@ namespace MM.Model
 
         public Gender Gender { get; set; }
 
-        public string ContactNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string Address { get; set; }
 
@@ -26,7 +26,7 @@ namespace MM.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
-            if (string.IsNullOrEmpty(ContactNumber))
+            if (string.IsNullOrEmpty(PhoneNumber))
                 result.Add(new ValidationResult("ContactNumber必须赋值！", new string[] { "ContactNumber" }));
             return result;
         }
