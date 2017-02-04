@@ -8,7 +8,7 @@ namespace MM.Model
     /// <summary>
     /// 课程
     /// </summary>
-    public class Lecture : Product
+    public class Lecture : MemberProduct
     {
         /// <summary>
         /// 课程描述

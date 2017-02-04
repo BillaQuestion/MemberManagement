@@ -44,7 +44,9 @@
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\SessionStates.cs" />
     <Compile Include="Exceptions\CountNotEnoughException.cs" />
-    <Compile Include="Exceptions\LectureExistException.cs" />
+    <Compile Include="Exceptions\ProductExistException.cs" />
+    <Compile Include="Exceptions\ProductNotExistException.cs" />
+    <Compile Include="MemberProduct.cs" />
     <Compile Include="OneTimeExperience.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Consumption.cs" />

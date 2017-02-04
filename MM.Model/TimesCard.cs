@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MM.Model
 {
-    public class TimesCard : Product
+    public class TimesCard : MemberProduct
     {
         /// <summary>
         /// 画布介质
