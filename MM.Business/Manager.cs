@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MM.Model;
 
-namespace MM.Model
+namespace MM.Business
 {
     public class Manager
     {
