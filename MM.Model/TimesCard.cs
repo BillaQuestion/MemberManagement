@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Runtime.Serialization;
 
 namespace MM.Model
@@ -12,6 +15,14 @@ namespace MM.Model
         /// 画布介质
         /// </summary>
         [DataMember]
-        public Media Media { get; set; }
+        public Medium Medium { get; set; }
+
+        public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var result = base.Validate(validationContext).ToList();
+            if (Medium == null)
+                result.Add(new ValidationResult("Medium必须赋值！", new string[] { "Medium" }));
+            return result;
+        }
     }
 }

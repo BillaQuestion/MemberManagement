@@ -63,7 +63,7 @@
     <Compile Include="IRepositories\ISessionRepository.cs" />
     <Compile Include="IRepositories\ITimesCardRepository.cs" />
     <Compile Include="IRepositories\ITutorRepository.cs" />
-    <Compile Include="Media.cs" />
+    <Compile Include="Medium.cs" />
     <Compile Include="MemberProduct.cs" />
     <Compile Include="OneTimeExperience.cs" />
     <Compile Include="Product.cs" />

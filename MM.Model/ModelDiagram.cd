@@ -3,7 +3,7 @@
   <Class Name="MM.Model.Member">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAgAEIAAACEACAQAAAQAQAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <HashCode>EAAAgAEIAACCEACAQAAAQAQAAAAAAAACAAAQAAAAAAA=</HashCode>
       <FileName>Member.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -13,14 +13,22 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MM.Model.Lecture">
-    <Position X="3.5" Y="7.5" Width="1.5" />
+    <Position X="3.5" Y="8.25" Width="1.5" />
+    <InheritanceLine Type="MM.Model.MemberProduct" FixedToPoint="true">
+      <Path>
+        <Point X="3.25" Y="7.633" />
+        <Point X="3.25" Y="7.95" />
+        <Point X="4.188" Y="7.95" />
+        <Point X="4.188" Y="8.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Lecture.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Product">
-    <Position X="1.5" Y="3.25" Width="1.5" />
+    <Position X="1.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQCAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Product.cs</FileName>
@@ -29,36 +37,34 @@
   <Class Name="MM.Model.Tutor">
     <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAgAACAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAABAAAACgAACAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Tutor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Session">
-    <Position X="8" Y="4.75" Width="1.5" />
-    <InheritanceLine Type="MM.Model.Consumption" ManuallyRouted="true" FixedFromPoint="true">
+    <Position X="8" Y="5.5" Width="1.5" />
+    <InheritanceLine Type="MM.Model.Consumption" FixedFromPoint="true">
       <Path>
-        <Point X="8.75" Y="3.688" />
-        <Point X="8.75" Y="4.08" />
-        <Point X="8.75" Y="4.08" />
-        <Point X="8.75" Y="4.75" />
+        <Point X="8.75" Y="4.752" />
+        <Point X="8.75" Y="5.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Session.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.TimesCard">
-    <Position X="1.5" Y="7.5" Width="1.5" />
+    <Position X="1.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>TimesCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.Purchase">
     <Position X="1.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAQAIAAAAAIAAQAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAQCIAAAAAIAAQAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Purchase.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -66,16 +72,16 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MM.Model.Consumption">
-    <Position X="7.75" Y="2" Width="1.75" />
+    <Position X="7.75" Y="2.75" Width="1.75" />
     <AssociationLine Name="Tutor" Type="MM.Model.Tutor" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="7.75" Y="3.062" />
-        <Point X="6.75" Y="3.062" />
+        <Point X="7.75" Y="3.812" />
+        <Point X="6.75" Y="3.812" />
         <Point X="6.75" Y="4.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAABAAQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAEAABAAQAAAAAAAAAA=</HashCode>
       <FileName>Consumption.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -85,29 +91,29 @@
   <Class Name="MM.Model.Balance">
     <Position X="7.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAAABAAAA=</HashCode>
       <FileName>Balance.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.OneTimeExperience">
-    <Position X="0.5" Y="5.75" Width="1.75" />
+    <Position X="0.5" Y="6" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>OneTimeExperience.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Model.MemberProduct">
-    <Position X="2.5" Y="5.75" Width="1.5" />
+    <Position X="2.5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MemberProduct.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MM.Model.Media">
+  <Class Name="MM.Model.Medium">
     <Position X="5.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Media.cs</FileName>
+      <FileName>Medium.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Microsoft YaHei UI" Size="9" />

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MM.Model
 {
-    public class Media : Entity
+    public class Medium : Entity
     {
         public string Name { get; set; }
 

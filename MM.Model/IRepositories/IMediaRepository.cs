@@ -2,7 +2,7 @@
 
 namespace MM.Model.IRepositories
 {
-    public interface IMediaRepository : IRepository<Media>
+    public interface IMediaRepository : IRepository<Medium>
     {
     }
 }
