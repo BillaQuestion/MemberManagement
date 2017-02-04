@@ -62,7 +62,7 @@
     <Compile Include="Tutor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MMModelDiagram.cd" />
+    <None Include="ModelDiagram.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
