@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +55,7 @@
     <Compile Include="IRepositories\IBalanceRepository.cs" />
     <Compile Include="IRepositories\IConsumptionRepository.cs" />
     <Compile Include="IRepositories\ILectureRepository.cs" />
+    <Compile Include="IRepositories\IMediaRepository.cs" />
     <Compile Include="IRepositories\IMemberProductRepository.cs" />
     <Compile Include="IRepositories\IMemberRepository.cs" />
     <Compile Include="IRepositories\IOneTimeExperienceRepository.cs" />

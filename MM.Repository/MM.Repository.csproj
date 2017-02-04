@@ -59,8 +59,11 @@
     <Compile Include="BalanceRepository.cs" />
     <Compile Include="ConsumptionRepository.cs" />
     <Compile Include="LectureRepository.cs" />
+    <Compile Include="Mappings\ProductConfiguration.cs" />
     <Compile Include="MemberProductRepository.cs" />
     <Compile Include="MemberRepository.cs" />
+    <Compile Include="Mappings\OneTimeExperienceConfiguration.cs" />
+    <Compile Include="MMContext.cs" />
     <Compile Include="OneTimeExperienceRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,9 +81,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
