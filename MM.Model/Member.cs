@@ -34,7 +34,7 @@ namespace MM.Model
         #region Public Methods
         public void AddProduct(MemberProduct memberProduct)
         {
-            
+
             var result = _balances.FirstOrDefault(x => x.MemberProduct.Name == memberProduct.Name);
             if (result == null)
             {
@@ -52,15 +52,9 @@ namespace MM.Model
         public void UseBalance(string productName)
         {
             var result = _balances.FirstOrDefault(x => x.MemberProduct.Name == productName);
-            if(result == null)
-            {
-                throw new ProductNotExistException();
-            }
+            if (result == null) throw new ProductNotExistException();
             result.Remainder--;
-            if (result.Remainder == 0)
-            {
-
-            }
+            if (result.Remainder == 0) _balances.Remove(result);
         }
         #endregion
     }
