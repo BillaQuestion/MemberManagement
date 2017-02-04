@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "公共类库文件", "公�
 		公共类库文件\Dayi.Infrastructure.Data.Seedwork.dll = 公共类库文件\Dayi.Infrastructure.Data.Seedwork.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.Repository", "MM.Repository\MM.Repository.csproj", "{07544E04-18BF-4022-933B-A4AD654620E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{64DB52CE-3A1A-4597-A5A3-D839CF960151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64DB52CE-3A1A-4597-A5A3-D839CF960151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64DB52CE-3A1A-4597-A5A3-D839CF960151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07544E04-18BF-4022-933B-A4AD654620E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07544E04-18BF-4022-933B-A4AD654620E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07544E04-18BF-4022-933B-A4AD654620E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07544E04-18BF-4022-933B-A4AD654620E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
