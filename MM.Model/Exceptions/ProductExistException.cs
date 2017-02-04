@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace MM.Model.Exceptions
 {
     [Serializable]
-    public class LectureExistException : Exception
+    public class ProductExistException : Exception
     {
-        public LectureExistException() { }
-        public LectureExistException(string message) : base(message) { }
-        public LectureExistException(string message, Exception inner) : base(message, inner) { }
-        protected LectureExistException(
+        public ProductExistException() { }
+        public ProductExistException(string message) : base(message) { }
+        public ProductExistException(string message, Exception inner) : base(message, inner) { }
+        protected ProductExistException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }

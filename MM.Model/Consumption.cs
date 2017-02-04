@@ -13,7 +13,7 @@ namespace MM.Model
         /// <summary>
         /// 会员卡
         /// </summary>
-        public Product Product { get; set; }
+        public MemberProduct MemberProduct { get; set; }
 
         /// <summary>
         /// 购买日期

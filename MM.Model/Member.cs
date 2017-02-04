@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MM.Model.Exceptions;
 
 namespace MM.Model
 {
     public class Member
     {
-        /// <summary>
-        /// string meida, int count.
-        /// </summary>
-        private IDictionary<string, int> _balance;
-
+        private ICollection<Balance> _balances;
         #region Properties
         public String Name { get; set; }
 
@@ -25,8 +22,8 @@ namespace MM.Model
 
         /// <summary>
         /// 会员卡余额
-        /// </summary>
-        public ICollection<Balance> Balances { get; set; }
+        /// </summary>  
+        public ICollection<Balance> Balances { get { return _balances; } }
 
         /// <summary>
         /// 购买记录
@@ -38,35 +35,38 @@ namespace MM.Model
         /// </summary>
         public ICollection<Consumption> ConsumeRecords { get; set; }
         #endregion
-        
+
         #region Public Methods
-        public void BuyBusinessCard(TimesCard businessCard)
+        public void AddProduct(MemberProduct memberProduct)
         {
-            this._balance.Add(businessCard.Media, businessCard.CountOfMedia);
+            
+            var result = _balances.FirstOrDefault(x => x.MemberProduct.Name == memberProduct.Name);
+            if (result == null)
+            {
+                Balance balance = new Balance();
+                balance.MemberProduct = memberProduct;
+                balance.Remainder = memberProduct.Count;
+                _balances.Add(balance);
+            }
+            else
+            {
+                result.Remainder = result.Remainder + memberProduct.Count;
+            }
         }
 
-        /// <summary>
-        /// Use business card from the BusinessCard collection.
-        /// Throw excpetion when there's no card.
-        /// Throw exception when cards has no enough Media.
-        /// Remove card with no Media left.
-        /// </summary>
-        public void UseBusinessCard()
+        public void UseBalance(string productName)
         {
+            var result = _balances.FirstOrDefault(x => x.MemberProduct.Name == productName);
+            if(result == null)
+            {
+                throw new ProductNotExistException();
+            }
+            result.Remainder--;
+            if (result.Remainder == 0)
+            {
 
+            }
         }
-
-        /// <summary>
-        /// Use business card from the BusinessCard collection.
-        /// </summary>
-        /// <param name="number">number of Media to be used</param>
-        public void UseBusinessCard(int number)
-        {
-
-        }
-        #endregion
-
-        #region Prrivate Methods
         #endregion
     }
 }
