@@ -25,11 +25,9 @@ namespace MM.Model
         /// </summary>
         public Tutor Tutor { get; set; }
 
-        public Consumption(Tutor tutor)
+        public Consumption()
         {
             ConsumeDate = DateTime.Now;
-            Tutor = tutor;
-            tutor.DeclareAConsumption(this);
         }
     }
 }

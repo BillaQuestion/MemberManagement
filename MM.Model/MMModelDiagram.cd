@@ -29,7 +29,7 @@
   <Class Name="MM.Model.Tutor">
     <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAQgAACAAAAAAAYAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAAABAAAAAgAACAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Tutor.cs</FileName>
     </TypeIdentifier>
   </Class>

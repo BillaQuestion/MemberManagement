@@ -8,8 +8,6 @@ namespace MM.Model
 {
     public class Tutor
     {
-        private ICollection<Consumption> _taughtConsumptions;
-
         public string Name { get; set; }
 
         public Gender Gender { get; set; }
@@ -22,12 +20,5 @@ namespace MM.Model
         /// 是否是管理员
         /// </summary>
         public bool IsManager { get; set; }
-
-        public ICollection<Consumption> TaughtConsumptions { get { return _taughtConsumptions; } }
-
-        public void DeclareAConsumption(Consumption consumption)
-        {
-            _taughtConsumptions.Add(consumption);
-        }
     }
 }

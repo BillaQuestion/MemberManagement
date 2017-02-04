@@ -12,7 +12,7 @@ namespace MM.Model
 
         }
 
-        public void AddBusinessCard()
+        public void AddProduct()
         {
 
         }
