@@ -7,7 +7,7 @@
     </Compartments>
     <AssociationLine Name="Balances" Type="MM.Model.Balance" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="8.375" Y="2.806" />
+        <Point X="8.375" Y="2.991" />
         <Point X="8.375" Y="3.583" />
         <Point X="9.375" Y="3.583" />
         <Point X="9.375" Y="4.5" />
@@ -15,14 +15,14 @@
     </AssociationLine>
     <AssociationLine Name="ConsumeRecords" Type="MM.Model.Consumption" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="8.375" Y="2.806" />
+        <Point X="8.375" Y="2.991" />
         <Point X="8.375" Y="3.585" />
         <Point X="7.625" Y="3.585" />
         <Point X="7.625" Y="4.5" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>EAAAAAEAAAAAEAAAAAABQAQAAAAgAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>EAAAAAEAAAAAEACAAAABQAQAAAAgAAACAAAAAAAAAAA=</HashCode>
       <FileName>Member.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -47,7 +47,7 @@
   <Class Name="MM.Model.Tutor">
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAABAAgAAAAAAAAAAAEAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAABAAgAAAAACAAAAAEAQAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Tutor.cs</FileName>
     </TypeIdentifier>
   </Class>

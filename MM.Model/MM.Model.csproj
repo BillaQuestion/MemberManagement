@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Balance.cs" />
+    <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\SessionStates.cs" />
+    <Compile Include="Exceptions\CountNotEnoughException.cs" />
+    <Compile Include="Exceptions\LectureExistException.cs" />
     <Compile Include="OneTimeExperience.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Consumption.cs" />
