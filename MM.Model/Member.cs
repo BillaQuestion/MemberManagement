@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MM.Model
 {
-    public class Member : Visitor
+    public class Member
     {
         /// <summary>
         /// string meida, int count.
@@ -16,17 +16,25 @@ namespace MM.Model
         #region Properties
         public String Name { get; set; }
 
-        public string ContactNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public Gender Gender { get; set; }
 
         public String Address { get; set; }
 
-        public IDictionary<string, int> Balance { get; }
+        /// <summary>
+        /// 会员卡余额
+        /// </summary>
+        public ICollection<Balance> Balances { get; set; }
+
+        /// <summary>
+        /// 消费记录
+        /// </summary>
+        public ICollection<Consumption> ConsumeRecords { get; set; }
         #endregion
         
         #region Public Methods
-        public void BuyBusinessCard(BusinessCard businessCard)
+        public void BuyBusinessCard(Product businessCard)
         {
             this._balance.Add(businessCard.Media, businessCard.CountOfMedia);
         }

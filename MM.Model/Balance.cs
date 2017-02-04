@@ -6,18 +6,18 @@ using System.Text;
 namespace MM.Model
 {
     /// <summary>
-    /// 课程
+    /// 会员卡余额
     /// </summary>
-    public class Lecture : Product
+    public class Balance
     {
         /// <summary>
-        /// 课程描述
+        /// 会员卡
         /// </summary>
-        public string Description { get; set; }
+        public Product Product { get; set; }
 
         /// <summary>
-        /// 学时
+        /// 余额
         /// </summary>
-        public int Hourse { get; set; }
+        public int Remainder { get; set; }
     }
 }

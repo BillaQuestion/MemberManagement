@@ -5,15 +5,20 @@ using System.Text;
 
 namespace MM.Model
 {
-    public class BusinessCard
+    /// <summary>
+    /// 销售产品
+    /// </summary>
+    public class Product
     {
+        /// <summary>
+        /// 名称
+        /// </summary>
         #region
         public string Name { get; set; }
 
-        public string Media { get; set; }
-
-        public int CountOfMedia { get; set; }
-
+        /// <summary>
+        /// 费用
+        /// </summary>
         public decimal Cost { get; set; }
         #endregion
     }

@@ -16,7 +16,5 @@ namespace MM.Model
         public Gender Gender { get; set; }
 
         public string Address { get; set; }
-
-        public ICollection<Lecture> Lectures { get; }
     }
 }

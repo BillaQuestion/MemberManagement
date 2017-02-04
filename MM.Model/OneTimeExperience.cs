@@ -5,8 +5,7 @@ using System.Text;
 
 namespace MM.Model
 {
-    public class Session : Consumption
+    public class OneTimeExperience : Product
     {
-        public string Description { get; set; }
     }
 }

@@ -40,19 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessCard.cs" />
+    <Compile Include="Balance.cs" />
+    <Compile Include="OneTimeExperience.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Consumption.cs" />
     <Compile Include="CountNotEnoughtException.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Lecture.cs" />
     <Compile Include="Member.cs" />
-    <Compile Include="OneTimeCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs" />
     <Compile Include="Session.cs" />
-    <Compile Include="SessionStates.cs" />
-    <Compile Include="Student.cs" />
+    <Compile Include="TimesCard.cs" />
     <Compile Include="Trial.cs" />
     <Compile Include="Tutor.cs" />
-    <Compile Include="Visitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MMModelDiagram.cd" />
