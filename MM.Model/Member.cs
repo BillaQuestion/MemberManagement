@@ -103,6 +103,23 @@ namespace MM.Model
             return consumption;
         }
 
+        public Consumption Consume(Guid memberProductId, Guid tutorId, string sessionDescription, out Balance balance)
+        {
+            balance = _balances.FirstOrDefault(x => x.MemberProductId == memberProductId);
+            if (balance == null) throw new BalanceNotEnoughException();
+            balance.Remainder--;
+            if (!(balance.MemberProduct is Lecture)) throw new ValidationException();
+            Session session = new Session()
+            {
+                TutorId = tutorId,
+                MemberProduct = balance.MemberProduct,
+                Description = sessionDescription
+            };
+            _consumeRecords.Add(session);
+            if (balance.Remainder == 0) _balances.Remove(balance);
+            return session;
+        }
+
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();

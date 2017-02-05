@@ -21,15 +21,13 @@ namespace MM.Business
         protected IPurchaseRepository _purchaseRepository;
         protected IBalanceRepository _balanceRepository;
         protected IConsumptionRepository _consumptionRepository;
-        protected ISessionRepository _sessionRepository;
 
         public TutorMgr(ITutorRepository tutorRepository,
             IProductRepository productRepository,
             IMemberRepository memberRepository,
             IPurchaseRepository purchaseRepository,
             IBalanceRepository balanceRepository,
-            IConsumptionRepository consumptionRepository,
-            ISessionRepository sessionRepository)
+            IConsumptionRepository consumptionRepository)
         {
             _tutorRepository = tutorRepository;
             _productRepository = productRepository;
@@ -37,7 +35,6 @@ namespace MM.Business
             _purchaseRepository = purchaseRepository;
             _balanceRepository = balanceRepository;
             _consumptionRepository = consumptionRepository;
-            _sessionRepository = sessionRepository;
         }
 
         /// <summary>
@@ -85,20 +82,24 @@ namespace MM.Business
                 _balanceRepository.Remove(balance);
             else
                 SaveBalance(balance);
+
+            _consumptionRepository.UnitOfWork.Commit();
         }
 
-        public void TakeSession(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
+        public void TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
         {
             var member = FindMemberByPhoneNumber(memberPhoneNumber);
             if (member == null) throw new MemberNotExistException();
             var balance = new Balance();
-            var session = member.Consume(lectureId, tutorId, out balance).ToSession(lectureDescription);
-            
-            _sessionRepository.Add(session);
+            var session = member.Consume(lectureId, tutorId, lectureDescription, out balance);
+
+            _consumptionRepository.Add(session);
             if (balance.Remainder == 0)
                 _balanceRepository.Remove(balance);
             else
                 SaveBalance(balance);
+
+            _consumptionRepository.UnitOfWork.Commit();
         }
 
         #region 私有方法
