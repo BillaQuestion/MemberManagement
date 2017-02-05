@@ -88,16 +88,19 @@ namespace MM.Model
             return balance;
         }
 
-        public void Consume(Balance balance, Tutor tutor)
+        public Consumption Consume(Guid memberProductId, Guid tutorId, out Balance balance)
         {
+            balance = _balances.FirstOrDefault(x => x.MemberProductId == memberProductId);
+            if (balance == null) throw new BalanceNotEnoughException();
             balance.Remainder--;
             Consumption consumption = new Consumption()
             {
-                Tutor = tutor,
+                TutorId = tutorId,
                 MemberProduct = balance.MemberProduct
             };
             _consumeRecords.Add(consumption);
             if (balance.Remainder == 0) _balances.Remove(balance);
+            return consumption;
         }
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

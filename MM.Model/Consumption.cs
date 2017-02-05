@@ -40,14 +40,28 @@ namespace MM.Model
             ConsumeDate = DateTime.Now;
         }
 
+        public Session ToSession(string description)
+        {
+            Session session = new Session()
+            {
+                Description = description,
+                Id = this.Id,
+                MemberProduct = this.MemberProduct,
+                MemberProductId = this.MemberProductId,
+                Tutor = this.Tutor,
+                TutorId = this.TutorId
+            };
+            return session;
+        }
+
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
             if (MemberProduct == null && MemberProductId == Guid.Empty)
-                result.Add(new ValidationResult("MemberProduct或MemberProductId必须赋值！", 
+                result.Add(new ValidationResult("MemberProduct或MemberProductId必须赋值！",
                     new string[] { "MemberProduct", "MemberProductId" }));
             if (Tutor == null && TutorId == Guid.Empty)
-                result.Add(new ValidationResult("Tutor或TutorId必须赋值！", 
+                result.Add(new ValidationResult("Tutor或TutorId必须赋值！",
                     new string[] { "Tutor", "TutorId" }));
             return result;
         }

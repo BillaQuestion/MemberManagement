@@ -49,7 +49,7 @@
     <Compile Include="Balance.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\SessionStates.cs" />
-    <Compile Include="Exceptions\CountNotEnoughException.cs" />
+    <Compile Include="Exceptions\BalanceNotEnoughException.cs" />
     <Compile Include="Exceptions\ProductExistException.cs" />
     <Compile Include="Exceptions\ProductNotExistException.cs" />
     <Compile Include="IRepositories\IBalanceRepository.cs" />

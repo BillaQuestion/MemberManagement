@@ -31,6 +31,18 @@ namespace MM.Model
             return result;
         }
 
+        public Purchase Sell(Product product, string phoneNumber)
+        {
+            Purchase purchase = new Model.Purchase()
+            {
+                PhoneNumber = phoneNumber,
+                Product = product,
+                Tutor = this,
+                Price = product.Price
+            };
+            return purchase;
+        }
+
         /// <summary>
         /// 销售产品
         /// </summary>
@@ -50,5 +62,6 @@ namespace MM.Model
             };
             return purchase;
         }
+
     }
 }

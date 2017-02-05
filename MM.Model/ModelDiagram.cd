@@ -9,8 +9,8 @@
       <Path>
         <Point X="6.25" Y="1.875" />
         <Point X="7.375" Y="1.875" />
-        <Point X="7.375" Y="6.562" />
-        <Point X="7.75" Y="6.562" />
+        <Point X="7.375" Y="6.652" />
+        <Point X="7.75" Y="6.652" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -56,7 +56,7 @@
     <Position X="8" Y="8.25" Width="1.5" />
     <InheritanceLine Type="MM.Model.Consumption" FixedFromPoint="true">
       <Path>
-        <Point X="8.75" Y="7.687" />
+        <Point X="8.75" Y="7.872" />
         <Point X="8.75" Y="8.25" />
       </Path>
     </InheritanceLine>
@@ -84,25 +84,25 @@
   </Class>
   <Class Name="MM.Model.Consumption">
     <Position X="7.75" Y="5.5" Width="1.75" />
+    <AssociationLine Name="MemberProduct" Type="MM.Model.MemberProduct" FixedFromPoint="true">
+      <Path>
+        <Point X="7.75" Y="7.602" />
+        <Point X="4" Y="7.602" />
+      </Path>
+    </AssociationLine>
     <AssociationLine Name="Tutor" Type="MM.Model.Tutor" FixedToPoint="true">
       <Path>
         <Point X="8.625" Y="5.5" />
         <Point X="8.625" Y="4.057" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="MemberProduct" Type="MM.Model.MemberProduct" FixedFromPoint="true">
-      <Path>
-        <Point X="7.75" Y="7.438" />
-        <Point X="4" Y="7.438" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAEAABAQQgAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAEACBAQQgAAAAAAAAA=</HashCode>
       <FileName>Consumption.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Tutor" />
       <Property Name="MemberProduct" />
+      <Property Name="Tutor" />
     </ShowAsAssociation>
   </Class>
   <Class Name="MM.Model.Balance">

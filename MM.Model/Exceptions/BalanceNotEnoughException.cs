@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace MM.Model.Exceptions
 {
     [Serializable]
-    public class CountNotEnoughException : Exception
+    public class BalanceNotEnoughException : Exception
     {
-        public CountNotEnoughException() { }
-        public CountNotEnoughException(string message) : base(message) { }
-        public CountNotEnoughException(string message, Exception inner) : base(message, inner) { }
-        protected CountNotEnoughException(
+        public BalanceNotEnoughException() { }
+        public BalanceNotEnoughException(string message) : base(message) { }
+        public BalanceNotEnoughException(string message, Exception inner) : base(message, inner) { }
+        protected BalanceNotEnoughException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
