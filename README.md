@@ -1,6 +1,6 @@
 # MemberManagement
 ## What is this?
-Well, it's a long story. Briefly, I'm currently in a group to develop a management system for an paint workshorp. <br><br>
+Well, it's a long story. Briefly, I'm currently in a group to develop a management system for a paint workshorp. <br><br>
 This workshorp offers painting environment with medium like paper. In exchange, the shopkeeper is pleasant to get some money. 
 Customers always pay in these three ways: by lecture, by membership card or by cash.<br><br>
 "By lecture": There are tutors hired by this gallery and customers can pay for teaching.
