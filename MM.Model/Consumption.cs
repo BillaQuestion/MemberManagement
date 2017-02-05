@@ -23,7 +23,7 @@ namespace MM.Model
         /// <summary>
         /// 购买日期
         /// </summary>
-        public DateTime ConsumeDate { get; }
+        public DateTime ConsumeDate { get; set; }
 
         /// <summary>
         /// 教师
@@ -34,11 +34,6 @@ namespace MM.Model
         /// 教师的Id
         /// </summary>
         public Guid TutorId { get; set; }
-
-        public Consumption()
-        {
-            ConsumeDate = DateTime.Now;
-        }
 
         public Session ToSession(string description)
         {

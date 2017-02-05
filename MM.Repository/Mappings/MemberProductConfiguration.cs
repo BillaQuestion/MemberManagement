@@ -7,7 +7,7 @@ namespace MM.Repository.Mappings
     {
         public MemberProductConfiguration()
         {
-            ToTable("MemberProducts");
+            //ToTable("MemberProducts");
         }
     }
 }

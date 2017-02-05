@@ -7,8 +7,7 @@ namespace MM.Repository.Mappings
     {
         public OneTimeExperienceConfiguration()
         {
-            ToTable("OneTimeExperiences");
-            //HasKey(o => o.Id);
+            //ToTable("OneTimeExperiences");
         }
     }
 }

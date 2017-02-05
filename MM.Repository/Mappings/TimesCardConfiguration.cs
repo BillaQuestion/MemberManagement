@@ -12,7 +12,7 @@ namespace MM.Repository.Mappings
     {
         public TimesCardConfiguration()
         {
-            ToTable("TimesCards");
+            //ToTable("TimesCards");
         }
     }
 }

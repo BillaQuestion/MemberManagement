@@ -42,7 +42,7 @@ namespace MM.Model
         /// <summary>
         /// 购买日期
         /// </summary>
-        public DateTime PurchaseDate { get; }
+        public DateTime PurchaseDate { get; set; }
 
         /// <summary>
         /// 经手教师
@@ -54,11 +54,6 @@ namespace MM.Model
         /// </summary>
         public Guid TutorId { get; set; }
         #endregion
-
-        public Purchase()
-        {
-            PurchaseDate = DateTime.Now;
-        }
 
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

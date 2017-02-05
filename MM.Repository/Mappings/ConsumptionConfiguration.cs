@@ -8,7 +8,7 @@ namespace MM.Repository.Mappings
         public ConsumptionConfiguration()
         {
             ToTable("Consumptions");
-            Property(c => c.ConsumeDate).HasColumnType("datetime");
+            Property(c => c.ConsumeDate).HasColumnType("DateTime");
         }
     }
 }

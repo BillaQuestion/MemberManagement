@@ -7,7 +7,7 @@ namespace MM.Repository.Mappings
     {
         public SessionConfiguration()
         {
-            ToTable("Sessions");
+            //ToTable("Sessions");
             Property(s => s.Description).HasMaxLength(100);
         }
     }

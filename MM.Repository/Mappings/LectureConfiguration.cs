@@ -7,7 +7,7 @@ namespace MM.Repository.Mappings
     {
         public LectureConfiguration()
         {
-            ToTable("Lectures");
+            //ToTable("Lectures");
             Property(l => l.Description).HasMaxLength(200);
         }
     }
