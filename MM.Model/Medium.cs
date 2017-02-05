@@ -8,6 +8,10 @@ namespace MM.Model
     {
         public string Name { get; set; }
 
+        public Medium(string name)
+        {
+            Name = name;
+        }
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var validateResults = new List<ValidationResult>();

@@ -70,6 +70,7 @@
     <Compile Include="Mappings\SessionConfiguration.cs" />
     <Compile Include="Mappings\TimesCardConfiguration.cs" />
     <Compile Include="Mappings\TutorConfiguration.cs" />
+    <Compile Include="MediumRepository.cs" />
     <Compile Include="MemberProductRepository.cs" />
     <Compile Include="MemberRepository.cs" />
     <Compile Include="Mappings\OneTimeExperienceConfiguration.cs" />
