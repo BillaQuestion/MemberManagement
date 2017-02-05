@@ -32,7 +32,7 @@ namespace MM.Repository.Tests
             var context = new MMContext();
             var productRepository = new ProductRepository(context);
             var products = productRepository.GetAll().ToList();
-            Assert.IsTrue(products.First() is OneTimeExperience);
+            Assert.AreEqual(7, products.Count);
         }
     }
 }
