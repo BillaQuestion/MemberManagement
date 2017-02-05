@@ -9,16 +9,6 @@ namespace MM.Repository.Tests
         {
             base.Seed(context);
 
-            var oneTimeExperience = new OneTimeExperience()
-                { Name = "一次性画纸", Price = 20 };
-            oneTimeExperience.GenerateNewIdentity();
-            context.OneTimeExperiences.Add(oneTimeExperience);
-
-            oneTimeExperience = new Model.OneTimeExperience()
-            { Name = "一次性画布", Price = 30 };
-            oneTimeExperience.GenerateNewIdentity();
-            context.OneTimeExperiences.Add(oneTimeExperience);
-
             var lecture = new Lecture()
             {
                 Name = "水粉画基础",
@@ -28,6 +18,16 @@ namespace MM.Repository.Tests
             };
             lecture.GenerateNewIdentity();
             context.Lectures.Add(lecture);
+
+            var oneTimeExperience = new OneTimeExperience()
+                { Name = "一次性画纸", Price = 20 };
+            oneTimeExperience.GenerateNewIdentity();
+            context.OneTimeExperiences.Add(oneTimeExperience);
+
+            oneTimeExperience = new Model.OneTimeExperience()
+            { Name = "一次性画布", Price = 30 };
+            oneTimeExperience.GenerateNewIdentity();
+            context.OneTimeExperiences.Add(oneTimeExperience);
         }
     }
 }
