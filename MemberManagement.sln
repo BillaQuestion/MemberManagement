@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "公共类库文件", "公�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.Repository", "MM.Repository\MM.Repository.csproj", "{07544E04-18BF-4022-933B-A4AD654620E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.RepositoryTests", "MM.RepositoryTests\MM.RepositoryTests.csproj", "{8B07B620-C4A9-4106-8C32-2388428734C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MM.Repository.Tests", "MM.RepositoryTests\MM.Repository.Tests.csproj", "{8B07B620-C4A9-4106-8C32-2388428734C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
