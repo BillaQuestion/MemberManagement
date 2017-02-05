@@ -15,13 +15,13 @@ namespace MM.Business
     /// </summary>
     public class TutorMgr
     {
-        ITutorRepository _tutorRepository;
-        IProductRepository _productRepository;
-        IMemberRepository _memberRepository;
-        IPurchaseRepository _purchaseRepository;
-        IBalanceRepository _balanceRepository;
-        IConsumptionRepository _consumptionRepository;
-        ISessionRepository _sessionRepository;
+        protected ITutorRepository _tutorRepository;
+        protected IProductRepository _productRepository;
+        protected IMemberRepository _memberRepository;
+        protected IPurchaseRepository _purchaseRepository;
+        protected IBalanceRepository _balanceRepository;
+        protected IConsumptionRepository _consumptionRepository;
+        protected ISessionRepository _sessionRepository;
 
         public TutorMgr(ITutorRepository tutorRepository,
             IProductRepository productRepository,
