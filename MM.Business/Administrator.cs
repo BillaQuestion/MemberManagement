@@ -4,13 +4,28 @@ using System.Linq;
 using System.Text;
 using MM.Model;
 using MM.Model.IRepositories;
+using Dayi.Data.Domain.Seedwork.Specification;
+using MM.Business.Exceptions;
 
 namespace MM.Business
 {
     public class Administrator : TutorMgr
     {
-        public Administrator(ITutorRepository tutorRepository, IProductRepository productRepository, IMemberRepository memberRepository, IPurchaseRepository purchaseRepository, IBalanceRepository balanceRepository, IConsumptionRepository consumptionRepository, ISessionRepository sessionRepository) : base(tutorRepository, productRepository, memberRepository, purchaseRepository, balanceRepository, consumptionRepository, sessionRepository)
+        IMediumRepository _mediumRepository;
+
+        public Administrator(ITutorRepository tutorRepository,
+            IProductRepository productRepository,
+            IMemberRepository memberRepository,
+            IPurchaseRepository purchaseRepository,
+            IBalanceRepository balanceRepository,
+            IConsumptionRepository consumptionRepository,
+            ISessionRepository sessionRepository,
+            IMediumRepository mediumRepository) :
+            base(tutorRepository, productRepository, memberRepository,
+                purchaseRepository, balanceRepository, consumptionRepository,
+                sessionRepository)
         {
+            _mediumRepository = mediumRepository;
         }
 
         public void SetMember(Guid memberId, Member newMember)
@@ -56,9 +71,23 @@ namespace MM.Business
 
         public void RemoveTutor(Guid tutorId)
         {
-            var tutor =_tutorRepository.GetByKey(tutorId);
+            var tutor = _tutorRepository.GetByKey(tutorId);
             _tutorRepository.Remove(tutor);
         }
 
+        public void AddMedium(string name)
+        {
+            ISpecification<Medium> spec = new DirectSpecification<Medium>(m => m.Name == name);
+            var medium = _mediumRepository.FindBySpecification(spec).FirstOrDefault();
+            if (medium != null) throw new MediumExistException();
+            medium = new Medium(name);
+            _mediumRepository.Add(medium);
+        }
+
+        public void RemoveMedium(Guid mediumId)
+        {
+            var medium = _mediumRepository.GetByKey(mediumId);
+            _mediumRepository.Remove(medium);
+        }
     }
 }

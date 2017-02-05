@@ -49,9 +49,9 @@ namespace MM.Business
         /// <param name="phoneNumber">顾客手机号码</param>
         public void Sell(Guid tutorId, Guid productId, string customer, string phoneNumber)
         {
-            Tutor tutor = _tutorRepository.GetByKey(tutorId);
+            var tutor = _tutorRepository.GetByKey(tutorId);
             var product = _productRepository.GetByKey(productId);
-            Purchase purchase = tutor.Sell(product, customer, phoneNumber);
+            var purchase = tutor.Sell(product, customer, phoneNumber);
             purchase.GenerateNewIdentity();
             _purchaseRepository.Add(purchase);
 
@@ -78,7 +78,7 @@ namespace MM.Business
         {
             var member = FindMemberByPhoneNumber(memberPhoneNumber);
             if (member == null) throw new MemberNotExistException();
-            Balance balance = new Balance();
+            var balance = new Balance();
             var consumption = member.Consume(memberProductId, tutorId, out balance);
             _consumptionRepository.Add(consumption);
             if (balance.Remainder == 0)
@@ -91,8 +91,8 @@ namespace MM.Business
         {
             var member = FindMemberByPhoneNumber(memberPhoneNumber);
             if (member == null) throw new MemberNotExistException();
-            Balance balance = new Balance();
-            Session session = member.Consume(lectureId, tutorId, out balance).ToSession(lectureDescription);
+            var balance = new Balance();
+            var session = member.Consume(lectureId, tutorId, out balance).ToSession(lectureDescription);
             
             _sessionRepository.Add(session);
             if (balance.Remainder == 0)
