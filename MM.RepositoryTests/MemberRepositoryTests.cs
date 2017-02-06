@@ -16,7 +16,7 @@ namespace MM.Repository.Tests
         [TestInitialize]
         public void Initialize()
         {
-            Database.SetInitializer(new DropCreateMMDbWithSeedData());
+            Database.SetInitializer(new DropCreateMMDbWithSeedDataForRepositoryTest());
         }
 
         [TestCleanup]

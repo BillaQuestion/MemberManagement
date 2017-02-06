@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace MM.Repository.Tests
 {
-    public class DropCreateMMDbWithSeedData : DropCreateDatabaseAlways<MMContext>
+    public class DropCreateMMDbWithSeedDataForRepositoryTest : DropCreateDatabaseAlways<MMContext>
     {
         protected override void Seed(MMContext context)
         {

@@ -78,6 +78,7 @@
     <Compile Include="OneTimeExperienceRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchaseRepository.cs" />
     <Compile Include="SessionRepository.cs" />
     <Compile Include="TimesCardRepository.cs" />
     <Compile Include="TutorRepository.cs" />
