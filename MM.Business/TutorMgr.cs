@@ -68,7 +68,19 @@ namespace MM.Business
                 SaveBalance(balance);
             }
 
-            _tutorRepository.UnitOfWork.Commit();
+            _purchaseRepository.UnitOfWork.Commit();
+        }
+
+        public void SetMember(Guid memberId, Member newMember)
+        {
+            var member = _memberRepository.GetByKey(memberId);
+            member.Address = newMember.Address;
+            member.Gender = newMember.Gender;
+            member.Name = newMember.Name;
+            member.PhoneNumber = newMember.PhoneNumber;
+            _memberRepository.Modify(member);
+
+            _memberRepository.UnitOfWork.Commit();
         }
 
         public void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)

@@ -38,7 +38,6 @@ namespace MM.Model
                 PhoneNumber = phoneNumber,
                 Product = product,
                 Tutor = this,
-                Price = product.Price
             };
             return purchase;
         }
@@ -58,7 +57,6 @@ namespace MM.Model
                 PhoneNumber = phoneNumber,
                 Product = product,
                 Tutor = this,
-                Price = product.Price
             };
             return purchase;
         }

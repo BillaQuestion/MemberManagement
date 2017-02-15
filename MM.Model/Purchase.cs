@@ -37,7 +37,15 @@ namespace MM.Model
         /// <summary>
         /// 费用
         /// </summary>
-        public decimal Price { get; set; }
+        public decimal Price
+        {
+            get
+            {
+                return Product.Price;
+            }
+
+            set { }
+        }
 
         /// <summary>
         /// 购买日期

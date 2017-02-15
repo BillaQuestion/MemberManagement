@@ -26,18 +26,6 @@ namespace MM.Business
             _mediumRepository = mediumRepository;
         }
 
-        public void SetMember(Guid memberId, Member newMember)
-        {
-            var member = _memberRepository.GetByKey(memberId);
-            member.Address = newMember.Address;
-            member.Gender = newMember.Gender;
-            member.Name = newMember.Name;
-            member.PhoneNumber = newMember.PhoneNumber;
-            _memberRepository.Modify(member);
-
-            _memberRepository.UnitOfWork.Commit();
-        }
-
         public void AddProduct(Product product)
         {
             _productRepository.Add(product);
@@ -109,14 +97,13 @@ namespace MM.Business
             _tutorRepository.UnitOfWork.Commit();
         }
 
-        public void AddMedium(string name)
+        public void AddMedium(Medium medium)
         {
-            ISpecification<Medium> spec = new DirectSpecification<Medium>(m => m.Name == name);
-            var medium = _mediumRepository.FindBySpecification(spec).FirstOrDefault();
-            if (medium != null) throw new MediumExistException();
-            medium = new Medium() { Name = name };
-            _mediumRepository.Add(medium);
+            ISpecification<Medium> spec = new DirectSpecification<Medium>(m => m.Name == medium.Name);
+            var result = _mediumRepository.FindBySpecification(spec).FirstOrDefault();
+            if (result != null) throw new MediumExistException();
 
+            _mediumRepository.Add(medium);
             _mediumRepository.UnitOfWork.Commit();
         }
 
