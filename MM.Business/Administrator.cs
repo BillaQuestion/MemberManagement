@@ -9,7 +9,7 @@ using MM.Business.Exceptions;
 
 namespace MM.Business
 {
-    public class Administrator : TutorMgr
+    public class Administrator : StudioService
     {
         IMediumRepository _mediumRepository;
 

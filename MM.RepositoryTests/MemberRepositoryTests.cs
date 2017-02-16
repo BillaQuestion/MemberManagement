@@ -22,8 +22,8 @@ namespace MM.Repository.Tests
         [TestCleanup]
         public void Cleanup()
         {
-            var context = new MMContext();
-            context.Database.Delete();
+            //var context = new MMContext();
+            //context.Database.Delete();
         }
 
         [TestMethod()]

@@ -96,7 +96,7 @@ namespace MM.Business.Tests
             Assert.AreEqual(_context.Products.Count(), 3);
             Assert.AreEqual(_context.Products.FirstOrDefault(x => x.Id == timesCard.Id), timesCard);
 
-            var tutor = new Tutor()
+            var tutor = new TutorMgr()
             {
                 Address = "testAddress",
                 Gender = Model.Enums.Gender.Female,
@@ -122,7 +122,7 @@ namespace MM.Business.Tests
             Assert.AreEqual(testMember.PurchaseRecords.Count, 1);
             Assert.AreEqual(testMember.Address, null);
             Assert.AreEqual(testMember.Balances.Count, 1);
-            Assert.AreEqual(testMember.Balances.FirstOrDefault().MemberProduct, timesCard);
+            Assert.AreEqual(testMember.Balances.FirstOrDefault().Product, timesCard);
             Assert.AreEqual(testMember.ConsumeRecords.Count, 0);
             Assert.AreEqual(testMember.Gender, Model.Enums.Gender.Male);
 

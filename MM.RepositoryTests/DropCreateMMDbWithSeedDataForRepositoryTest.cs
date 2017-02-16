@@ -76,6 +76,15 @@ namespace MM.Repository.Tests
             { Name = "一次性画布", Price = 30 };
             oneTimeExperience.GenerateNewIdentity();
             context.OneTimeExperiences.Add(oneTimeExperience);
+
+            Tutor tutor = new Tutor()
+            {
+                Name = "admin",
+                IsManager = true
+            };
+            tutor.SetPassword("password");
+            tutor.GenerateNewIdentity();
+            context.Tutors.Add(tutor);
         }
     }
 }

@@ -1,143 +1,100 @@
-﻿using MM.Model;
+﻿using Dayi.Data.Domain.Seedwork.Specification;
+using MM.Model;
+using MM.Model.Enums;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dayi.Data.Domain.Seedwork.Specification;
-using MM.Business.Exceptions;
+using System.Security.Principal;
+using System.Threading;
 
 namespace MM.Business
 {
-    /// <summary>
-    /// 教师的业务类
-    /// </summary>
-    public class TutorMgr
+    public class TutorMgr : IAuthenticator, ITutorMgr
     {
-        protected ITutorRepository _tutorRepository;
-        protected IProductRepository _productRepository;
-        protected IMemberRepository _memberRepository;
-        protected IPurchaseRepository _purchaseRepository;
-        protected IBalanceRepository _balanceRepository;
-        protected IConsumptionRepository _consumptionRepository;
+        private ITutorRepository _tutorRepository;
 
-        public TutorMgr(ITutorRepository tutorRepository,
-            IProductRepository productRepository,
-            IMemberRepository memberRepository,
-            IPurchaseRepository purchaseRepository,
-            IBalanceRepository balanceRepository,
-            IConsumptionRepository consumptionRepository)
+        public TutorMgr(ITutorRepository tutorRepository)
         {
             _tutorRepository = tutorRepository;
-            _productRepository = productRepository;
-            _memberRepository = memberRepository;
-            _purchaseRepository = purchaseRepository;
-            _balanceRepository = balanceRepository;
-            _consumptionRepository = consumptionRepository;
         }
 
-        /// <summary>
-        /// 销售产品
-        /// </summary>
-        /// <param name="tutorId">教师Id</param>
-        /// <param name="productId">产品Id</param>
-        /// <param name="customer">顾客姓名</param>
-        /// <param name="phoneNumber">顾客手机号码</param>
-        public void Sell(Guid tutorId, Guid productId, string customer, string phoneNumber)
-        {
-            var tutor = _tutorRepository.GetByKey(tutorId);
-            var product = _productRepository.GetByKey(productId);
-            var purchase = tutor.Sell(product, customer, phoneNumber);
-            purchase.GenerateNewIdentity();
-            _purchaseRepository.Add(purchase);
 
-            if (product is MemberProduct)
+        /// <summary>
+        /// 根据用户名和口令对用户进行认证。
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <param name="password">口令</param>
+        /// <returns>用户通过认证，则返回true；否则返回false。</returns>
+        bool IAuthenticator.Authenticate(string username, string password)
+        {
+            ISpecification<Tutor> spec = new DirectSpecification<Tutor>(o => o.Name == username);
+            Tutor tutor = _tutorRepository.FindBySpecification(spec).FirstOrDefault();
+
+            bool authenticated = false;
+            if (tutor != null && tutor.Authenticate(password))
             {
-                var member = FindMemberByPhoneNumber(phoneNumber);
-                if (member == null)
-                {
-                    member = new Member()
-                    {
-                        Name = customer,
-                        PhoneNumber = phoneNumber
-                    };
-                    _memberRepository.Add(member);
-                }
-                var balance = member.Buy(purchase);
-                SaveBalance(balance);
+                authenticated = true;
+                IIdentity identity = new GenericIdentity(username);
+                IPrincipal principal = new GenericPrincipal(identity, new string[] { "Administrator" });
+                Thread.CurrentPrincipal = principal;
             }
 
-            _purchaseRepository.UnitOfWork.Commit();
-        }
-
-        public void SetMember(Guid memberId, Member newMember)
-        {
-            var member = _memberRepository.GetByKey(memberId);
-            member.Address = newMember.Address;
-            member.Gender = newMember.Gender;
-            member.Name = newMember.Name;
-            member.PhoneNumber = newMember.PhoneNumber;
-            _memberRepository.Modify(member);
-
-            _memberRepository.UnitOfWork.Commit();
-        }
-
-        public void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
-        {
-            var member = FindMemberByPhoneNumber(memberPhoneNumber);
-            if (member == null) throw new MemberNotExistException();
-            var balance = new Balance();
-            var consumption = member.Consume(memberProductId, tutorId, out balance);
-            _consumptionRepository.Add(consumption);
-            if (balance.Remainder == 0)
-                _balanceRepository.Remove(balance);
-            else
-                SaveBalance(balance);
-
-            _consumptionRepository.UnitOfWork.Commit();
-        }
-
-        public void TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
-        {
-            var member = FindMemberByPhoneNumber(memberPhoneNumber);
-            if (member == null) throw new MemberNotExistException();
-            var balance = new Balance();
-            var session = member.Consume(lectureId, tutorId, lectureDescription, out balance);
-
-            _consumptionRepository.Add(session);
-            if (balance.Remainder == 0)
-                _balanceRepository.Remove(balance);
-            else
-                SaveBalance(balance);
-
-            _consumptionRepository.UnitOfWork.Commit();
-        }
-
-        #region 私有方法
-
-        /// <summary>
-        /// 根据手机号码查找会员
-        /// </summary>
-        /// <param name="phoneNumber">手机号码</param>
-        /// <returns>会员对象</returns>
-        private Member FindMemberByPhoneNumber(string phoneNumber)
-        {
-            ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == phoneNumber);
-            return _memberRepository.FindBySpecification(spec).FirstOrDefault();
+            //将验证结果返回
+            return authenticated;
         }
 
         /// <summary>
-        /// 保存会员余额
+        /// 新建一个教师
         /// </summary>
-        /// <param name="balance">余额对象</param>
-        private void SaveBalance(Balance balance)
+        /// <returns>新建的教师对象</returns>
+        Tutor ITutorMgr.CreateTutor(string name, string password, Gender gender, 
+            string phoneNumber, string address, bool isManager)
         {
-            if (balance.IsTransient())
-                _balanceRepository.Add(balance);
-            else
-                _balanceRepository.Modify(balance);
+            Tutor tutor = new Tutor()
+            {
+                Name = name,
+                Gender = gender,
+                PhoneNumber = phoneNumber,
+                Address = address,
+                IsManager = isManager
+            };
+            tutor.SetPassword(password);
+
+            tutor.GenerateNewIdentity();
+            _tutorRepository.Add(tutor);
+            _tutorRepository.UnitOfWork.Commit();
+
+            return tutor;
         }
-        #endregion
+
+        /// <summary>
+        /// 获取所有的教师对象
+        /// </summary>
+        IEnumerable<Tutor> ITutorMgr.GetAllTutor()
+        {
+            return _tutorRepository.GetAll();
+        }
+
+        /// <summary>
+        /// 根据教师Id，获取教师对象
+        /// </summary>
+        Tutor ITutorMgr.GetTutor(Guid tutorId)
+        {
+            return _tutorRepository.GetByKey(tutorId);
+        }
+
+        /// <summary>
+        /// 根据教师Id，删除教师对象
+        /// </summary>
+        void ITutorMgr.DeleteTutor(Guid tutorId)
+        {
+            Tutor tutor = _tutorRepository.GetByKey(tutorId);
+            if (tutor == null)
+                throw new ArgumentException(string.Format("教师【{0}】不存在！", tutorId));
+
+            _tutorRepository.Remove(tutor);
+            _tutorRepository.UnitOfWork.Commit();
+        }
     }
 }

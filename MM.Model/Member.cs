@@ -66,28 +66,7 @@ namespace MM.Model
         #endregion
 
         #region Public Methods
-        public Balance Buy(Purchase purchase)
-        {
-            var memberProduct = purchase.Product as MemberProduct;
-            var balance = _balances.FirstOrDefault(x => x.MemberProduct.Name == memberProduct.Name);
-            if (balance == null)
-            {
-                balance = new Balance()
-                {
-                    MemberProduct = memberProduct,
-                    Remainder = memberProduct.Count
-                };
-                _balances.Add(balance);
-            }
-            else
-            {
-                balance.Remainder = balance.Remainder + memberProduct.Count;
-            }
-            _purchaseRecords.Add(purchase);
-
-            return balance;
-        }
-
+ 
         public Consumption Consume(Guid memberProductId, Guid tutorId, out Balance balance)
         {
             balance = _balances.FirstOrDefault(x => x.MemberProductId == memberProductId);
@@ -96,7 +75,7 @@ namespace MM.Model
             Consumption consumption = new Consumption()
             {
                 TutorId = tutorId,
-                MemberProduct = balance.MemberProduct
+                MemberProduct = balance.Product
             };
             _consumeRecords.Add(consumption);
             if (balance.Remainder == 0) _balances.Remove(balance);
@@ -108,11 +87,11 @@ namespace MM.Model
             balance = _balances.FirstOrDefault(x => x.MemberProductId == memberProductId);
             if (balance == null) throw new BalanceNotEnoughException();
             balance.Remainder--;
-            if (!(balance.MemberProduct is Lecture)) throw new ValidationException();
+            if (!(balance.Product is Lecture)) throw new ValidationException();
             Session session = new Session()
             {
                 TutorId = tutorId,
-                MemberProduct = balance.MemberProduct,
+                MemberProduct = balance.Product,
                 Description = sessionDescription
             };
             _consumeRecords.Add(session);

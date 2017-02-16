@@ -13,7 +13,7 @@ namespace MM.Model
         /// <summary>
         /// 会员产品
         /// </summary>
-        public MemberProduct MemberProduct { get; set; }
+        public MemberProduct Product { get; set; }
 
         /// <summary>
         /// 会员产品的Id
@@ -28,7 +28,7 @@ namespace MM.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
-            if (MemberProduct == null && MemberProductId == Guid.Empty)
+            if (Product == null && MemberProductId == Guid.Empty)
                 result.Add(new ValidationResult("MemberProduct或MemberProductId必须赋值！", 
                     new string[] { "MemberProduct", "MemberProductId" }));
             return result; 

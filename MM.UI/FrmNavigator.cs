@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraNavBar;
+
+namespace MM.UI
+{
+    public partial class FrmNavigator : DevExpress.XtraEditors.XtraForm
+    {
+        // 当前控件
+        protected UserControl currentCtrl;
+
+        public FrmNavigator()
+        {
+            InitializeComponent();
+
+            currentCtrl = null;
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            #region 获取列表项
+            #endregion
+
+            #region 获取导航图片名称
+            string picPath = string.Empty;
+            try
+            {
+                picPath = System.IO.Path.GetFullPath(System.Configuration.ConfigurationManager.AppSettings["NavigatorFile"]);
+            }
+            catch
+            { }
+            if (File.Exists(picPath))
+            {
+                picBox背景.Image = Image.FromFile(picPath);
+            }
+            #endregion
+        }
+
+        protected virtual void Item_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// 检查Mdi子窗体是否已经打开，如果没有打开，则生成并打开；否则，直接激活它。
+        /// </summary>
+        /// <param name="frmName"></param>
+        /// <returns>如果子窗体已经打开，则返回true；否则，返回false。</returns>
+        private bool IsOpened(string formName)
+        {
+            for (int x = 0; x < this.MdiParent.MdiChildren.Length; x++)
+            {
+                if (this.MdiParent.MdiChildren[x].Name == formName)
+                {
+                    this.MdiParent.MdiChildren[x].Activate();
+                    return true;
+                }
+            }
+            return false;
+        } 
+    }
+}

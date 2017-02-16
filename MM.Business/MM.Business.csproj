@@ -47,8 +47,11 @@
     <Compile Include="Administrator.cs" />
     <Compile Include="Exceptions\MediumExistException.cs" />
     <Compile Include="Exceptions\MemberNotExistException.cs" />
+    <Compile Include="IAuthenticator.cs" />
+    <Compile Include="ITutorMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TutorMgr.cs" />
+    <Compile Include="StudioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MM.Model\MM.Model.csproj">

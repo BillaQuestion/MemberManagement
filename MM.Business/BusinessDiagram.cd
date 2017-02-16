@@ -1,18 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MM.Business.TutorMgr">
-    <Position X="2.5" Y="2.25" Width="1.5" />
+  <Class Name="MM.Business.StudioService">
+    <Position X="1.75" Y="2.25" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAEAAIAAAAAAAQAAQgEAAAAgCAAAAAAABQAAIAAA=</HashCode>
-      <FileName>TutorMgr.cs</FileName>
+      <HashCode>AAAAAAAAIAAAAAAAQAAQgEAAAAgCAAAAAAABQgAIAAA=</HashCode>
+      <FileName>StudioService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MM.Business.Administrator">
-    <Position X="5.25" Y="2.25" Width="1.5" />
+    <Position X="5.25" Y="2.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIACAAQEAAAAYwAAAACgAAAAAAAABAgAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAACAAQEEAAAIQAAgACAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Administrator.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="MM.Business.TutorMgr">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAACgAAAAAAACAAAAAAAABAAAAA=</HashCode>
+      <FileName>TutorMgr.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Microsoft YaHei UI" Size="9" />
 </ClassDiagram>
