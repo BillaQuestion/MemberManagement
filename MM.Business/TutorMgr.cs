@@ -36,7 +36,9 @@ namespace MM.Business
             {
                 authenticated = true;
                 IIdentity identity = new GenericIdentity(username);
-                IPrincipal principal = new GenericPrincipal(identity, new string[] { "Administrator" });
+                List<string> roles = new List<string>();
+                if (tutor.IsManager) roles.Add("Administrator");
+                IPrincipal principal = new GenericPrincipal(identity, roles.ToArray());
                 Thread.CurrentPrincipal = principal;
             }
 
@@ -48,7 +50,7 @@ namespace MM.Business
         /// 新建一个教师
         /// </summary>
         /// <returns>新建的教师对象</returns>
-        Tutor ITutorMgr.CreateTutor(string name, string password, Gender gender, 
+        Tutor ITutorMgr.CreateTutor(string name, string password, Gender gender,
             string phoneNumber, string address, bool isManager)
         {
             Tutor tutor = new Tutor()
