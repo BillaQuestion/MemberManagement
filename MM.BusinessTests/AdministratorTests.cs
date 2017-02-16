@@ -124,7 +124,7 @@ namespace MM.Business.Tests
             Assert.AreEqual(testMember.Balances.Count, 1);
             Assert.AreEqual(testMember.Balances.FirstOrDefault().MemberProduct, timesCard);
             Assert.AreEqual(testMember.ConsumeRecords.Count, 0);
-            Assert.AreEqual(testMember.Gender, null);
+            Assert.AreEqual(testMember.Gender, Model.Enums.Gender.Male);
 
             var newMember = new Member()
             {

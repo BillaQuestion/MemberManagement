@@ -57,6 +57,7 @@ namespace MM.Model
                 PhoneNumber = phoneNumber,
                 Product = product,
                 Tutor = this,
+                PurchaseDate = DateTime.Now
             };
             return purchase;
         }

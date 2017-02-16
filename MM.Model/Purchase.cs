@@ -44,7 +44,6 @@ namespace MM.Model
                 return Product.Price;
             }
 
-            set { }
         }
 
         /// <summary>
@@ -70,9 +69,6 @@ namespace MM.Model
                 result.Add(new ValidationResult("PhoneNumber必须赋值！", new string[] { "PhoneNumber" }));
             if (Product == null)
                 result.Add(new ValidationResult("Product必须赋值！", new string[] { "Product" }));
-            if (Price < 0)
-                result.Add(new ValidationResult("Price必须大于等于零！", new string[] { "Price" }));
-
             return result;
         }
     }
