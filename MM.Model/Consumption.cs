@@ -35,20 +35,6 @@ namespace MM.Model
         /// </summary>
         public Guid TutorId { get; set; }
 
-        public Session ToSession(string description)
-        {
-            Session session = new Session()
-            {
-                Description = description,
-                Id = this.Id,
-                MemberProduct = this.MemberProduct,
-                MemberProductId = this.MemberProductId,
-                Tutor = this.Tutor,
-                TutorId = this.TutorId
-            };
-            return session;
-        }
-
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();

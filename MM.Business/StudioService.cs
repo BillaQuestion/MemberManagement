@@ -90,13 +90,8 @@ namespace MM.Business
             _purchaseRepository.UnitOfWork.Commit();
         }
 
-        public void SetMember(Guid memberId, Member newMember)
+        public void ModifyMember(Member member)
         {
-            var member = _memberRepository.GetByKey(memberId);
-            member.Address = newMember.Address;
-            member.Gender = newMember.Gender;
-            member.Name = newMember.Name;
-            member.PhoneNumber = newMember.PhoneNumber;
             _memberRepository.Modify(member);
 
             _memberRepository.UnitOfWork.Commit();
