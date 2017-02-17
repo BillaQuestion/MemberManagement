@@ -19,20 +19,20 @@ namespace MM.Business
             _memberRepository = memberRepository;
         }
 
-        IEnumerable<Member> IMemberMgr.GetAllMembers()
+        IEnumerable<Member> IMemberMgr.GetAll()
         {
             return _memberRepository.GetAll();
         }
 
-        Member IMemberMgr.GetMember(string phoneNumber)
+        Member IMemberMgr.Get(string phoneNumber)
         {
             ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == phoneNumber);
             return _memberRepository.FindBySpecification(spec).FirstOrDefault();
         }
 
-        void IMemberMgr.AddMember(string name, string phoneNumber, Gender gender, string address)
+        void IMemberMgr.Create(string name, string phoneNumber, Gender gender, string address, Balance balance)
         {
-            var member = new Member()
+            var member = new Member(balance)
             {
                 Name = name,
                 PhoneNumber = phoneNumber,
@@ -46,18 +46,19 @@ namespace MM.Business
             _memberRepository.UnitOfWork.Commit();
         }
 
-        void IMemberMgr.ModifyMember(Member member)
+        void IMemberMgr.Modify(Member member)
         {
-            var result = _memberRepository.GetByKey(member.Id);
-            if (result == null)
-                throw new MemberNotExistException();
+            if (member.IsTransient())
+            {
+                member.GenerateNewIdentity();
+                _memberRepository.Add(member);
+            }
             else
                 _memberRepository.Modify(member);
-
             _memberRepository.UnitOfWork.Commit();
         }
 
-        void IMemberMgr.RemoveMember(Guid memberId)
+        void IMemberMgr.Remove(Guid memberId)
         {
             var result = _memberRepository.GetByKey(memberId);
             if (result == null)

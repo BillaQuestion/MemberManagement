@@ -98,5 +98,11 @@ namespace MM.Business
             _tutorRepository.Remove(tutor);
             _tutorRepository.UnitOfWork.Commit();
         }
+
+        void ITutorMgr.ModifyTutor(Tutor tutor)
+        {
+            _tutorRepository.Modify(tutor);
+            _tutorRepository.UnitOfWork.Commit();
+        }
     }
 }

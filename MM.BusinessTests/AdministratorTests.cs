@@ -125,16 +125,41 @@ namespace MM.Business.Tests
             Assert.AreEqual(testMember.ConsumeRecords.Count, 0);
             Assert.AreEqual(testMember.Gender, Model.Enums.Gender.Male);
 
-            var newMember = new Member()
+            //var newMember = new Member()
+            //{
+            //    Address = "testAddress",
+            //    PhoneNumber = "testPhoneNunber",
+            //    Name ="testMember"
+            //};
+            //_admin.ModifyMember(newMember);
+            //Assert.AreEqual(_context.Members.Count(), 1);
+            //Assert.AreEqual(_context.Members.FirstOrDefault().Id, testMember.Id);
+            //Assert.AreEqual(_context.Members.FirstOrDefault().Address, "testAddress");
+        }
+
+        [TestMethod]
+        public void Demo()
+        {
+            IBalanceMgr balanceMgr = new BalanceMgr(_balanceR);
+
+            MemberProduct p1 = new Lecture()
             {
-                Address = "testAddress",
-                PhoneNumber = "testPhoneNunber",
-                Name ="testMember"
+                Count = 2,
+                Description = "dd",
+                Name = "dd",
+                Price = 10M
             };
-            _admin.ModifyMember(newMember);
-            Assert.AreEqual(_context.Members.Count(), 1);
-            Assert.AreEqual(_context.Members.FirstOrDefault().Id, testMember.Id);
-            Assert.AreEqual(_context.Members.FirstOrDefault().Address, "testAddress");
+            p1.GenerateNewIdentity();
+
+            MemberProduct p2 = new Lecture()
+            {
+                Count = 9,
+                Description = "ee",
+                Name = "ee",
+                Price = 10M
+            };
+            p2.GenerateNewIdentity();
+
         }
     }
 }

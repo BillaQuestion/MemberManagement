@@ -10,10 +10,10 @@ namespace MM.Business
 {
     public interface IMemberMgr
     {
-        Member GetMember(string phoneNumber);
-        IEnumerable<Member> GetAllMembers();
-        void AddMember(string name, string phoneNumber, Gender gender, string Address);
-        void ModifyMember(Member member);
-        void RemoveMember(Guid memberId);
+        Member Get(string phoneNumber);
+        IEnumerable<Member> GetAll();
+        void Create(string name, string phoneNumber, Gender gender, string Address, Balance balance);
+        void Modify(Member member);
+        void Remove(Guid memberId);
     }
 }

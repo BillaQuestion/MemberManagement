@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace MM.Business
 {
-    interface IProductMgr
+    public interface IProductMgr
     {
-        void AddProduct(Product product);
+        void Add(Product product);
         
-        void ModifyProduct(Product product);
+        void Modify(Product product);
 
-        Product GetProduct(Guid productId);
+        Product Get(Guid productId);
 
-        IEnumerable<Product> GetAllProducts();
+        IEnumerable<Product> GetAll();
 
-        void RemoveProduct(Product product);
+        void Remove(Product product);
     }
 }

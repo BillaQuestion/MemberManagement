@@ -46,7 +46,11 @@ namespace MM.Model
                 Member = member,
                 MemberId = member.Id,
                 Product = product,
+                ProductId = product.Id,
                 Tutor = this,
+                TutorId = this.Id,
+                Price = product.Price,
+                PurchaseDate = DateTime.Now
             };
 
             // 2、增加会员的产品余额
@@ -56,6 +60,7 @@ namespace MM.Model
                 balance = new Balance()
                 {
                     Product = product,
+                    MemberProductId = product.Id,
                     Remainder = product.Count
                 };
                 member.Balances.Add(balance);

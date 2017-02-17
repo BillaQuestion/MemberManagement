@@ -7,8 +7,8 @@
     </Compartments>
     <AssociationLine Name="ConsumeRecords" Type="MM.Model.Consumption" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="7.75" Y="3.784" />
-        <Point X="8.125" Y="3.784" />
+        <Point X="7.75" Y="3.875" />
+        <Point X="8.125" Y="3.875" />
         <Point X="8.125" Y="8.64" />
         <Point X="9" Y="8.64" />
       </Path>

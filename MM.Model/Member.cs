@@ -38,6 +38,14 @@ namespace MM.Model
             }
         }
 
+        public Member(Balance balance)
+        {
+            _balances = new HashSet<Balance>();
+            _purchaseRecords = new HashSet<MemberPurchase>();
+            _consumeRecords = new HashSet<Consumption>();
+            _balances.Add(balance);
+        }
+
         /// <summary>
         /// 购买记录
         /// </summary>
@@ -77,6 +85,8 @@ namespace MM.Model
                 TutorId = tutorId,
                 MemberProduct = balance.Product
             };
+            if (consumption.IsTransient())
+                consumption.GenerateNewIdentity();
             _consumeRecords.Add(consumption);
             if (balance.Remainder == 0) _balances.Remove(balance);
             return consumption;
