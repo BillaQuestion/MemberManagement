@@ -2,11 +2,8 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="MM.Business.StudioService">
     <Position X="1.75" Y="2.25" Width="2.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAQABQgEAAAAgCAAAAAAABQAAIAAA=</HashCode>
+      <HashCode>AAAAAAAAABABAAAAQEAABAAAAAAEAAAAAAAAQAAAAAA=</HashCode>
       <FileName>StudioService.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -16,7 +13,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAQEEAAAIQAAgACAAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAABCBAQEEAEAIRAAgACAEACAAAAAAAAAAAAA=</HashCode>
       <FileName>Administrator.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -26,7 +23,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAgAAAQAAAAAAAAAAACgAAAAQAACAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AABAQAQAAAAAAAAAAAAAgAAAAUAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>TutorMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -37,7 +34,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAgAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAAIBIAAAAAA=</HashCode>
+      <HashCode>AAgAAIAAEAAAAAAAAAAQAAAAAAAAAAAAAAIBIAAIAAA=</HashCode>
       <FileName>MemberMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -45,20 +42,10 @@
   <Class Name="MM.Business.ProductMgr">
     <Position X="5.25" Y="8" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAIABAAAAAAAAAQAAABAAAAAAAgAAACAAAAAA=</HashCode>
+      <HashCode>AACAAAAAYABAAAAAAAAAQAAABAAAAAAAgAAAAAAAAIA=</HashCode>
       <FileName>ProductMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MM.Business.StudioServiceByMgrs">
-    <Position X="1.25" Y="5.25" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAABIBAAAAQAAABAAAAAgCAAAAAAAAQAAAAAA=</HashCode>
-      <FileName>StudioServiceByMgrs.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="MM.Business.BalanceMgr">
     <Position X="7.75" Y="8" Width="1.5" />

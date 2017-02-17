@@ -60,7 +60,11 @@ namespace MM.Business
                     member = _memberMgr.FindByPhoneNumber(phoneNumber);
                     if (member == null)
                     {
-
+                        member = new Member()
+                        {
+                            Name = customerName,
+                            PhoneNumber = phoneNumber
+                        };
                     }
                     purchase = tutor.Sell((MemberProduct)product, member);
                 }
