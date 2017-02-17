@@ -1,29 +1,37 @@
-﻿using System;
+﻿using MM.Model;
+using MM.Model.IRepositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MM.Model;
-using MM.Model.IRepositories;
+using System.Threading.Tasks;
 
 namespace MM.Business
 {
-    public class ProductMgr : IProductMgr
+    internal class ProductMgr : IProductMgr
     {
         IProductRepository _productRepository;
-
         public ProductMgr(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
 
-        void IProductMgr.Add(Product product)
+        /// <summary>
+        /// 根据产品Id，获取产品对象
+        /// </summary>
+        public Product GetById(Guid productId)
+        {
+            return _productRepository.GetByKey(productId);
+        }
+
+        void IProductMgr.AddProduct(Product product)
         {
             _productRepository.Add(product);
 
             _productRepository.UnitOfWork.Commit();
         }
 
-        void CreateProduct(string name, decimal price)
+        public void AddProduct(string name, decimal price)
         {
             var ote = new OneTimeExperience()
             {
@@ -37,7 +45,7 @@ namespace MM.Business
             _productRepository.UnitOfWork.Commit();
         }
 
-        void CreateProduct(string name, decimal price, int count, Medium medium)
+        void AddProduct(string name, decimal price, int count, Medium medium)
         {
             var timesCard = new TimesCard()
             {
@@ -53,7 +61,7 @@ namespace MM.Business
             _productRepository.UnitOfWork.Commit();
         }
 
-        void CreateProduct(string name, decimal price, int count, string description)
+        void AddProduct(string name, decimal price, int count, string description)
         {
             var lecture = new Lecture()
             {

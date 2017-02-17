@@ -50,7 +50,7 @@ namespace MM.Business
         /// 新建一个教师
         /// </summary>
         /// <returns>新建的教师对象</returns>
-        Tutor ITutorMgr.CreateTutor(string name, string password, Gender gender,
+        Tutor ITutorMgr.Create(string name, string password, Gender gender,
             string phoneNumber, string address, bool isManager)
         {
             Tutor tutor = new Tutor()
@@ -73,7 +73,7 @@ namespace MM.Business
         /// <summary>
         /// 获取所有的教师对象
         /// </summary>
-        IEnumerable<Tutor> ITutorMgr.GetAllTutor()
+        IEnumerable<Tutor> ITutorMgr.GetAll()
         {
             return _tutorRepository.GetAll();
         }
@@ -81,7 +81,7 @@ namespace MM.Business
         /// <summary>
         /// 根据教师Id，获取教师对象
         /// </summary>
-        Tutor ITutorMgr.GetTutor(Guid tutorId)
+        Tutor ITutorMgr.GetById(Guid tutorId)
         {
             return _tutorRepository.GetByKey(tutorId);
         }
@@ -89,7 +89,7 @@ namespace MM.Business
         /// <summary>
         /// 根据教师Id，删除教师对象
         /// </summary>
-        void ITutorMgr.DeleteTutor(Guid tutorId)
+        void ITutorMgr.Delete(Guid tutorId)
         {
             Tutor tutor = _tutorRepository.GetByKey(tutorId);
             if (tutor == null)

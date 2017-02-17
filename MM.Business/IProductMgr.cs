@@ -9,7 +9,12 @@ namespace MM.Business
 {
     public interface IProductMgr
     {
-        void Add(Product product);
+        /// <summary>
+        /// 根据产品Id，获取产品对象
+        /// </summary>
+        Product GetById(Guid productId);
+
+        void AddProduct(Product product);
         
         void Modify(Product product);
 

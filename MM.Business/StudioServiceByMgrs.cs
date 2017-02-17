@@ -34,7 +34,7 @@ namespace MM.Business
 
         public void Sell(Guid tutorId, Guid productId, string customer, string phoneNumber)
         {
-            var tutor = _tutorMgr.GetTutor(tutorId);
+            var tutor = _tutorMgr.GetById(tutorId);
             var product = _productMgr.Get(productId);
             Purchase purchase;
             Member member = null;

@@ -9,33 +9,38 @@ using MM.Business.Exceptions;
 
 namespace MM.Business
 {
-    public class Administrator : StudioService
+    public class Administrator
     {
+        ITutorMgr _tutorMgr;
+        IProductMgr _productMgr;
+        IMemberMgr _memberMgr;
+        IPurchaseMgr _purchaseMgr;
+        IConsumptionMgr _consumptionMgr;
         IMediumRepository _mediumRepository;
 
-        public Administrator(ITutorRepository tutorRepository,
-            IProductRepository productRepository,
-            IMemberRepository memberRepository,
-            IPurchaseRepository purchaseRepository,
-            IBalanceRepository balanceRepository,
-            IConsumptionRepository consumptionRepository,
-            IMediumRepository mediumRepository) :
-            base(tutorRepository, productRepository, memberRepository,
-                purchaseRepository, balanceRepository, consumptionRepository)
+        public Administrator(ITutorMgr tutorMgr,
+            IProductMgr productMgr,
+            IMemberMgr memberMgr,
+            IPurchaseMgr purchaseMgr,
+            IConsumptionMgr consumptionMgr,
+            IMediumRepository mediumRepository)
         {
+            _tutorMgr = tutorMgr;
+            _productMgr = productMgr;
+            _memberMgr = memberMgr;
+            _purchaseMgr = purchaseMgr;
+            _consumptionMgr = consumptionMgr;
             _mediumRepository = mediumRepository;
         }
 
         public void AddProduct(Product product)
         {
-            _productRepository.Add(product);
-
-            _productRepository.UnitOfWork.Commit();
+            _productMgr.AddProduct(product);
         }
 
         public void SetProduct(Guid productId, Product newProduct)
         {
-            var product = _productRepository.GetByKey(productId);
+            var product = _productMgr.GetById(productId);
             product.Name = newProduct.Name;
             product.Price = newProduct.Price;
             if(newProduct is MemberProduct)
@@ -56,45 +61,34 @@ namespace MM.Business
                     tp.Medium = tnp.Medium;
                 }
             }
-            _productRepository.Modify(product);
-
-            _productRepository.UnitOfWork.Commit();            
+            _productMgr.Modify(product);
         }
 
         public void RemoveProduct(Guid productId)
         {
-            var product = _productRepository.GetByKey(productId);
-            _productRepository.Remove(product);
-
-            _productRepository.UnitOfWork.Commit();
+            var product = _productMgr.GetById(productId);
+            _productMgr.Remove(product);
         }
 
         public void AddTutor(Tutor tutor)
         {
-            _tutorRepository.Add(tutor);
-
-            _tutorRepository.UnitOfWork.Commit();
+            //_tutorMgr.Add(tutor);
         }
 
         public void SetTutor(Guid tutorId, Tutor newTutor)
         {
-            var tutor = _tutorRepository.GetByKey(tutorId);
+            var tutor = _tutorMgr.GetById(tutorId);
             tutor.Address = newTutor.Address;
             tutor.Gender = newTutor.Gender;
             tutor.IsManager = newTutor.IsManager;
             tutor.Name = newTutor.Name;
             tutor.PhoneNumber = newTutor.PhoneNumber;
-            _tutorRepository.Modify(tutor);
-
-            _tutorRepository.UnitOfWork.Commit();
+            _tutorMgr.ModifyTutor(tutor);
         }
 
         public void RemoveTutor(Guid tutorId)
         {
-            var tutor = _tutorRepository.GetByKey(tutorId);
-            _tutorRepository.Remove(tutor);
-
-            _tutorRepository.UnitOfWork.Commit();
+            _tutorMgr.Delete(tutorId);
         }
 
         public void AddMedium(Medium medium)
