@@ -56,14 +56,12 @@
     <Compile Include="Exceptions\TutorNotExistException.cs" />
     <Compile Include="IAuthenticator.cs" />
     <Compile Include="IConsumptionMgr.cs" />
-    <Compile Include="IMemberMgr.cs" />
     <Compile Include="IProductMgr.cs" />
     <Compile Include="IPurchaseMgr.cs" />
     <Compile Include="ITutorMgr.cs" />
     <Compile Include="MemberMgr.cs" />
     <Compile Include="ProductMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudioServiceByMgrs.cs" />
     <Compile Include="PurchaseMgr.cs" />
     <Compile Include="TutorMgr.cs" />
     <Compile Include="StudioService.cs" />

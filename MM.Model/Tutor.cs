@@ -82,7 +82,10 @@ namespace MM.Model
             Purchase purchase = new Purchase()
             {
                 Product = product,
+                ProductId = product.Id,
                 Tutor = this,
+                TutorId = this.Id,
+                Price = product.Price,
                 PurchaseDate = DateTime.Now
             };
             return purchase;

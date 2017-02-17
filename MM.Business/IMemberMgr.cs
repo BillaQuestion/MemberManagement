@@ -1,4 +1,5 @@
 ﻿using MM.Model;
+using MM.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,9 @@ namespace MM.Business
         /// <returns>会员对象</returns>
         Member FindByPhoneNumber(string phoneNumber);
 
-        Member GetMember(string phoneNumber);
-        IEnumerable<Member> GetAllMembers();
-        void AddMember(string name, string phoneNumber, Gender gender, string Address);
-        void ModifyMember(Member member);
-        void RemoveMember(Guid memberId);
+        Member Get(string phoneNumber);
+        IEnumerable<Member> GetAll();
+        void Modify(Member member);
+        void Remove(Guid memberId);
     }
 }

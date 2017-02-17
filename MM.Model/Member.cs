@@ -1,12 +1,10 @@
-﻿using MM.Model.Enums;
+﻿using Dayi.Data.Domain.Seedwork;
+using MM.Model.Enums;
+using MM.Model.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MM.Model.Exceptions;
-using Dayi.Data.Domain.Seedwork;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace MM.Model
 {
@@ -36,27 +34,6 @@ namespace MM.Model
             }
         }
         #endregion
-
-        public Member(Balance balance)
-        {
-            _balances = new HashSet<Balance>();
-            _purchaseRecords = new HashSet<MemberPurchase>();
-            _consumeRecords = new HashSet<Consumption>();
-            _balances.Add(balance);
-        }
-
-        /// <summary>
-        /// 购买记录
-        /// </summary>
-        public ICollection<MemberPurchase> PurchaseRecords
-        {
-            get
-            {
-                if (_purchaseRecords == null)
-                    _purchaseRecords = new HashSet<MemberPurchase>();
-                return _purchaseRecords;
-            }
-        }
 
         /// <summary>
         /// 次卡消费
@@ -121,8 +98,5 @@ namespace MM.Model
                 result.Add(new ValidationResult("PhoneNumber必须赋值！", new string[] { "PhoneNumber" }));
             return result;
         }
-
-
-        #endregion
     }
 }

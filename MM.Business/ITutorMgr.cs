@@ -27,7 +27,7 @@ namespace MM.Business
         /// <summary>
         /// 根据教师Id，删除教师对象
         /// </summary>
-        void DeleteTutor(Guid tutorId);
+        void Delete(Guid tutorId);
 
         void ModifyTutor(Tutor tutor);
     }

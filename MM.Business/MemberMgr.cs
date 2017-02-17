@@ -1,5 +1,7 @@
 ﻿using Dayi.Data.Domain.Seedwork.Specification;
+using MM.Business.Exceptions;
 using MM.Model;
+using MM.Model.Enums;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -59,14 +61,6 @@ namespace MM.Business
             return _memberRepository.FindBySpecification(spec).FirstOrDefault();
         }
 
-        public class MemberMgr : IMemberMgr
-    {
-        private IMemberRepository _memberRepository;
-
-        public MemberMgr(IMemberRepository memberRepository)
-        {
-            _memberRepository = memberRepository;
-        }
 
         IEnumerable<Member> IMemberMgr.GetAll()
         {
@@ -77,22 +71,6 @@ namespace MM.Business
         {
             ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == phoneNumber);
             return _memberRepository.FindBySpecification(spec).FirstOrDefault();
-        }
-
-        void IMemberMgr.Create(string name, string phoneNumber, Gender gender, string address, Balance balance)
-        {
-            var member = new Member(balance)
-            {
-                Name = name,
-                PhoneNumber = phoneNumber,
-                Gender = gender,
-                Address = address
-            };
-            if (member.IsTransient())
-                member.GenerateNewIdentity();
-            _memberRepository.Add(member);
-
-            _memberRepository.UnitOfWork.Commit();
         }
 
         void IMemberMgr.Modify(Member member)
@@ -119,3 +97,4 @@ namespace MM.Business
         }
     }
 }
+

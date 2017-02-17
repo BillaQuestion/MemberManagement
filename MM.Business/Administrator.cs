@@ -9,8 +9,13 @@ using MM.Business.Exceptions;
 
 namespace MM.Business
 {
-    public class Administrator : StudioService
+    public class Administrator
     {
+        ITutorMgr _tutorMgr;
+        IProductMgr _productMgr;
+        IMemberMgr _memberMgr;
+        IPurchaseMgr _purchaseMgr;
+        IConsumptionMgr _consumptionMgr;
         IMediumRepository _mediumRepository;
 
         public Administrator(ITutorMgr tutorMgr,
@@ -18,23 +23,24 @@ namespace MM.Business
             IMemberMgr memberMgr,
             IPurchaseMgr purchaseMgr,
             IConsumptionMgr consumptionMgr,
-            IMediumRepository mediumRepository) :
-            base(tutorMgr, productMgr, memberMgr,
-                purchaseMgr, consumptionMgr)
+            IMediumRepository mediumRepository)
         {
+            _tutorMgr = tutorMgr;
+            _productMgr = productMgr;
+            _memberMgr = memberMgr;
+            _purchaseMgr = purchaseMgr;
+            _consumptionMgr = consumptionMgr;
             _mediumRepository = mediumRepository;
         }
 
         public void AddProduct(Product product)
         {
-            _productMgr.Save(product);
-
-            _productMgr.UnitOfWork.Commit();
+            _productMgr.AddProduct(product);
         }
 
         public void SetProduct(Guid productId, Product newProduct)
         {
-            var product = _productMgr.GetByKey(productId);
+            var product = _productMgr.GetById(productId);
             product.Name = newProduct.Name;
             product.Price = newProduct.Price;
             if(newProduct is MemberProduct)
@@ -56,44 +62,33 @@ namespace MM.Business
                 }
             }
             _productMgr.Modify(product);
-
-            _productMgr.UnitOfWork.Commit();            
         }
 
         public void RemoveProduct(Guid productId)
         {
-            var product = _productMgr.GetByKey(productId);
+            var product = _productMgr.GetById(productId);
             _productMgr.Remove(product);
-
-            _productMgr.UnitOfWork.Commit();
         }
 
         public void AddTutor(Tutor tutor)
         {
-            _tutorMgr.Add(tutor);
-
-            _tutorMgr.UnitOfWork.Commit();
+            //_tutorMgr.Add(tutor);
         }
 
         public void SetTutor(Guid tutorId, Tutor newTutor)
         {
-            var tutor = _tutorMgr.GetByKey(tutorId);
+            var tutor = _tutorMgr.GetById(tutorId);
             tutor.Address = newTutor.Address;
             tutor.Gender = newTutor.Gender;
             tutor.IsManager = newTutor.IsManager;
             tutor.Name = newTutor.Name;
             tutor.PhoneNumber = newTutor.PhoneNumber;
-            _tutorMgr.Modify(tutor);
-
-            _tutorMgr.UnitOfWork.Commit();
+            _tutorMgr.ModifyTutor(tutor);
         }
 
         public void RemoveTutor(Guid tutorId)
         {
-            var tutor = _tutorMgr.GetByKey(tutorId);
-            _tutorMgr.Remove(tutor);
-
-            _tutorMgr.UnitOfWork.Commit();
+            _tutorMgr.Delete(tutorId);
         }
 
         public void AddMedium(Medium medium)

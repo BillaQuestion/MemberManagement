@@ -24,21 +24,14 @@ namespace MM.Business
             return _productRepository.GetByKey(productId);
         }
 
-        IProductRepository _productRepository;
-
-        public ProductMgr(IProductRepository productRepository)
-        {
-            _productRepository = productRepository;
-        }
-
-        void IProductMgr.Add(Product product)
+        void IProductMgr.AddProduct(Product product)
         {
             _productRepository.Add(product);
 
             _productRepository.UnitOfWork.Commit();
         }
 
-        void AddProduct(string name, decimal price)
+        public void AddProduct(string name, decimal price)
         {
             var ote = new OneTimeExperience()
             {
