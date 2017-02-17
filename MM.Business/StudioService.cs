@@ -50,24 +50,40 @@ namespace MM.Business
         {
             var tutor = _tutorMgr.GetById(tutorId);
             var product = _productMgr.GetById(productId);
+            //if (product is OneTimeExperience)
+            //    throw new 
 
             using (TransactionScope scope = new TransactionScope())
             {
                 Purchase purchase;
                 Member member = null;
-                if (product is MemberProduct)
+                member = _memberMgr.FindByPhoneNumber(phoneNumber);
+                if (member == null)
                 {
-                    member = _memberMgr.FindByPhoneNumber(phoneNumber);
-                    if (member == null)
-                    {
 
-                    }
-                    purchase = tutor.Sell((MemberProduct)product, member);
                 }
-                else
+                purchase = tutor.Sell((MemberProduct)product, member);
+                _purchaseMgr.Save(purchase);
+                if (member != null)
                 {
-                    purchase = tutor.Sell((OneTimeExperience)product);
+                    _memberMgr.Save(member);
                 }
+                scope.Complete();
+            }
+        }
+
+        public void Sell(Guid tutorId, Guid productId)
+        {
+            var tutor = _tutorMgr.GetById(tutorId);
+            var product = _productMgr.GetById(productId);
+            if (product is MemberProduct)
+                throw new ArgumentException("调用方法错误：需要会员信息");
+
+            using (TransactionScope scope = new TransactionScope())
+            {
+                Purchase purchase;
+                Member member = null;
+                purchase = tutor.Sell((OneTimeExperience)product);
 
                 _purchaseMgr.Save(purchase);
                 if (member != null)
