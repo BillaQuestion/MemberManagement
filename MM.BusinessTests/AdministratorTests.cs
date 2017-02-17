@@ -38,7 +38,7 @@ namespace MM.Business.Tests
             _balanceR = new BalanceRepository(_context);
             _consumptionR = new ConsumptionRepository(_context);
             _mediumR = new MediumRepository(_context);
-            _admin = new Administrator(_tutorR, _productR, _memberR, _purchaseR, _balanceR, _consumptionR, _mediumR);
+            //_admin = new Administrator(_tutorR, _productR, _memberR, _purchaseR, _balanceR, _consumptionR, _mediumR);
         }
 
         [TestCleanup]
@@ -108,7 +108,7 @@ namespace MM.Business.Tests
             Assert.AreEqual(_context.Tutors.Count(), 1);
             Assert.AreEqual(_context.Tutors.FirstOrDefault(x => x.Name == tutor.Name).Id, tutor.Id);
 
-            _admin.Sell(tutor.Id, timesCard.Id, "testMember", "testPhoneNumber");
+            //_admin.Sell(tutor.Id, timesCard.Id, "testMember", "testPhoneNumber");
             Assert.AreEqual(_context.Purchases.Count(), 1);
             var testSell = _context.Purchases.FirstOrDefault(x => x.ProductId  == timesCard.Id);
             Assert.AreEqual(testSell.Product, timesCard);
@@ -118,11 +118,9 @@ namespace MM.Business.Tests
             var testMember = _context.Members.FirstOrDefault();
             Assert.AreEqual(testMember.Name, "testMember");
             Assert.AreEqual(testMember.PhoneNumber, "testPhoneNumber");
-            Assert.AreEqual(testMember.PurchaseRecords.Count, 1);
             Assert.AreEqual(testMember.Address, null);
             Assert.AreEqual(testMember.Balances.Count, 1);
             Assert.AreEqual(testMember.Balances.FirstOrDefault().Product, timesCard);
-            Assert.AreEqual(testMember.ConsumeRecords.Count, 0);
             Assert.AreEqual(testMember.Gender, Model.Enums.Gender.Male);
 
             //var newMember = new Member()

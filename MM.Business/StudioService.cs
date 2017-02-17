@@ -25,18 +25,21 @@ namespace MM.Business
         IMemberMgr _memberMgr;
         IPurchaseMgr _purchaseMgr;
         IConsumptionMgr _consumptionMgr;
+        IBalanceMgr _balanceMgr;
 
         public StudioService(ITutorMgr tutorMgr,
             IProductMgr productMgr,
             IMemberMgr memberMgr,
             IPurchaseMgr purchaseMgr,
-            IConsumptionMgr consumptionMgr)
+            IConsumptionMgr consumptionMgr,
+            IBalanceMgr balanceMgr)
         {
             _tutorMgr = tutorMgr;
             _productMgr = productMgr;
             _memberMgr = memberMgr;
             _purchaseMgr = purchaseMgr;
             _consumptionMgr = consumptionMgr;
+            _balanceMgr = balanceMgr;
         }
 
         /// <summary>
@@ -68,7 +71,10 @@ namespace MM.Business
                             PhoneNumber = phoneNumber
                         };
                     }
-                    purchase = tutor.Sell((MemberProduct)product, member);
+                    var balance = new Balance();
+                    purchase = tutor.Sell((MemberProduct)product, member, out balance);
+                    _memberMgr.Save(member);
+                    _balanceMgr.Save(balance);
                 }
                 scope.Complete();
             }
@@ -84,14 +90,8 @@ namespace MM.Business
             using (TransactionScope scope = new TransactionScope())
             {
                 Purchase purchase;
-                Member member = null;
                 purchase = tutor.Sell((OneTimeExperience)product);
-
                 _purchaseMgr.Save(purchase);
-                if (member != null)
-                {
-                    _memberMgr.Save(member);
-                }
                 scope.Complete();
             }
         }

@@ -38,7 +38,7 @@ namespace MM.Model
         /// 向会员销售
         /// </summary>
         /// <returns>购买记录</returns>
-        public Purchase Sell(MemberProduct product, Member member)
+        public Purchase Sell(MemberProduct product, Member member, out Balance balance)
         {
             // 1、新建一个购买记录
             MemberPurchase purchase = new MemberPurchase()
@@ -53,7 +53,7 @@ namespace MM.Model
             };
 
             // 2、增加会员的产品余额
-            var balance = member.Balances.FirstOrDefault(x => x.Product.Name == product.Name);
+            balance = member.Balances.FirstOrDefault(x => x.Product.Name == product.Name);
             if (balance == null)
             {
                 balance = new Balance()

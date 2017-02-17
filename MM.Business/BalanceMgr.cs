@@ -17,32 +17,7 @@ namespace MM.Business
             _balanceRepository = balanceRepository;
         }
 
-        void IBalanceMgr.Create(MemberProduct memberProduct, int remainder)
-        {
-            var balance = new Balance()
-            {
-                Product = memberProduct,
-                MemberProductId = memberProduct.Id,
-                Remainder = remainder
-            };
-            if (balance.IsTransient())
-                balance.GenerateNewIdentity();
-            _balanceRepository.Add(balance);
-            _balanceRepository.UnitOfWork.Commit();
-        }
-
-        IEnumerable<Balance> IBalanceMgr.Gets(Guid productId)
-        {
-            ISpecification<Balance> spec = new DirectSpecification<Balance>(b => b.MemberProductId == productId);
-            return _balanceRepository.FindBySpecification(spec);
-        }
-
-        IEnumerable<Balance> IBalanceMgr.GetAll()
-        {
-            return _balanceRepository.GetAll();
-        }
-
-        void IBalanceMgr.Modify(Balance balance)
+        void IBalanceMgr.Save(Balance balance)
         {
             if (balance.Remainder == 0)
             {
