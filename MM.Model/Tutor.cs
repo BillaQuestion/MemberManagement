@@ -45,7 +45,10 @@ namespace MM.Model
             {
                 Member = member,
                 Product = product,
+                ProductId = product.Id,
                 Tutor = this,
+                TutorId = this.Id,
+                Price = product.Price,
                 PurchaseDate = DateTime.Now
             };
 
@@ -56,6 +59,7 @@ namespace MM.Model
                 balance = new Balance()
                 {
                     Product = product,
+                    MemberProductId = product.Id,
                     Remainder = product.Count
                 };
                 member.Balances.Add(balance);

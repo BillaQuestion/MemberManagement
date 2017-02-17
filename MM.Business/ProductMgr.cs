@@ -31,7 +31,7 @@ namespace MM.Business
             _productRepository = productRepository;
         }
 
-        void IProductMgr.AddProduct(Product product)
+        void IProductMgr.Add(Product product)
         {
             _productRepository.Add(product);
 
@@ -84,24 +84,24 @@ namespace MM.Business
             _productRepository.UnitOfWork.Commit();
         }
 
-        IEnumerable<Product> IProductMgr.GetAllProducts()
+        IEnumerable<Product> IProductMgr.GetAll()
         {
             return _productRepository.GetAll();
         }
 
-        Product IProductMgr.GetProduct(Guid productId)
+        Product IProductMgr.Get(Guid productId)
         {
             return _productRepository.GetByKey(productId);
         }
 
-        void IProductMgr.ModifyProduct(Product product)
+        void IProductMgr.Modify(Product product)
         {
             _productRepository.Modify(product);
 
             _productRepository.UnitOfWork.Commit();
         }
 
-        void IProductMgr.RemoveProduct(Product product)
+        void IProductMgr.Remove(Product product)
         {
             _productRepository.Remove(product);
 

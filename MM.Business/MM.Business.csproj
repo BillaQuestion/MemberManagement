@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administrator.cs" />
+    <Compile Include="BalanceMgr.cs" />
+    <Compile Include="IBalanceMgr.cs" />
+    <Compile Include="IMemberMgr.cs" />
     <Compile Include="ConsumptionMgr.cs" />
     <Compile Include="Exceptions\MediumExistException.cs" />
     <Compile Include="Exceptions\MemberExistException.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="MemberMgr.cs" />
     <Compile Include="ProductMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudioServiceByMgrs.cs" />
     <Compile Include="PurchaseMgr.cs" />
     <Compile Include="TutorMgr.cs" />
     <Compile Include="StudioService.cs" />

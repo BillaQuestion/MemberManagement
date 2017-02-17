@@ -16,12 +16,12 @@ namespace MM.Business
 
         void AddProduct(Product product);
         
-        void ModifyProduct(Product product);
+        void Modify(Product product);
 
-        Product GetProduct(Guid productId);
+        Product Get(Guid productId);
 
-        IEnumerable<Product> GetAllProducts();
+        IEnumerable<Product> GetAll();
 
-        void RemoveProduct(Product product);
+        void Remove(Product product);
     }
 }

@@ -37,8 +37,27 @@ namespace MM.Model
         }
         #endregion
 
-        #region Public Methods
- 
+        public Member(Balance balance)
+        {
+            _balances = new HashSet<Balance>();
+            _purchaseRecords = new HashSet<MemberPurchase>();
+            _consumeRecords = new HashSet<Consumption>();
+            _balances.Add(balance);
+        }
+
+        /// <summary>
+        /// 购买记录
+        /// </summary>
+        public ICollection<MemberPurchase> PurchaseRecords
+        {
+            get
+            {
+                if (_purchaseRecords == null)
+                    _purchaseRecords = new HashSet<MemberPurchase>();
+                return _purchaseRecords;
+            }
+        }
+
         /// <summary>
         /// 次卡消费
         /// </summary>
