@@ -6,6 +6,7 @@ using MM.Model.IRepositories;
 using MM.Model;
 using Dayi.Data.Domain.Seedwork.Specification;
 using MM.Business.Exceptions;
+using MM.Model.Enums;
 
 namespace MM.Business
 {
@@ -23,20 +24,24 @@ namespace MM.Business
             return _memberRepository.GetAll();
         }
 
-        Member IMemberMgr.GetMember(Guid memberId)
+        Member IMemberMgr.GetMember(string phoneNumber)
         {
-            return _memberRepository.GetByKey(memberId);
+            ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == phoneNumber);
+            return _memberRepository.FindBySpecification(spec).FirstOrDefault();
         }
 
-        void IMemberMgr.CreateMember(Member member)
+        void IMemberMgr.CreateMember(string name, string phoneNumber, Gender gender, string address)
         {
-            ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == member.PhoneNumber);
-            var result = _memberRepository.FindBySpecification(spec).FirstOrDefault();
-
-            if (result != null)
-                throw new MemberExistException();
-            else
-                _memberRepository.Add(member);
+            var member = new Member()
+            {
+                Name = name,
+                PhoneNumber = phoneNumber,
+                Gender = gender,
+                Address = address
+            };
+            if (member.IsTransient())
+                member.GenerateNewIdentity();
+            _memberRepository.Add(member);
         }
 
         void IMemberMgr.ModifyMember(Member member)
