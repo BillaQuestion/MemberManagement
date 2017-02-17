@@ -66,6 +66,7 @@
     <Compile Include="IRepositories\ITutorRepository.cs" />
     <Compile Include="Medium.cs" />
     <Compile Include="MemberProduct.cs" />
+    <Compile Include="MemberPurchase.cs" />
     <Compile Include="OneTimeExperience.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Consumption.cs" />

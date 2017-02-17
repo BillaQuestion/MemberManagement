@@ -13,7 +13,7 @@ namespace MM.Model
     public class Member : Entity
     {
         private HashSet<Balance> _balances;
-        private HashSet<Purchase> _purchaseRecords;
+        private HashSet<MemberPurchase> _purchaseRecords;
         private HashSet<Consumption> _consumeRecords;
 
         #region Properties
@@ -41,12 +41,12 @@ namespace MM.Model
         /// <summary>
         /// 购买记录
         /// </summary>
-        public ICollection<Purchase> PurchaseRecords
+        public ICollection<MemberPurchase> PurchaseRecords
         {
             get
             {
                 if (_purchaseRecords == null)
-                    _purchaseRecords = new HashSet<Purchase>();
+                    _purchaseRecords = new HashSet<MemberPurchase>();
                 return _purchaseRecords;
             }
         }

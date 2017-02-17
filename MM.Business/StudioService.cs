@@ -60,7 +60,7 @@ namespace MM.Business
             }
             else
             {
-                purchase = tutor.Sell((OneTimeExperience)product, customer, phoneNumber);
+                purchase = tutor.Sell((OneTimeExperience)product);
             }
 
             purchase.GenerateNewIdentity();

@@ -23,22 +23,6 @@ namespace MM.UI
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            #region 获取列表项
-            #endregion
-
-            #region 获取导航图片名称
-            string picPath = string.Empty;
-            try
-            {
-                picPath = System.IO.Path.GetFullPath(System.Configuration.ConfigurationManager.AppSettings["NavigatorFile"]);
-            }
-            catch
-            { }
-            if (File.Exists(picPath))
-            {
-                picBox背景.Image = Image.FromFile(picPath);
-            }
-            #endregion
         }
 
         protected virtual void Item_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -61,6 +45,21 @@ namespace MM.UI
                 }
             }
             return false;
-        } 
+        }
+
+        private void nbiSell_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+
+        }
+
+        private void nbiConsume_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+
+        }
+
+        private void nbiManagement_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+
+        }
     }
 }

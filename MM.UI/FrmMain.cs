@@ -162,30 +162,6 @@ namespace MM.UI
         /// <param name="e"></param>
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            ////
-            //// 验证用户密码
-            //// 
-            //if (!ValidateLoginName())
-            //{
-            //    return;
-            //}
-
-            //if (string.Compare(System.Diagnostics.Process.GetCurrentProcess().ProcessName, "devenv") != 0)
-            //{
-            //    //
-            //    // 设置主窗体状态栏
-            //    //
-            //    this.bsiLoginTime.Caption =
-            //        string.Format("登录时间：{0:yyyy-MM-dd HH:mm}", DateTime.Now);
-            //    this.bsi当前用户.Caption = string.Format("用户：{0}", this.GetUserRealName());
-            //    this.bsiToolTips.Caption = ToolTips;
-            //    this.bsiCopyright.Caption = CopyRight;
-            //    this.GetSkinInfo();
-
-            //    // 打开功能导航窗
-            //    this.导航();
-            //}
-
             FrmNavigator frmNavigator = new FrmNavigator();
             frmNavigator.MdiParent = this;
             frmNavigator.Show();

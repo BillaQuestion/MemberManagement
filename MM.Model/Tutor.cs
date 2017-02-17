@@ -41,10 +41,10 @@ namespace MM.Model
         public Purchase Sell(MemberProduct product, Member member)
         {
             // 1、新建一个购买记录
-            Purchase purchase = new Purchase()
+            MemberPurchase purchase = new MemberPurchase()
             {
-                CustomerName = member.Name,
-                PhoneNumber = member.PhoneNumber,
+                Member = member,
+                MemberId = member.Id,
                 Product = product,
                 Tutor = this,
             };
@@ -72,15 +72,11 @@ namespace MM.Model
         /// 销售一次性体验产品
         /// </summary>
         /// <param name="product">所销售产品</param>
-        /// <param name="customer">顾客姓名</param>
-        /// <param name="phoneNumber">顾客手机号码</param>
         /// <returns>购买记录</returns>
-        public Purchase Sell(OneTimeExperience product, string customer, string phoneNumber)
+        public Purchase Sell(OneTimeExperience product)
         {
             Purchase purchase = new Purchase()
             {
-                CustomerName = customer,
-                PhoneNumber = phoneNumber,
                 Product = product,
                 Tutor = this,
                 PurchaseDate = DateTime.Now

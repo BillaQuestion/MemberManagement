@@ -14,15 +14,6 @@ namespace MM.Model
     public class Purchase : Entity
     {
         #region Properties
-        /// <summary>
-        /// 顾客姓名
-        /// </summary>
-        public string CustomerName { get; set; }
-
-        /// <summary>
-        /// 联系电话
-        /// </summary>
-        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// 购买产品
@@ -65,10 +56,10 @@ namespace MM.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
-            if (string.IsNullOrEmpty(PhoneNumber))
-                result.Add(new ValidationResult("PhoneNumber必须赋值！", new string[] { "PhoneNumber" }));
+
             if (Product == null)
                 result.Add(new ValidationResult("Product必须赋值！", new string[] { "Product" }));
+
             return result;
         }
     }

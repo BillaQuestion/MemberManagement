@@ -6,7 +6,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAQAAQgEAAAAgCAAAAAAABQgAIAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAQABQgEAAAAgCAAAAAAABQAAIAAA=</HashCode>
       <FileName>StudioService.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -22,8 +22,11 @@
   </Class>
   <Class Name="MM.Business.TutorMgr">
     <Position X="3.25" Y="5.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAACgAAAAAAACAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AAAgAAAQAAAAAAAAAAACgAAAAAAACAAAAAAAABAAAAA=</HashCode>
       <FileName>TutorMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

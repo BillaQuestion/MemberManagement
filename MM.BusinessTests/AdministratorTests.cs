@@ -110,8 +110,7 @@ namespace MM.Business.Tests
 
             _admin.Sell(tutor.Id, timesCard.Id, "testMember", "testPhoneNumber");
             Assert.AreEqual(_context.Purchases.Count(), 1);
-            var testSell = _context.Purchases.FirstOrDefault(x => x.CustomerName == "testMember");
-            Assert.AreEqual(testSell.PhoneNumber, "testPhoneNumber");
+            var testSell = _context.Purchases.FirstOrDefault(x => x.ProductId  == timesCard.Id);
             Assert.AreEqual(testSell.Product, timesCard);
             Assert.AreNotEqual(testSell.PurchaseDate, null);
             Assert.AreEqual(testSell.Tutor, tutor);
