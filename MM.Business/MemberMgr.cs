@@ -19,7 +19,7 @@ namespace MM.Business
             _memberRepository = memberRepository;
         }
 
-        IEnumerable<Member> IMemberMgr.GetAllMember()
+        IEnumerable<Member> IMemberMgr.GetAllMembers()
         {
             return _memberRepository.GetAll();
         }
@@ -30,7 +30,7 @@ namespace MM.Business
             return _memberRepository.FindBySpecification(spec).FirstOrDefault();
         }
 
-        void IMemberMgr.CreateMember(string name, string phoneNumber, Gender gender, string address)
+        void IMemberMgr.AddMember(string name, string phoneNumber, Gender gender, string address)
         {
             var member = new Member()
             {
@@ -42,6 +42,8 @@ namespace MM.Business
             if (member.IsTransient())
                 member.GenerateNewIdentity();
             _memberRepository.Add(member);
+
+            _memberRepository.UnitOfWork.Commit();
         }
 
         void IMemberMgr.ModifyMember(Member member)
@@ -51,6 +53,8 @@ namespace MM.Business
                 throw new MemberNotExistException();
             else
                 _memberRepository.Modify(member);
+
+            _memberRepository.UnitOfWork.Commit();
         }
 
         void IMemberMgr.RemoveMember(Guid memberId)
@@ -60,6 +64,8 @@ namespace MM.Business
                 throw new MemberNotExistException();
             else
                 _memberRepository.Remove(result);
+
+            _memberRepository.UnitOfWork.Commit();
         }
     }
 }

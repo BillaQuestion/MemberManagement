@@ -37,8 +37,16 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAABAAAAACAAAAAAgAAAAAAAAAAAAEAFAAAAAAA=</HashCode>
+      <HashCode>AAAAAAABAAAAAAAAAAAAgAAAAAACAAAAAEAFAAAAAAA=</HashCode>
       <FileName>MemberMgr.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MM.Business.ProductMgr">
+    <Position X="5.75" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAA4AAAAAAAASAAQAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>ProductMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
