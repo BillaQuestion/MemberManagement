@@ -57,7 +57,7 @@ namespace MM.Business
             _purchaseRepository.UnitOfWork.Commit();
         }
 
-        public void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
+        public void TakeTimesCard(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
         {
             var member = _memberMgr.Get(memberPhoneNumber);
             if (member == null) throw new MemberNotExistException();
@@ -67,7 +67,7 @@ namespace MM.Business
             _balanceMgr.Modify(balance);
         }
 
-        public void TakeMemberProduct(Guid tutorId, Guid lectureId, string memberPhoneNumber, string lectureDescription)
+        public void TakeLecture(Guid tutorId, Guid lectureId, string memberPhoneNumber, string lectureDescription)
         {
             var member = _memberMgr.Get(memberPhoneNumber);
             if (member == null) throw new MemberNotExistException();
