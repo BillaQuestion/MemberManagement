@@ -48,6 +48,7 @@
     <Compile Include="Administrator.cs" />
     <Compile Include="ConsumptionMgr.cs" />
     <Compile Include="Exceptions\MediumExistException.cs" />
+    <Compile Include="Exceptions\MemberExistException.cs" />
     <Compile Include="Exceptions\MemberNotExistException.cs" />
     <Compile Include="Exceptions\TutorNotExistException.cs" />
     <Compile Include="IAuthenticator.cs" />
