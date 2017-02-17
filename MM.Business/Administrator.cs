@@ -13,29 +13,28 @@ namespace MM.Business
     {
         IMediumRepository _mediumRepository;
 
-        public Administrator(ITutorRepository tutorRepository,
-            IProductRepository productRepository,
-            IMemberRepository memberRepository,
-            IPurchaseRepository purchaseRepository,
-            IBalanceRepository balanceRepository,
-            IConsumptionRepository consumptionRepository,
+        public Administrator(ITutorMgr tutorMgr,
+            IProductMgr productMgr,
+            IMemberMgr memberMgr,
+            IPurchaseMgr purchaseMgr,
+            IConsumptionMgr consumptionMgr,
             IMediumRepository mediumRepository) :
-            base(tutorRepository, productRepository, memberRepository,
-                purchaseRepository, balanceRepository, consumptionRepository)
+            base(tutorMgr, productMgr, memberMgr,
+                purchaseMgr, consumptionMgr)
         {
             _mediumRepository = mediumRepository;
         }
 
         public void AddProduct(Product product)
         {
-            _productRepository.Add(product);
+            _productMgr.Save(product);
 
-            _productRepository.UnitOfWork.Commit();
+            _productMgr.UnitOfWork.Commit();
         }
 
         public void SetProduct(Guid productId, Product newProduct)
         {
-            var product = _productRepository.GetByKey(productId);
+            var product = _productMgr.GetByKey(productId);
             product.Name = newProduct.Name;
             product.Price = newProduct.Price;
             if(newProduct is MemberProduct)
@@ -56,45 +55,45 @@ namespace MM.Business
                     tp.Medium = tnp.Medium;
                 }
             }
-            _productRepository.Modify(product);
+            _productMgr.Modify(product);
 
-            _productRepository.UnitOfWork.Commit();            
+            _productMgr.UnitOfWork.Commit();            
         }
 
         public void RemoveProduct(Guid productId)
         {
-            var product = _productRepository.GetByKey(productId);
-            _productRepository.Remove(product);
+            var product = _productMgr.GetByKey(productId);
+            _productMgr.Remove(product);
 
-            _productRepository.UnitOfWork.Commit();
+            _productMgr.UnitOfWork.Commit();
         }
 
         public void AddTutor(Tutor tutor)
         {
-            _tutorRepository.Add(tutor);
+            _tutorMgr.Add(tutor);
 
-            _tutorRepository.UnitOfWork.Commit();
+            _tutorMgr.UnitOfWork.Commit();
         }
 
         public void SetTutor(Guid tutorId, Tutor newTutor)
         {
-            var tutor = _tutorRepository.GetByKey(tutorId);
+            var tutor = _tutorMgr.GetByKey(tutorId);
             tutor.Address = newTutor.Address;
             tutor.Gender = newTutor.Gender;
             tutor.IsManager = newTutor.IsManager;
             tutor.Name = newTutor.Name;
             tutor.PhoneNumber = newTutor.PhoneNumber;
-            _tutorRepository.Modify(tutor);
+            _tutorMgr.Modify(tutor);
 
-            _tutorRepository.UnitOfWork.Commit();
+            _tutorMgr.UnitOfWork.Commit();
         }
 
         public void RemoveTutor(Guid tutorId)
         {
-            var tutor = _tutorRepository.GetByKey(tutorId);
-            _tutorRepository.Remove(tutor);
+            var tutor = _tutorMgr.GetByKey(tutorId);
+            _tutorMgr.Remove(tutor);
 
-            _tutorRepository.UnitOfWork.Commit();
+            _tutorMgr.UnitOfWork.Commit();
         }
 
         public void AddMedium(Medium medium)

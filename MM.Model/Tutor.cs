@@ -44,9 +44,9 @@ namespace MM.Model
             MemberPurchase purchase = new MemberPurchase()
             {
                 Member = member,
-                MemberId = member.Id,
                 Product = product,
                 Tutor = this,
+                PurchaseDate = DateTime.Now
             };
 
             // 2、增加会员的产品余额

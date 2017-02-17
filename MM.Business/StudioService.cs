@@ -10,6 +10,8 @@ using MM.Business.Exceptions;
 using System.Security.Principal;
 using System.Security.Cryptography;
 using System.Threading;
+using System.Transactions;
+using MM.Model.Exceptions;
 
 namespace MM.Business
 {
@@ -18,26 +20,23 @@ namespace MM.Business
     /// </summary>
     public class StudioService
     {
-        protected ITutorRepository _tutorRepository;
-        protected IProductRepository _productRepository;
-        protected IMemberRepository _memberRepository;
-        protected IPurchaseRepository _purchaseRepository;
-        protected IBalanceRepository _balanceRepository;
-        protected IConsumptionRepository _consumptionRepository;
+        ITutorMgr _tutorMgr;
+        IProductMgr _productMgr;
+        IMemberMgr _memberMgr;
+        IPurchaseMgr _purchaseMgr;
+        IConsumptionMgr _consumptionMgr;
 
-        public StudioService(ITutorRepository tutorRepository,
-            IProductRepository productRepository,
-            IMemberRepository memberRepository,
-            IPurchaseRepository purchaseRepository,
-            IBalanceRepository balanceRepository,
-            IConsumptionRepository consumptionRepository)
+        public StudioService(ITutorMgr tutorMgr,
+            IProductMgr productMgr,
+            IMemberMgr memberMgr,
+            IPurchaseMgr purchaseMgr,
+            IConsumptionMgr consumptionMgr)
         {
-            _tutorRepository = tutorRepository;
-            _productRepository = productRepository;
-            _memberRepository = memberRepository;
-            _purchaseRepository = purchaseRepository;
-            _balanceRepository = balanceRepository;
-            _consumptionRepository = consumptionRepository;
+            _tutorMgr = tutorMgr;
+            _productMgr = productMgr;
+            _memberMgr = memberMgr;
+            _purchaseMgr = purchaseMgr;
+            _consumptionMgr = consumptionMgr;
         }
 
         /// <summary>
@@ -45,113 +44,81 @@ namespace MM.Business
         /// </summary>
         /// <param name="tutorId">教师Id</param>
         /// <param name="productId">产品Id</param>
-        /// <param name="customer">顾客姓名</param>
+        /// <param name="customerName">顾客姓名</param>
         /// <param name="phoneNumber">顾客手机号码</param>
-        public void Sell(Guid tutorId, Guid productId, string customer, string phoneNumber)
+        public void Sell(Guid tutorId, Guid productId, string customerName, string phoneNumber)
         {
-            var tutor = _tutorRepository.GetByKey(tutorId);
-            var product = _productRepository.GetByKey(productId);
-            Purchase purchase;
-            Member member = null;
-            if (product is MemberProduct)
-            {
-                member = FindMemberByPhoneNumber(phoneNumber);
-                purchase = tutor.Sell((MemberProduct)product, member);
-            }
-            else
-            {
-                purchase = tutor.Sell((OneTimeExperience)product);
-            }
+            var tutor = _tutorMgr.GetById(tutorId);
+            var product = _productMgr.GetById(productId);
 
-            purchase.GenerateNewIdentity();
-            _purchaseRepository.Add(purchase);
-            if (member != null)
+            using (TransactionScope scope = new TransactionScope())
             {
-                if (member.IsTransient())
+                Purchase purchase;
+                Member member = null;
+                if (product is MemberProduct)
                 {
-                    member.GenerateNewIdentity();
-                    _memberRepository.Add(member);
+                    member = _memberMgr.FindByPhoneNumber(phoneNumber);
+                    if (member == null)
+                    {
+
+                    }
+                    purchase = tutor.Sell((MemberProduct)product, member);
                 }
                 else
                 {
-                    _memberRepository.Modify(member);
-                    foreach(var balance in member.Balances)
-                    {
-                        if (balance.IsTransient())
-                        {
-                            balance.GenerateNewIdentity();
-                            _balanceRepository.Add(balance);
-                        }
-                        else
-                            _balanceRepository.Modify(balance);
-                    }
+                    purchase = tutor.Sell((OneTimeExperience)product);
                 }
+
+                _purchaseMgr.Save(purchase);
+                if (member != null)
+                {
+                    _memberMgr.Save(member);
+                }
+                scope.Complete();
             }
-            _purchaseRepository.UnitOfWork.Commit();
         }
 
-        public void ModifyMember(Member member)
-        {
-            _memberRepository.Modify(member);
+        //public void ModifyMember(Member member)
+        //{
+        //    _memberRepository.Modify(member);
 
-            _memberRepository.UnitOfWork.Commit();
-        }
+        //    _memberRepository.UnitOfWork.Commit();
+        //}
 
         public void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
         {
-            var member = FindMemberByPhoneNumber(memberPhoneNumber);
-            if (member == null) throw new MemberNotExistException();
-            var balance = new Balance();
-            var consumption = member.Consume(memberProductId, tutorId, out balance);
-            _consumptionRepository.Add(consumption);
-            if (balance.Remainder == 0)
-                _balanceRepository.Remove(balance);
-            else
-                SaveBalance(balance);
-
-            _consumptionRepository.UnitOfWork.Commit();
+            TakeMemberProduct(tutorId, memberProductId, "", memberPhoneNumber);
         }
 
         public void TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
         {
-            var member = FindMemberByPhoneNumber(memberPhoneNumber);
-            if (member == null) throw new MemberNotExistException();
-            var balance = new Balance();
-            var session = member.Consume(lectureId, tutorId, lectureDescription, out balance);
+            var member = _memberMgr.FindByPhoneNumber(memberPhoneNumber);
+            if (member == null)
+                throw new MemberNotExistException("会员不存在！");
 
-            _consumptionRepository.Add(session);
-            if (balance.Remainder == 0)
-                _balanceRepository.Remove(balance);
-            else
-                SaveBalance(balance);
+            var tutor = _tutorMgr.GetById(tutorId);
+            if (tutor == null)
+                throw new TutorNotExistException("教师不存在！");
 
-            _consumptionRepository.UnitOfWork.Commit();
+            var product = _productMgr.GetById(lectureId);
+            if (product == null)
+                throw new ProductNotExistException("产品不存在!");
+            if (product is OneTimeExperience)
+                throw new ArgumentException("一次性体验产品不能进行会员消费！");
+
+            using (TransactionScope scope = new TransactionScope())
+            {
+                Consumption consumption;
+                if (product is TimesCard)
+                    consumption = member.Consume((TimesCard)product, tutor);
+                else
+                    consumption = member.Consume((Lecture)product, tutor, lectureDescription);
+
+                _consumptionMgr.Save(consumption);
+                _memberMgr.Save(member);
+
+                scope.Complete();
+            }
         }
-
-        #region 私有方法
-
-        /// <summary>
-        /// 根据手机号码查找会员
-        /// </summary>
-        /// <param name="phoneNumber">手机号码</param>
-        /// <returns>会员对象</returns>
-        private Member FindMemberByPhoneNumber(string phoneNumber)
-        {
-            ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == phoneNumber);
-            return _memberRepository.FindBySpecification(spec).FirstOrDefault();
-        }
-
-        /// <summary>
-        /// 保存会员余额
-        /// </summary>
-        /// <param name="balance">余额对象</param>
-        private void SaveBalance(Balance balance)
-        {
-            if (balance.IsTransient())
-                _balanceRepository.Add(balance);
-            else
-                _balanceRepository.Modify(balance);
-        }
-        #endregion
     }
 }

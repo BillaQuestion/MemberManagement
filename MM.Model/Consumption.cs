@@ -11,6 +11,15 @@ namespace MM.Model
     public class Consumption : Entity
     {
         /// <summary>
+        /// 会员Id
+        /// </summary>
+        public Guid MemberId { get; set; }
+
+        /// <summary>
+        /// 会员
+        /// </summary>
+        public Member Member { get; set; }
+        /// <summary>
         /// 会员产品
         /// </summary>
         public MemberProduct MemberProduct { get; set; }
