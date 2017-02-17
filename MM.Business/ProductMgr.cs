@@ -45,7 +45,7 @@ namespace MM.Business
             _productRepository.UnitOfWork.Commit();
         }
 
-        void AddProduct(string name, decimal price, int count, Medium medium)
+        void CreateProduct(string name, decimal price, int count, Medium medium)
         {
             var timesCard = new TimesCard()
             {
@@ -61,7 +61,7 @@ namespace MM.Business
             _productRepository.UnitOfWork.Commit();
         }
 
-        void AddProduct(string name, decimal price, int count, string description)
+        void CreateProduct(string name, decimal price, int count, string description)
         {
             var lecture = new Lecture()
             {
