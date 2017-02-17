@@ -26,16 +26,9 @@ namespace MM.Model
         public Guid ProductId { get; set; }
 
         /// <summary>
-        /// 费用
+        /// 费用，需要记录而不是返回product.Price，因为product的Price会变化
         /// </summary>
-        public decimal Price
-        {
-            get
-            {
-                return Product.Price;
-            }
-
-        }
+        public decimal Price { get; set; }
 
         /// <summary>
         /// 购买日期
