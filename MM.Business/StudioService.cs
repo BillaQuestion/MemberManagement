@@ -81,6 +81,11 @@ namespace MM.Business
             }
         }
 
+        /// <summary>
+        /// 销售产品
+        /// </summary>
+        /// <param name="tutorId">教师Id</param>
+        /// <param name="productId">产品Id</param>
         public void Sell(Guid tutorId, Guid productId)
         {
             var tutor = _tutorMgr.GetById(tutorId);
@@ -97,11 +102,24 @@ namespace MM.Business
             }
         }
 
+        /// <summary>
+        /// 消费会员产品
+        /// </summary>
+        /// <param name="tutorId">教师Id</param>
+        /// <param name="memberProductId">成员产品Id</param>
+        /// <param name="memberPhoneNumber">会员电话号码</param>
         public void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
         {
             TakeMemberProduct(tutorId, memberProductId, "", memberPhoneNumber);
         }
 
+        /// <summary>
+        /// 消费会员产品
+        /// </summary>
+        /// <param name="tutorId">教师Id</param>
+        /// <param name="lectureId">课程Id</param>
+        /// <param name="lectureDescription">授课内容说明</param>
+        /// <param name="memberPhoneNumber">会员电话号码</param>
         public void TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
         {
             var member = _memberMgr.FindByPhoneNumber(memberPhoneNumber);
@@ -133,8 +151,20 @@ namespace MM.Business
             }
         }
 
-        public IEnumerable<Product> GetAllProducts() { return _productMgr.GetAll(); }
+        /// <summary>
+        /// 获取系统中的所有产品
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return _productMgr.GetAll();
+        }
 
+        /// <summary>
+        /// 获取特定产品类别的所有产品
+        /// </summary>
+        /// <param name="productTypes">产品类别</param>
+        /// <returns></returns>
         public IEnumerable<Product> GetAllProducts(ProductTypes productTypes)
         {
             return _productMgr.GetByProductType(productTypes);

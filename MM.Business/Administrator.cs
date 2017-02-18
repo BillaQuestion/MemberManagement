@@ -9,7 +9,7 @@ using MM.Business.Exceptions;
 
 namespace MM.Business
 {
-    public class Administrator
+    public class Administrator : IAdministrator
     {
         ITutorMgr _tutorMgr;
         IProductMgr _productMgr;
@@ -70,6 +70,17 @@ namespace MM.Business
             _productMgr.Remove(product);
         }
 
+        #region Tutor
+
+        /// <summary>
+        /// 获取系统中所有的教师
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<Tutor> IAdministrator.GetAllTutors()
+        {
+            return _tutorMgr.GetAll();
+        }
+
         public void AddTutor(Tutor tutor)
         {
             //_tutorMgr.Add(tutor);
@@ -90,6 +101,8 @@ namespace MM.Business
         {
             _tutorMgr.Delete(tutorId);
         }
+
+        #endregion
 
         public void AddMedium(Medium medium)
         {

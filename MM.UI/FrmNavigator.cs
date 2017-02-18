@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
+using MM.UI.Controls;
 
 namespace MM.UI
 {
@@ -59,7 +60,10 @@ namespace MM.UI
 
         private void nbiManagement_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-
+            pnlMain.Controls.Clear();
+            CtrlTutorManagement ctrl = new CtrlTutorManagement();
+            pnlMain.Controls.Add(ctrl);
+            ctrl.Dock = DockStyle.Fill;
         }
 
         private void bbi退出系统_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

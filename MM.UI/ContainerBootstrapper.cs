@@ -60,6 +60,8 @@ namespace MM.UI
             container.RegisterType<ISessionRepository, ISessionRepository>();
 
             container.RegisterType<IAuthenticator, TutorMgr>();
+            container.RegisterType<IAdministrator, Administrator>();
+            container.RegisterType<IStudioService, StudioService>();
         }
     }
 }

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Administrator.cs" />
     <Compile Include="BalanceMgr.cs" />
+    <Compile Include="IAdministrator.cs" />
     <Compile Include="IBalanceMgr.cs" />
     <Compile Include="IMemberMgr.cs" />
     <Compile Include="ConsumptionMgr.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="IConsumptionMgr.cs" />
     <Compile Include="IProductMgr.cs" />
     <Compile Include="IPurchaseMgr.cs" />
+    <Compile Include="IStudioService.cs" />
     <Compile Include="ITutorMgr.cs" />
     <Compile Include="MemberMgr.cs" />
     <Compile Include="ProductMgr.cs" />
