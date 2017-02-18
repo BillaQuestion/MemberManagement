@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MM.Business
 {
-    internal class PurchaseMgr : IPurchaseMgr
+    public class PurchaseMgr : IPurchaseMgr
     {
         IPurchaseRepository _purchaseRepository;
         public PurchaseMgr(IPurchaseRepository purchaseRepository)

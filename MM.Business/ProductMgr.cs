@@ -10,7 +10,7 @@ using Dayi.Data.Domain.Seedwork.Specification;
 
 namespace MM.Business
 {
-    internal class ProductMgr : IProductMgr
+    public class ProductMgr : IProductMgr
     {
         IProductRepository _productRepository;
         public ProductMgr(IProductRepository productRepository)

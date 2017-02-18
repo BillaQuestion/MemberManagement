@@ -6,9 +6,10 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABIBAAAAYEAABAAAAAAEAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAgQAAAAABIBAAAAAEAABAAAAAAEgAAAAAAAAAAAAAA=</HashCode>
       <FileName>StudioService.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="MM.Business.Administrator">
     <Position X="4.75" Y="0.5" Width="1.75" />

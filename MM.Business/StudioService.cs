@@ -19,7 +19,7 @@ namespace MM.Business
     /// <summary>
     /// 教师的业务类
     /// </summary>
-    public class StudioService
+    public class StudioService : IAuthenticator, IStudioService
     {
         ITutorMgr _tutorMgr;
         IProductMgr _productMgr;
@@ -44,13 +44,37 @@ namespace MM.Business
         }
 
         /// <summary>
+        /// 根据用户名和口令对用户进行认证。
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <param name="password">口令</param>
+        /// <returns>用户通过认证，则返回true；否则返回false。</returns>
+        bool IAuthenticator.Authenticate(string username, string password)
+        {
+            bool authenticated = false;
+            Tutor tutor = _tutorMgr.GetByName(username);
+            if (tutor != null && tutor.Authenticate(password))
+            {
+                authenticated = true;
+                IIdentity identity = new GenericIdentity(username);
+                List<string> roles = new List<string>();
+                if (tutor.IsManager) roles.Add("Administrator1");
+                IPrincipal principal = new GenericPrincipal(identity, roles.ToArray());
+                Thread.CurrentPrincipal = principal;
+            }
+
+            //将验证结果返回
+            return authenticated;
+        }
+
+        /// <summary>
         /// 销售产品
         /// </summary>
         /// <param name="tutorId">教师Id</param>
         /// <param name="productId">产品Id</param>
         /// <param name="customerName">顾客姓名</param>
         /// <param name="phoneNumber">顾客手机号码</param>
-        public void Sell(Guid tutorId, Guid productId, string customerName, string phoneNumber)
+        void IStudioService.Sell(Guid tutorId, Guid productId, string customerName, string phoneNumber)
         {
             var tutor = _tutorMgr.GetById(tutorId);
             var product = _productMgr.GetById(productId);
@@ -86,7 +110,7 @@ namespace MM.Business
         /// </summary>
         /// <param name="tutorId">教师Id</param>
         /// <param name="productId">产品Id</param>
-        public void Sell(Guid tutorId, Guid productId)
+        void IStudioService.Sell(Guid tutorId, Guid productId)
         {
             var tutor = _tutorMgr.GetById(tutorId);
             var product = _productMgr.GetById(productId);
@@ -108,9 +132,9 @@ namespace MM.Business
         /// <param name="tutorId">教师Id</param>
         /// <param name="memberProductId">成员产品Id</param>
         /// <param name="memberPhoneNumber">会员电话号码</param>
-        public void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
+        void IStudioService.TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
         {
-            TakeMemberProduct(tutorId, memberProductId, "", memberPhoneNumber);
+            ((IStudioService)this).TakeMemberProduct(tutorId, memberProductId, "", memberPhoneNumber);
         }
 
         /// <summary>
@@ -120,7 +144,7 @@ namespace MM.Business
         /// <param name="lectureId">课程Id</param>
         /// <param name="lectureDescription">授课内容说明</param>
         /// <param name="memberPhoneNumber">会员电话号码</param>
-        public void TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
+        void IStudioService.TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
         {
             var member = _memberMgr.FindByPhoneNumber(memberPhoneNumber);
             if (member == null)
@@ -155,7 +179,7 @@ namespace MM.Business
         /// 获取系统中的所有产品
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Product> GetAllProducts()
+        IEnumerable<Product> IStudioService.GetAllProducts()
         {
             return _productMgr.GetAll();
         }
@@ -165,7 +189,7 @@ namespace MM.Business
         /// </summary>
         /// <param name="productTypes">产品类别</param>
         /// <returns></returns>
-        public IEnumerable<Product> GetAllProducts(ProductTypes productTypes)
+        IEnumerable<Product> IStudioService.GetAllProducts(ProductTypes productTypes)
         {
             return _productMgr.GetByProductType(productTypes);
         }

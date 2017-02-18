@@ -8,6 +8,12 @@ namespace MM.Business
     public interface ITutorMgr
     {
         /// <summary>
+        /// 根据教师姓名，获取教师对象
+        /// </summary>
+        /// <returns></returns>
+        Tutor GetByName(string name);
+
+            /// <summary>
         /// 新建一个教师
         /// </summary>
         /// <returns>新建的教师对象</returns>

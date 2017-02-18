@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace MM.Business
 {
-    public class TutorMgr : IAuthenticator, ITutorMgr
+    public class TutorMgr : ITutorMgr
     {
         private ITutorRepository _tutorRepository;
 
@@ -19,32 +19,6 @@ namespace MM.Business
             _tutorRepository = tutorRepository;
         }
 
-
-        /// <summary>
-        /// 根据用户名和口令对用户进行认证。
-        /// </summary>
-        /// <param name="username">用户名</param>
-        /// <param name="password">口令</param>
-        /// <returns>用户通过认证，则返回true；否则返回false。</returns>
-        bool IAuthenticator.Authenticate(string username, string password)
-        {
-            ISpecification<Tutor> spec = new DirectSpecification<Tutor>(o => o.Name == username);
-            Tutor tutor = _tutorRepository.FindBySpecification(spec).FirstOrDefault();
-
-            bool authenticated = false;
-            if (tutor != null && tutor.Authenticate(password))
-            {
-                authenticated = true;
-                IIdentity identity = new GenericIdentity(username);
-                List<string> roles = new List<string>();
-                if (tutor.IsManager) roles.Add("Administrator");
-                IPrincipal principal = new GenericPrincipal(identity, roles.ToArray());
-                Thread.CurrentPrincipal = principal;
-            }
-
-            //将验证结果返回
-            return authenticated;
-        }
 
         /// <summary>
         /// 新建一个教师
@@ -84,6 +58,16 @@ namespace MM.Business
         Tutor ITutorMgr.GetById(Guid tutorId)
         {
             return _tutorRepository.GetByKey(tutorId);
+        }
+
+        /// <summary>
+        /// 根据教师姓名，获取教师对象
+        /// </summary>
+        /// <returns></returns>
+        Tutor ITutorMgr.GetByName(string name)
+        {
+            ISpecification<Tutor> spec = new DirectSpecification<Tutor>(o => o.Name == name);
+            return _tutorRepository.FindBySpecification(spec).FirstOrDefault();
         }
 
         /// <summary>

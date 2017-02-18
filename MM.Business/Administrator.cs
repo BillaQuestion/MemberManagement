@@ -6,6 +6,7 @@ using MM.Model;
 using MM.Model.IRepositories;
 using Dayi.Data.Domain.Seedwork.Specification;
 using MM.Business.Exceptions;
+using System.Security.Permissions;
 
 namespace MM.Business
 {
@@ -76,6 +77,7 @@ namespace MM.Business
         /// 获取系统中所有的教师
         /// </summary>
         /// <returns></returns>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Administrotor")]
         IEnumerable<Tutor> IAdministrator.GetAllTutors()
         {
             return _tutorMgr.GetAll();

@@ -30,18 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bbiAddNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiModify = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiChangePassword = new DevExpress.XtraBars.BarButtonItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.grdTutors = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.bindingSourceTutors = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPassword = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGender = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,8 +51,8 @@
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTutors)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTutors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager
@@ -70,6 +70,47 @@
             this.bbiDelete,
             this.bbiChangePassword});
             this.barManager.MaxItemId = 4;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddNew),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiModify),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDelete),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiChangePassword)});
+            this.bar1.Text = "Tools";
+            // 
+            // bbiAddNew
+            // 
+            this.bbiAddNew.Caption = "新建";
+            this.bbiAddNew.Id = 0;
+            this.bbiAddNew.Name = "bbiAddNew";
+            this.bbiAddNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAddNew_ItemClick);
+            // 
+            // bbiModify
+            // 
+            this.bbiModify.Caption = "修改";
+            this.bbiModify.Id = 1;
+            this.bbiModify.Name = "bbiModify";
+            this.bbiModify.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiModify_ItemClick);
+            // 
+            // bbiDelete
+            // 
+            this.bbiDelete.Caption = "删除";
+            this.bbiDelete.Id = 2;
+            this.bbiDelete.Name = "bbiDelete";
+            this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
+            // 
+            // bbiChangePassword
+            // 
+            this.bbiChangePassword.Caption = "修改密码";
+            this.bbiChangePassword.Id = 3;
+            this.bbiChangePassword.Name = "bbiChangePassword";
+            this.bbiChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiChangePassword_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -99,42 +140,6 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1327, 58);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 1036);
             // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddNew),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiModify),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiDelete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiChangePassword)});
-            this.bar1.Text = "Tools";
-            // 
-            // bbiAddNew
-            // 
-            this.bbiAddNew.Caption = "新建";
-            this.bbiAddNew.Id = 0;
-            this.bbiAddNew.Name = "bbiAddNew";
-            // 
-            // bbiModify
-            // 
-            this.bbiModify.Caption = "修改";
-            this.bbiModify.Id = 1;
-            this.bbiModify.Name = "bbiModify";
-            // 
-            // bbiDelete
-            // 
-            this.bbiDelete.Caption = "删除";
-            this.bbiDelete.Id = 2;
-            this.bbiDelete.Name = "bbiDelete";
-            // 
-            // bbiChangePassword
-            // 
-            this.bbiChangePassword.Caption = "修改密码";
-            this.bbiChangePassword.Id = 3;
-            this.bbiChangePassword.Name = "bbiChangePassword";
-            // 
             // grdTutors
             // 
             this.grdTutors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -148,6 +153,10 @@
             this.grdTutors.TabIndex = 4;
             this.grdTutors.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            // 
+            // bindingSourceTutors
+            // 
+            this.bindingSourceTutors.DataSource = typeof(MM.Model.Tutor);
             // 
             // gridView1
             // 
@@ -166,11 +175,8 @@
             this.colId});
             this.gridView1.GridControl = this.grdTutors;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowHeight = 24;
-            // 
-            // bindingSourceTutors
-            // 
-            this.bindingSourceTutors.DataSource = typeof(MM.Model.Tutor);
             // 
             // colName
             // 
@@ -244,8 +250,8 @@
             this.Load += new System.EventHandler(this.CtrlTutorManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTutors)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTutors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

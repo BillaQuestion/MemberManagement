@@ -59,9 +59,16 @@ namespace MM.UI
             container.RegisterType<IMediumRepository, MediumRepository>();
             container.RegisterType<ISessionRepository, ISessionRepository>();
 
-            container.RegisterType<IAuthenticator, TutorMgr>();
-            container.RegisterType<IAdministrator, Administrator>();
+            container.RegisterType<ITutorMgr, TutorMgr>();
+            container.RegisterType<IBalanceMgr, BalanceMgr>();
+            container.RegisterType<IConsumptionMgr, ConsumptionMgr>();
+            container.RegisterType<IMemberMgr, MemberMgr>();
+            container.RegisterType<IProductMgr, ProductMgr>();
+            container.RegisterType<IPurchaseMgr, PurchaseMgr>();
+
+            container.RegisterType<IAuthenticator, StudioService>();
             container.RegisterType<IStudioService, StudioService>();
+            container.RegisterType<IAdministrator, Administrator>();
         }
     }
 }

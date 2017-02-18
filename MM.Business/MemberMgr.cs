@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MM.Business
 {
-    internal class MemberMgr : IMemberMgr
+    public class MemberMgr : IMemberMgr
     {
         IMemberRepository _memberRepository;
         IBalanceRepository _balanceRepository;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MM.Business
 {
-    internal class ConsumptionMgr: IConsumptionMgr
+    public class ConsumptionMgr: IConsumptionMgr
     {
         IConsumptionRepository _consumptionRepository;
         public ConsumptionMgr(IConsumptionRepository consumptionRepository)
