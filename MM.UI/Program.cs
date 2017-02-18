@@ -19,7 +19,7 @@ namespace MM.UI
 
             FrmLogin frmLogin = new UI.FrmLogin();
             if (frmLogin.ShowDialog() == DialogResult.OK)
-                Application.Run(new FrmMain());
+                Application.Run(new FrmNavigator());
         }
     }
 }

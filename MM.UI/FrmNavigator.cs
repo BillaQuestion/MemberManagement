@@ -61,5 +61,10 @@ namespace MM.UI
         {
 
         }
+
+        private void bbi退出系统_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
