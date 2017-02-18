@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MM.Model.Enums;
 
 namespace MM.Business
 {
@@ -99,6 +100,30 @@ namespace MM.Business
             _productRepository.Remove(product);
 
             _productRepository.UnitOfWork.Commit();
+        }
+
+        IEnumerable<Product> IProductMgr.GetAll(ProductTypes productTypes)
+        {
+            var result = new List<Product>();
+            foreach (var product in _productRepository.GetAll())
+            {
+                switch (productTypes)
+                {
+                    case ProductTypes.Lecture:
+                        if (product is Lecture)
+                            result.Add(product);
+                        break;
+                    case ProductTypes.OneTimeExperience:
+                        if (product is OneTimeExperience)
+                            result.Add(product);
+                        break;
+                    case ProductTypes.TimesCard:
+                        if (product is TimesCard)
+                            result.Add(product);
+                        break;
+                }
+            }
+            return result;
         }
     }
 }
