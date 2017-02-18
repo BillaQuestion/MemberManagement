@@ -1,4 +1,5 @@
 ﻿using MM.Model;
+using MM.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace MM.Business
         Product Get(Guid productId);
 
         IEnumerable<Product> GetAll();
+
+        IEnumerable<Product> GetAll(ProductTypes productTypes);
 
         void Remove(Product product);
     }

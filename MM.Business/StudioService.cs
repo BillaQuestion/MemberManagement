@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Transactions;
 using MM.Model.Exceptions;
+using MM.Model.Enums;
 
 namespace MM.Business
 {
@@ -130,6 +131,13 @@ namespace MM.Business
 
                 scope.Complete();
             }
+        }
+
+        public IEnumerable<Product> GetAllProducts() { return _productMgr.GetAll(); }
+
+        public IEnumerable<Product> GetAllProducts(ProductTypes productTypes)
+        {
+            return _productMgr.GetAll(productTypes);
         }
     }
 }

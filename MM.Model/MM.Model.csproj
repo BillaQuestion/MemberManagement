@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Balance.cs" />
     <Compile Include="Enums\Gender.cs" />
+    <Compile Include="Enums\ProductTypes.cs" />
     <Compile Include="Enums\SessionStates.cs" />
     <Compile Include="Exceptions\BalanceNotEnoughException.cs" />
     <Compile Include="Exceptions\ProductExistException.cs" />
