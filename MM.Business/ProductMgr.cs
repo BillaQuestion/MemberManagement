@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MM.Model.Enums;
+using Dayi.Data.Domain.Seedwork.Specification;
 
 namespace MM.Business
 {
@@ -104,24 +105,19 @@ namespace MM.Business
 
         IEnumerable<Product> IProductMgr.GetAll(ProductTypes productTypes)
         {
-            var result = new List<Product>();
-            foreach (var product in _productRepository.GetAll())
+            var products = _productRepository.GetAll();
+            IEnumerable<Product> result = null;
+            switch (productTypes)
             {
-                switch (productTypes)
-                {
-                    case ProductTypes.Lecture:
-                        if (product is Lecture)
-                            result.Add(product);
-                        break;
-                    case ProductTypes.OneTimeExperience:
-                        if (product is OneTimeExperience)
-                            result.Add(product);
-                        break;
-                    case ProductTypes.TimesCard:
-                        if (product is TimesCard)
-                            result.Add(product);
-                        break;
-                }
+                case ProductTypes.Lecture:
+                    result = products.OfType<Lecture>();
+                    break;
+                case ProductTypes.OneTimeExperience:
+                    result = products.OfType<OneTimeExperience>();
+                    break;
+                case ProductTypes.TimesCard:
+                    result = products.OfType<TimesCard>();
+                    break;
             }
             return result;
         }
