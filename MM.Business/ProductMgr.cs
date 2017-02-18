@@ -103,7 +103,7 @@ namespace MM.Business
             _productRepository.UnitOfWork.Commit();
         }
 
-        IEnumerable<Product> IProductMgr.GetAll(ProductTypes productTypes)
+        IEnumerable<Product> IProductMgr.GetByProductType(ProductTypes productTypes)
         {
             var products = _productRepository.GetAll();
             IEnumerable<Product> result = null;

@@ -137,7 +137,7 @@ namespace MM.Business
 
         public IEnumerable<Product> GetAllProducts(ProductTypes productTypes)
         {
-            return _productMgr.GetAll(productTypes);
+            return _productMgr.GetByProductType(productTypes);
         }
     }
 }
