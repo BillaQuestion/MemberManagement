@@ -97,13 +97,6 @@ namespace MM.Business
             }
         }
 
-        //public void ModifyMember(Member member)
-        //{
-        //    _memberRepository.Modify(member);
-
-        //    _memberRepository.UnitOfWork.Commit();
-        //}
-
         public void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
         {
             TakeMemberProduct(tutorId, memberProductId, "", memberPhoneNumber);
