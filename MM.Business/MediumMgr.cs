@@ -1,12 +1,7 @@
-﻿using Dayi.Data.Domain.Seedwork.Specification;
-using MM.Business.Exceptions;
-using MM.Model;
+﻿using MM.Model;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MM.Business
 {
@@ -18,22 +13,48 @@ namespace MM.Business
             _mediumRepository = mediumRepository;
         }
 
-        public void AddMedium(Medium medium)
+        /// <summary>
+        /// 保存Medium对象
+        /// </summary>
+        void IMediumMgr.Save(Medium medium)
         {
-            ISpecification<Medium> spec = new DirectSpecification<Medium>(m => m.Name == medium.Name);
-            var result = _mediumRepository.FindBySpecification(spec).FirstOrDefault();
-            if (result != null) throw new MediumExistException();
+            if (medium.IsTransient())
+            {
+                medium.GenerateNewIdentity();
+                _mediumRepository.Add(medium);
+            }
+            else
+                _mediumRepository.Modify(medium);
 
-            _mediumRepository.Add(medium);
             _mediumRepository.UnitOfWork.Commit();
         }
 
-        public void RemoveMedium(Guid mediumId)
+        /// <summary>
+        /// 根据介质Id，删除介质对象
+        /// </summary>
+        void IMediumMgr.Delete(Guid mediumId)
         {
             var medium = _mediumRepository.GetByKey(mediumId);
             _mediumRepository.Remove(medium);
 
             _mediumRepository.UnitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// 获取系统中所有的介质
+        /// </summary>
+        IEnumerable<Medium> IMediumMgr.GetAll()
+        {
+            return _mediumRepository.GetAll();
+        }
+
+        /// <summary>
+        /// 根据介质Id，获取介质对象
+        /// </summary>
+        /// <returns></returns>
+        Medium IMediumMgr.GetById(Guid mediumId)
+        {
+            return _mediumRepository.GetByKey(mediumId);
         }
     }
 }

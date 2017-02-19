@@ -90,6 +90,7 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.nbiMedium = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -185,7 +186,8 @@
             this.nbiTutor,
             this.nbiTimesCard,
             this.nbiLecture,
-            this.nbiOneTimeExperience});
+            this.nbiOneTimeExperience,
+            this.nbiMedium});
             this.navMenu.LargeImages = this.imageListNav;
             this.navMenu.Location = new System.Drawing.Point(3, 3);
             this.navMenu.Margin = new System.Windows.Forms.Padding(6);
@@ -231,7 +233,8 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiTutor),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiTimesCard),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiLecture),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiOneTimeExperience)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiOneTimeExperience),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiMedium)});
             this.navBarGroup2.Name = "navBarGroup2";
             // 
             // nbiTutor
@@ -686,6 +689,13 @@
             this.barButtonItem3.Id = 31;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
+            // nbiMedium
+            // 
+            this.nbiMedium.Caption = "介质管理";
+            this.nbiMedium.LargeImageIndex = 1;
+            this.nbiMedium.Name = "nbiMedium";
+            this.nbiMedium.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMedium_LinkClicked);
+            // 
             // FrmNavigator
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -784,6 +794,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraNavBar.NavBarItem nbiMedium;
     }
 }
 

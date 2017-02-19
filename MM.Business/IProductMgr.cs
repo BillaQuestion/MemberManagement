@@ -23,8 +23,6 @@ namespace MM.Business
 
         IEnumerable<Product> GetAll();
 
-        IEnumerable<Product> GetByProductType(ProductTypes productTypes);
-
         void Remove(Product product);
     }
 }

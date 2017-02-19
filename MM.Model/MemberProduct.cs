@@ -20,7 +20,7 @@ namespace MM.Model
         {
             var result = base.Validate(validationContext).ToList();
             if (Count == 0)
-                result.Add(new ValidationResult("Count必须赋值！", new string[] { "Count" }));
+                result.Add(new ValidationResult("次数必须赋值！", new string[] { "Count" }));
             return result;
         }
 

@@ -48,12 +48,5 @@ namespace MM.Business
         /// </summary>
         /// <returns></returns>
         IEnumerable<Product> GetAllProducts();
-
-        /// <summary>
-        /// 获取特定产品类别的所有产品
-        /// </summary>
-        /// <param name="productTypes">产品类别</param>
-        /// <returns></returns>
-        IEnumerable<Product> GetAllProducts(ProductTypes productTypes);
     }
 }

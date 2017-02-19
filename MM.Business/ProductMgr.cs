@@ -102,24 +102,5 @@ namespace MM.Business
 
             _productRepository.UnitOfWork.Commit();
         }
-
-        IEnumerable<Product> IProductMgr.GetByProductType(ProductTypes productTypes)
-        {
-            var products = _productRepository.GetAll();
-            IEnumerable<Product> result = null;
-            switch (productTypes)
-            {
-                case ProductTypes.Lecture:
-                    result = products.OfType<Lecture>();
-                    break;
-                case ProductTypes.OneTimeExperience:
-                    result = products.OfType<OneTimeExperience>();
-                    break;
-                case ProductTypes.TimesCard:
-                    result = products.OfType<TimesCard>();
-                    break;
-            }
-            return result;
-        }
     }
 }
