@@ -138,6 +138,11 @@ namespace MM.Business
             return _purchaseMgr.GetAll();
         }
 
+        /// <summary>
+        /// Get Purchase records within 'domain'. The 'domain' could only be day, month or year.
+        /// </summary>
+        /// <param name="domain">The range of records</param>
+        /// <returns></returns>
         public IEnumerable<Purchase> ViewPurchase(string domain)
         {
             var argument = domain.ToLower();

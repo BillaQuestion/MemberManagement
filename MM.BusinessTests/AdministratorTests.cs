@@ -104,7 +104,7 @@ namespace MM.Business.Tests
                 Name = "testName",
                 PhoneNumber = "12345678"
             };
-            _admin.AddTutor(tutor);
+            //_admin.AddTutor(tutor);
             Assert.AreEqual(_context.Tutors.Count(), 1);
             Assert.AreEqual(_context.Tutors.FirstOrDefault(x => x.Name == tutor.Name).Id, tutor.Id);
 

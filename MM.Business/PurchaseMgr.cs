@@ -51,16 +51,13 @@ namespace MM.Business
                 case "day":
                     spec = new DirectSpecification<Purchase>(p => (DateTime.Now.Day - p.PurchaseDate.Day) < 1);
                     break;
-                case "week":
-                    spec = new DirectSpecification<Purchase>(p => (DateTime.Now.Day - p.PurchaseDate.Day) < 7);
-                    break;
                 case "month":
                     spec = new DirectSpecification<Purchase>(p => (DateTime.Now.Month - p.PurchaseDate.Month) < 1);
                     break;
                 case "year":
                     spec = new DirectSpecification<Purchase>(p => (DateTime.Now.Year - p.PurchaseDate.Year) < 1);
                     break;
-                default: throw new ArgumentException("domain could ontly be one of day, week, month or year.");
+                default: throw new ArgumentException("domain could ontly be one of day, month or year.");
             }
             result = _purchaseRepository.FindBySpecification(spec).ToList();
             return result;
