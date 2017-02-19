@@ -74,7 +74,7 @@ namespace MM.Business
         /// <param name="productId">产品Id</param>
         /// <param name="customerName">顾客姓名</param>
         /// <param name="phoneNumber">顾客手机号码</param>
-        void IStudioService.Sell(Guid tutorId, Guid productId, string customerName, string phoneNumber)
+        public void Sell(Guid tutorId, Guid productId, string customerName, string phoneNumber)
         {
             var tutor = _tutorMgr.GetById(tutorId);
             var product = _productMgr.GetById(productId);

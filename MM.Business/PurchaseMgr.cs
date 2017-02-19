@@ -62,5 +62,12 @@ namespace MM.Business
             result = _purchaseRepository.FindBySpecification(spec).ToList();
             return result;
         }
+
+        IEnumerable<MemberPurchase> IPurchaseMgr.GetByMember(Guid memberId)
+        {
+            //ISpecification<MemberPurchase> spec = new DirectSpecification<MemberPurchase>(p => p.MemberId == memberId);
+            //return _purchaseRepository.FindBySpecification(spec).ToList();
+            return null;
+        }
     }
 }

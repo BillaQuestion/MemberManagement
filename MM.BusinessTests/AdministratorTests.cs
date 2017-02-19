@@ -24,6 +24,12 @@ namespace MM.Business.Tests
         IConsumptionRepository _consumptionR;
         IMediumRepository _mediumR;
         Administrator _admin;
+        ITutorMgr _tutorM;
+        IProductMgr _productM;
+        IMemberMgr _memberM;
+        IPurchaseMgr _purchaseM;
+        IConsumptionMgr _consumptionM;
+        IBalanceMgr _balanceM;
 
 
         [TestInitialize]
@@ -39,6 +45,15 @@ namespace MM.Business.Tests
             _consumptionR = new ConsumptionRepository(_context);
             _mediumR = new MediumRepository(_context);
             //_admin = new Administrator(_tutorR, _productR, _memberR, _purchaseR, _balanceR, _consumptionR, _mediumR);
+
+            _tutorM = new TutorMgr(_tutorR);
+            _productM = new ProductMgr(_productR);
+            _memberM = new MemberMgr(_memberR, _balanceR);
+            _purchaseM = new PurchaseMgr(_purchaseR);
+            _consumptionM = new ConsumptionMgr(_consumptionR);
+            _balanceM = new BalanceMgr(_balanceR);
+
+            _admin = new Administrator(_tutorM, _productM, _memberM, _purchaseM, _consumptionM, _mediumR);
         }
 
         [TestCleanup]
@@ -138,26 +153,31 @@ namespace MM.Business.Tests
         [TestMethod]
         public void Demo()
         {
-            IBalanceMgr balanceMgr = new BalanceMgr(_balanceR);
-
-            MemberProduct p1 = new Lecture()
+            var member = new Member()
             {
+                Address = "",
+                Name = "123",
+                PhoneNumber = "123"
+                
+            };
+
+            member.GenerateNewIdentity();
+            var product = new Lecture()
+            {
+                Name = "123",
                 Count = 2,
-                Description = "dd",
-                Name = "dd",
-                Price = 10M
+                Price = 3M,
+                Description = "123"                
             };
-            p1.GenerateNewIdentity();
+            product.GenerateNewIdentity();
+            _admin.AddProduct(product);
 
-            MemberProduct p2 = new Lecture()
-            {
-                Count = 9,
-                Description = "ee",
-                Name = "ee",
-                Price = 10M
-            };
-            p2.GenerateNewIdentity();
-
+            var ss = new StudioService(_tutorM, _productM, _memberM, _purchaseM, _consumptionM, _balanceM);
+            var tutor = _admin.CreateTutor("123", Model.Enums.Gender.Unknown, "123", "123", false);
+            ss.Sell(tutor.Id, product.Id, "123", "123");
+            var result = _context.Purchases.FirstOrDefault();
+            var test = result as MemberPurchase;
+            Assert.AreEqual(test.MemberId, member.Id);
         }
     }
 }

@@ -87,7 +87,7 @@ namespace MM.Business
         /// 新建一个教师
         /// </summary>
         /// <returns>新建的教师对象</returns>
-        Tutor IAdministrator.CreateTutor(string name, Gender gender,
+        public Tutor CreateTutor(string name, Gender gender,
             string phoneNumber, string address, bool isManager)
         {
             return _tutorMgr.Create(name, gender, phoneNumber, address, isManager);

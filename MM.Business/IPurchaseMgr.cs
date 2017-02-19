@@ -18,5 +18,7 @@ namespace MM.Business
         IEnumerable<Purchase> GetAll();
 
         IEnumerable<Purchase> GetByDomain(string domain);
+
+        IEnumerable<MemberPurchase> GetByMember(Guid memberId);
     }
 }
