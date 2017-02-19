@@ -45,12 +45,12 @@ namespace MM.Business
             var product = _productMgr.GetById(productId);
             product.Name = newProduct.Name;
             product.Price = newProduct.Price;
-            if(newProduct is MemberProduct)
+            if (newProduct is MemberProduct)
             {
                 var np = newProduct as MemberProduct;
                 var mp = product as MemberProduct;
                 mp.Count = np.Count;
-                if(newProduct is Lecture)
+                if (newProduct is Lecture)
                 {
                     var lnp = newProduct as Lecture;
                     var lp = product as Lecture;
@@ -131,5 +131,19 @@ namespace MM.Business
 
             _mediumRepository.UnitOfWork.Commit();
         }
+
+        #region Purchase
+        public IEnumerable<Purchase> ViewPurchase()
+        {
+            return _purchaseMgr.GetAll();
+        }
+
+        public IEnumerable<Purchase> ViewPurchase(string domain)
+        {
+            var argument = domain.ToLower();
+            var result = _purchaseMgr.GetByDomain(argument);
+            return result;
+        }
+        #endregion
     }
 }
