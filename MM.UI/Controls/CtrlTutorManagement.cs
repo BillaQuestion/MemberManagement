@@ -35,7 +35,8 @@ namespace MM.UI.Controls
 
         private void bbiAddNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            FrmTutor form = new FrmTutor();
+            form.ShowDialog();
         }
 
         private void bbiModify_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -7,6 +7,7 @@ using MM.Model.IRepositories;
 using Dayi.Data.Domain.Seedwork.Specification;
 using MM.Business.Exceptions;
 using System.Security.Permissions;
+using MM.Model.Enums;
 
 namespace MM.Business
 {
@@ -77,31 +78,38 @@ namespace MM.Business
         /// 获取系统中所有的教师
         /// </summary>
         /// <returns></returns>
-        [PrincipalPermission(SecurityAction.Demand, Role = "Administrotor")]
+        [PrincipalPermission(SecurityAction.Demand, Role = "Administrator")]
         IEnumerable<Tutor> IAdministrator.GetAllTutors()
         {
             return _tutorMgr.GetAll();
         }
-
-        public void AddTutor(Tutor tutor)
+        /// <summary>
+        /// 新建一个教师
+        /// </summary>
+        /// <returns>新建的教师对象</returns>
+        Tutor IAdministrator.CreateTutor(string name, Gender gender,
+            string phoneNumber, string address, bool isManager)
         {
-            //_tutorMgr.Add(tutor);
+            return _tutorMgr.Create(name, gender, phoneNumber, address, isManager);
         }
 
-        public void SetTutor(Guid tutorId, Tutor newTutor)
+        void IAdministrator.ModifyTutor(Tutor tutor)
         {
-            var tutor = _tutorMgr.GetById(tutorId);
-            tutor.Address = newTutor.Address;
-            tutor.Gender = newTutor.Gender;
-            tutor.IsManager = newTutor.IsManager;
-            tutor.Name = newTutor.Name;
-            tutor.PhoneNumber = newTutor.PhoneNumber;
-            _tutorMgr.ModifyTutor(tutor);
+            _tutorMgr.Modify(tutor);
         }
 
-        public void RemoveTutor(Guid tutorId)
+        void IAdministrator.DeleteTutor(Guid tutorId)
         {
             _tutorMgr.Delete(tutorId);
+        }
+
+        /// <summary>
+        /// 重置指定教师的密码
+        /// </summary>
+        /// <param name="tutorId">教师Id</param>
+        void IAdministrator.ResetTutorPassword(Guid tutorId)
+        {
+            _tutorMgr.ResetTutorPassword(tutorId);
         }
 
         #endregion

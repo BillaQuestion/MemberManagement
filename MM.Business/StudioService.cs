@@ -58,7 +58,7 @@ namespace MM.Business
                 authenticated = true;
                 IIdentity identity = new GenericIdentity(username);
                 List<string> roles = new List<string>();
-                if (tutor.IsManager) roles.Add("Administrator1");
+                if (tutor.IsManager) roles.Add("Administrator");
                 IPrincipal principal = new GenericPrincipal(identity, roles.ToArray());
                 Thread.CurrentPrincipal = principal;
             }

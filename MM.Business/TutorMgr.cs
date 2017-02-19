@@ -24,7 +24,7 @@ namespace MM.Business
         /// 新建一个教师
         /// </summary>
         /// <returns>新建的教师对象</returns>
-        Tutor ITutorMgr.Create(string name, string password, Gender gender,
+        Tutor ITutorMgr.Create(string name, Gender gender,
             string phoneNumber, string address, bool isManager)
         {
             Tutor tutor = new Tutor()
@@ -35,7 +35,7 @@ namespace MM.Business
                 Address = address,
                 IsManager = isManager
             };
-            tutor.SetPassword(password);
+            tutor.SetPassword("password");
 
             tutor.GenerateNewIdentity();
             _tutorRepository.Add(tutor);
@@ -83,10 +83,24 @@ namespace MM.Business
             _tutorRepository.UnitOfWork.Commit();
         }
 
-        void ITutorMgr.ModifyTutor(Tutor tutor)
+        void ITutorMgr.Modify(Tutor tutor)
         {
             _tutorRepository.Modify(tutor);
             _tutorRepository.UnitOfWork.Commit();
+        }
+
+        /// <summary>
+        /// 重置指定教师的密码
+        /// </summary>
+        /// <param name="tutorId">教师Id</param>
+        void ITutorMgr.ResetTutorPassword(Guid tutorId)
+        {
+            Tutor tutor = (this as ITutorMgr).GetById(tutorId);
+            if (tutor == null)
+                throw new ArgumentException(string.Format("教师【{0}】不存在！", tutorId));
+
+            tutor.SetPassword("password");
+            (this as ITutorMgr).Modify(tutor);
         }
     }
 }
