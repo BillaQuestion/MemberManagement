@@ -41,7 +41,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.grdTutors = new DevExpress.XtraGrid.GridControl();
             this.bindingSourceTutors = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewTutors = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPassword = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGender = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,7 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTutors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTutors)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTutors)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager
@@ -146,26 +146,26 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.grdTutors.DataSource = this.bindingSourceTutors;
             this.grdTutors.Location = new System.Drawing.Point(3, 64);
-            this.grdTutors.MainView = this.gridView1;
+            this.grdTutors.MainView = this.gridViewTutors;
             this.grdTutors.MenuManager = this.barManager;
             this.grdTutors.Name = "grdTutors";
             this.grdTutors.Size = new System.Drawing.Size(1125, 1027);
             this.grdTutors.TabIndex = 4;
             this.grdTutors.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridViewTutors});
             // 
             // bindingSourceTutors
             // 
             this.bindingSourceTutors.DataSource = typeof(MM.Model.Tutor);
             // 
-            // gridView1
+            // gridViewTutors
             // 
-            this.gridView1.Appearance.EvenRow.BackColor = System.Drawing.Color.GhostWhite;
-            this.gridView1.Appearance.EvenRow.Options.UseBackColor = true;
-            this.gridView1.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridView1.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView1.ColumnPanelRowHeight = 24;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewTutors.Appearance.EvenRow.BackColor = System.Drawing.Color.GhostWhite;
+            this.gridViewTutors.Appearance.EvenRow.Options.UseBackColor = true;
+            this.gridViewTutors.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridViewTutors.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridViewTutors.ColumnPanelRowHeight = 24;
+            this.gridViewTutors.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colName,
             this.colPassword,
             this.colGender,
@@ -173,10 +173,10 @@
             this.colAddress,
             this.colIsManager,
             this.colId});
-            this.gridView1.GridControl = this.grdTutors;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.RowHeight = 24;
+            this.gridViewTutors.GridControl = this.grdTutors;
+            this.gridViewTutors.Name = "gridViewTutors";
+            this.gridViewTutors.OptionsView.ShowGroupPanel = false;
+            this.gridViewTutors.RowHeight = 24;
             // 
             // colName
             // 
@@ -251,7 +251,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTutors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTutors)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTutors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,7 +270,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
         private DevExpress.XtraBars.BarButtonItem bbiChangePassword;
         private DevExpress.XtraGrid.GridControl grdTutors;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewTutors;
         private System.Windows.Forms.BindingSource bindingSourceTutors;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colPassword;

@@ -30,7 +30,7 @@ namespace MM.Model
         {
             var result = new List<ValidationResult>();
             if (string.IsNullOrEmpty(Name))
-                result.Add(new ValidationResult("Name必须赋值！", new string[] { "Name" }));
+                result.Add(new ValidationResult("姓名必须赋值！", new string[] { "Name" }));
             return result;
         }
 

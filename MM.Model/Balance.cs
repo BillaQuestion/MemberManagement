@@ -29,7 +29,7 @@ namespace MM.Model
         {
             var result = new List<ValidationResult>();
             if (Product == null && MemberProductId == Guid.Empty)
-                result.Add(new ValidationResult("MemberProduct或MemberProductId必须赋值！", 
+                result.Add(new ValidationResult("必须给余额对象中的产品赋值！", 
                     new string[] { "MemberProduct", "MemberProductId" }));
             return result; 
         }

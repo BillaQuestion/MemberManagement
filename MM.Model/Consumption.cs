@@ -48,10 +48,10 @@ namespace MM.Model
         {
             var result = new List<ValidationResult>();
             if (MemberProduct == null && MemberProductId == Guid.Empty)
-                result.Add(new ValidationResult("MemberProduct或MemberProductId必须赋值！",
+                result.Add(new ValidationResult("产品必须赋值！",
                     new string[] { "MemberProduct", "MemberProductId" }));
             if (Tutor == null && TutorId == Guid.Empty)
-                result.Add(new ValidationResult("Tutor或TutorId必须赋值！",
+                result.Add(new ValidationResult("教师必须赋值！",
                     new string[] { "Tutor", "TutorId" }));
             return result;
         }

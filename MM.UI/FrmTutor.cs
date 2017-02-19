@@ -1,16 +1,11 @@
 ﻿using DevExpress.XtraEditors;
 using MM.Model;
+using MM.Model.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
-using Microsoft.Practices.Unity;
-using MM.Business;
+using System.Linq;
 
 namespace MM.UI
 {
@@ -20,8 +15,7 @@ namespace MM.UI
         /// 当前在编辑的教师对象
         /// </summary>
         Tutor _tutor;
-
-        bool isCreateOperation = true;
+        public Tutor Tutor { get { return _tutor; } }
 
         public FrmTutor()
         {
@@ -33,11 +27,11 @@ namespace MM.UI
         {
             InitializeComponent();
             _tutor = tutor;
-         isCreateOperation = false;
         }
 
         private void FrmTutor_Load(object sender, EventArgs e)
         {
+            lkuGender.Properties.DataSource = Enum.GetValues(typeof(Gender));
             bindingSourceTutor.DataSource = _tutor;
         }
 
@@ -45,24 +39,27 @@ namespace MM.UI
         {
             bindingSourceTutor.EndEdit();
 
-            if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                XtraMessageBox.Show("请输入教师姓名！", "提示");
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(_tutor.Name))
+            //{
+            //    XtraMessageBox.Show("请输入教师姓名！", "提示");
+            //    return;
+            //}
 
-            IAdministrator admin = new ContainerBootstrapper().ChildContainer.Resolve<IAdministrator>();
-            if (isCreateOperation)
-            {
-                _tutor = admin.CreateTutor(_tutor.Name, _tutor.Gender, _tutor.PhoneNumber, _tutor.Address, _tutor.IsManager);
-                XtraMessageBox.Show("成功地新建国教师用户！\n\n默认密码为\"password\"");
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(_tutor,
+                new ValidationContext(_tutor),
+                results);
+            if (isValid)
                 DialogResult = DialogResult.OK;
-            }
             else
             {
-                admin.ModifyTutor(_tutor);
-                XtraMessageBox.Show("成功地修改国教师用户！");
-                DialogResult = DialogResult.OK;
+                foreach (var result in results)
+                {
+                    if (result.MemberNames.Contains("Name"))
+                    {
+                        errorProvider.SetError(txtName, result.ErrorMessage);
+                    }
+                }
             }
         }
     }
