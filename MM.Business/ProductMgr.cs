@@ -1,12 +1,8 @@
 ﻿using MM.Model;
+using MM.Model.Exceptions;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MM.Model.Enums;
-using Dayi.Data.Domain.Seedwork.Specification;
 
 namespace MM.Business
 {
@@ -21,85 +17,45 @@ namespace MM.Business
         /// <summary>
         /// 根据产品Id，获取产品对象
         /// </summary>
-        public Product GetById(Guid productId)
+        Product IProductMgr.GetById(Guid productId)
         {
             return _productRepository.GetByKey(productId);
         }
 
-        void IProductMgr.AddProduct(Product product)
-        {
-            _productRepository.Add(product);
-
-            _productRepository.UnitOfWork.Commit();
-        }
-
-        public void AddProduct(string name, decimal price)
-        {
-            var ote = new OneTimeExperience()
-            {
-                Name = name,
-                Price = price
-            };
-            if (ote.IsTransient())
-                ote.GenerateNewIdentity();
-            _productRepository.Add(ote);
-
-            _productRepository.UnitOfWork.Commit();
-        }
-
-        void CreateProduct(string name, decimal price, int count, Medium medium)
-        {
-            var timesCard = new TimesCard()
-            {
-                Name = name,
-                Price = price,
-                Count = count,
-                Medium = medium
-            };
-            if (timesCard.IsTransient())
-                timesCard.GenerateNewIdentity();
-            _productRepository.Add(timesCard);
-
-            _productRepository.UnitOfWork.Commit();
-        }
-
-        void CreateProduct(string name, decimal price, int count, string description)
-        {
-            var lecture = new Lecture()
-            {
-                Name = name,
-                Price = price,
-                Count = count,
-                Description = description
-            };
-            if (lecture.IsTransient())
-                lecture.GenerateNewIdentity();
-            _productRepository.Add(lecture);
-
-            _productRepository.UnitOfWork.Commit();
-        }
-
+        /// <summary>
+        /// 获取系统中所有的产品定义
+        /// </summary>
         IEnumerable<Product> IProductMgr.GetAll()
         {
             return _productRepository.GetAll();
         }
 
-        Product IProductMgr.Get(Guid productId)
+        /// <summary>
+        /// 保存产品
+        /// </summary>
+        void IProductMgr.Save(Product product)
         {
-            return _productRepository.GetByKey(productId);
-        }
-
-        void IProductMgr.Modify(Product product)
-        {
-            _productRepository.Modify(product);
+            if (product.IsTransient())
+            {
+                product.GenerateNewIdentity();
+                _productRepository.Add(product);
+            }
+            else
+                _productRepository.Modify(product);
 
             _productRepository.UnitOfWork.Commit();
         }
 
-        void IProductMgr.Remove(Product product)
+        /// <summary>
+        /// 根据产品Id，删除产品对象
+        /// </summary>
+        void IProductMgr.Delete(Guid productId)
         {
-            _productRepository.Remove(product);
+            var product = (this as IProductMgr).GetById(productId);
+            if (product == null)
+                throw new ProductNotExistException(string.Format("产品[{0}]不存在！", productId));
 
+            _productRepository.Remove(product);
             _productRepository.UnitOfWork.Commit();
         }
     }

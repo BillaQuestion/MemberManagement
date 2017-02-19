@@ -6,19 +6,8 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAgQAAAAABIBAAAAAEAABAAAAAAEgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgQAAAAABIBAAAAQEAABAAAAAAEgAAAAAAAABAAAAA=</HashCode>
       <FileName>StudioService.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="MM.Business.Administrator">
-    <Position X="4.75" Y="0.5" Width="1.75" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAABCBAYEEAEAIRAAgACAEACAAAAAAAAAAAAA=</HashCode>
-      <FileName>Administrator.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -28,7 +17,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AABAQAQAAAAAAAAAAAAAgAAAAUAAAAAAAAAAABAAAAA=</HashCode>
+      <HashCode>AABAQAQAAAAAAAAAAAAAgAACIEAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>TutorMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -50,7 +39,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>IACAAAAAYABAAAAAAAAAQAAABAAAAAAAgAAAAAAEAIA=</HashCode>
+      <HashCode>AACAAAAAICAAAAAAAAAAAAAAABAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>ProductMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

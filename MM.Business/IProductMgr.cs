@@ -15,14 +15,19 @@ namespace MM.Business
         /// </summary>
         Product GetById(Guid productId);
 
-        void AddProduct(Product product);
-        
-        void Modify(Product product);
-
-        Product Get(Guid productId);
-
+        /// <summary>
+        /// 获取系统中所有的产品定义
+        /// </summary>
         IEnumerable<Product> GetAll();
 
-        void Remove(Product product);
+        /// <summary>
+        /// 保存产品
+        /// </summary>
+        void Save(Product product);
+
+        /// <summary>
+        /// 根据产品Id，删除产品对象
+        /// </summary>
+        void Delete(Guid productId);
     }
 }

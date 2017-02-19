@@ -45,9 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrator.cs" />
     <Compile Include="BalanceMgr.cs" />
-    <Compile Include="IAdministrator.cs" />
     <Compile Include="IBalanceMgr.cs" />
     <Compile Include="IMediumMgr.cs" />
     <Compile Include="IMemberMgr.cs" />
