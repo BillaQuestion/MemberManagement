@@ -68,7 +68,6 @@ namespace MM.UI
 
             container.RegisterType<IAuthenticator, StudioService>();
             container.RegisterType<IStudioService, StudioService>();
-            container.RegisterType<IAdministrator, Administrator>();
         }
     }
 }

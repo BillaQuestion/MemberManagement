@@ -15,45 +15,30 @@ namespace MM.Business.Tests
     [TestClass()]
     public class AdministratorTests
     {
-        MMContext _context;
-        ITutorRepository _tutorR;
-        IProductRepository _productR;
-        IMemberRepository _memberR;
-        IPurchaseRepository _purchaseR;
-        IBalanceRepository _balanceR;
-        IConsumptionRepository _consumptionR;
-        IMediumRepository _mediumR;
-        Administrator _admin;
-        ITutorMgr _tutorM;
-        IProductMgr _productM;
-        IMemberMgr _memberM;
-        IPurchaseMgr _purchaseM;
-        IConsumptionMgr _consumptionM;
-        IBalanceMgr _balanceM;
+        MMContext context;
+         tutorR;
+         productR;
+         memberR;
+        IPurchaseRepository purchaseR;
+        IBalanceRepository balanceR;
+        IConsumptionRepository consumptionR;
+        IMediumRepository mediumR;
+        IAdministrator _admin;
 
 
         [TestInitialize]
         public void initialize()
         {
             Database.SetInitializer(new DropCreateMMDbWithSeedDataForBusinessTest());
-            _context = new MMContext();
-            _tutorR = new TutorRepository(_context);
-            _productR = new ProductRepository(_context);
-            _memberR = new MemberRepository(_context);
-            _purchaseR = new PurchaseRepository(_context);
-            _balanceR = new BalanceRepository(_context);
-            _consumptionR = new ConsumptionRepository(_context);
-            _mediumR = new MediumRepository(_context);
+            MMContext context = new MMContext();
+            ITutorRepository tutorR = new TutorRepository(context);
+            IProductRepository productR = new ProductRepository(context);
+            IMemberRepository memberR = new MemberRepository(context);
+            purchaseR = new PurchaseRepository(context);
+            balanceR = new BalanceRepository(context);
+            consumptionR = new ConsumptionRepository(context);
+            mediumR = new MediumRepository(context);
             //_admin = new Administrator(_tutorR, _productR, _memberR, _purchaseR, _balanceR, _consumptionR, _mediumR);
-
-            _tutorM = new TutorMgr(_tutorR);
-            _productM = new ProductMgr(_productR);
-            _memberM = new MemberMgr(_memberR, _balanceR);
-            _purchaseM = new PurchaseMgr(_purchaseR);
-            _consumptionM = new ConsumptionMgr(_consumptionR);
-            _balanceM = new BalanceMgr(_balanceR);
-
-            _admin = new Administrator(_tutorM, _productM, _memberM, _purchaseM, _consumptionM, _mediumR);
         }
 
         [TestCleanup]
@@ -74,9 +59,9 @@ namespace MM.Business.Tests
             };
             ote.GenerateNewIdentity();
             _admin.AddProduct(ote);
-            Assert.AreEqual(_context.Products.Count(), 1);
-            var result = _context.Products.FirstOrDefault(x => x.Id == ote.Id);
-            Assert.AreEqual(_context.Products.FirstOrDefault(x => x.Id == ote.Id) , ote);
+            Assert.AreEqual(context.Products.Count(), 1);
+            var result = context.Products.FirstOrDefault(x => x.Id == ote.Id);
+            Assert.AreEqual(context.Products.FirstOrDefault(x => x.Id == ote.Id) , ote);
 
             //Add Lecture : MemberProduct : Product
             var lecture = new Lecture()
@@ -88,15 +73,15 @@ namespace MM.Business.Tests
             };
             lecture.GenerateNewIdentity();
             _admin.AddProduct(lecture);
-            Assert.AreEqual(_context.Products.Count(), 2);
-            Assert.AreEqual(_context.Products.FirstOrDefault(x => x.Id == lecture.Id), lecture);
+            Assert.AreEqual(context.Products.Count(), 2);
+            Assert.AreEqual(context.Products.FirstOrDefault(x => x.Id == lecture.Id), lecture);
 
             //Add Medium
             var medium = new Medium() { Name = "testMedium" };
             medium.GenerateNewIdentity();
             _admin.AddMedium(medium);
-            Assert.AreEqual(_context.Mediums.Count(), 1);
-            Assert.AreEqual(_context.Mediums.FirstOrDefault(x => x.Name == medium.Name).Id, medium.Id);
+            Assert.AreEqual(context.Mediums.Count(), 1);
+            Assert.AreEqual(context.Mediums.FirstOrDefault(x => x.Name == medium.Name).Id, medium.Id);
 
             //Add TimesCard : MemberProduct : Product
             var timesCard = new TimesCard()
@@ -108,8 +93,8 @@ namespace MM.Business.Tests
             };
             timesCard.GenerateNewIdentity();
             _admin.AddProduct(timesCard);
-            Assert.AreEqual(_context.Products.Count(), 3);
-            Assert.AreEqual(_context.Products.FirstOrDefault(x => x.Id == timesCard.Id), timesCard);
+            Assert.AreEqual(context.Products.Count(), 3);
+            Assert.AreEqual(context.Products.FirstOrDefault(x => x.Id == timesCard.Id), timesCard);
 
             var tutor = new Tutor()
             {
@@ -119,18 +104,18 @@ namespace MM.Business.Tests
                 Name = "testName",
                 PhoneNumber = "12345678"
             };
-            //_admin.AddTutor(tutor);
-            Assert.AreEqual(_context.Tutors.Count(), 1);
-            Assert.AreEqual(_context.Tutors.FirstOrDefault(x => x.Name == tutor.Name).Id, tutor.Id);
+            _admin.AddTutor(tutor);
+            Assert.AreEqual(context.Tutors.Count(), 1);
+            Assert.AreEqual(context.Tutors.FirstOrDefault(x => x.Name == tutor.Name).Id, tutor.Id);
 
             //_admin.Sell(tutor.Id, timesCard.Id, "testMember", "testPhoneNumber");
-            Assert.AreEqual(_context.Purchases.Count(), 1);
-            var testSell = _context.Purchases.FirstOrDefault(x => x.ProductId  == timesCard.Id);
+            Assert.AreEqual(context.Purchases.Count(), 1);
+            var testSell = context.Purchases.FirstOrDefault(x => x.ProductId  == timesCard.Id);
             Assert.AreEqual(testSell.Product, timesCard);
             Assert.AreNotEqual(testSell.PurchaseDate, null);
             Assert.AreEqual(testSell.Tutor, tutor);
-            Assert.AreEqual(_context.Members.Count(), 1);
-            var testMember = _context.Members.FirstOrDefault();
+            Assert.AreEqual(context.Members.Count(), 1);
+            var testMember = context.Members.FirstOrDefault();
             Assert.AreEqual(testMember.Name, "testMember");
             Assert.AreEqual(testMember.PhoneNumber, "testPhoneNumber");
             Assert.AreEqual(testMember.Address, null);
@@ -153,31 +138,26 @@ namespace MM.Business.Tests
         [TestMethod]
         public void Demo()
         {
-            var member = new Member()
-            {
-                Address = "",
-                Name = "123",
-                PhoneNumber = "123"
-                
-            };
+            IBalanceMgr balanceMgr = new BalanceMgr(balanceR);
 
-            member.GenerateNewIdentity();
-            var product = new Lecture()
+            MemberProduct p1 = new Lecture()
             {
-                Name = "123",
                 Count = 2,
-                Price = 3M,
-                Description = "123"                
+                Description = "dd",
+                Name = "dd",
+                Price = 10M
             };
-            product.GenerateNewIdentity();
-            _admin.AddProduct(product);
+            p1.GenerateNewIdentity();
 
-            var ss = new StudioService(_tutorM, _productM, _memberM, _purchaseM, _consumptionM, _balanceM);
-            var tutor = _admin.CreateTutor("123", Model.Enums.Gender.Unknown, "123", "123", false);
-            ss.Sell(tutor.Id, product.Id, "123", "123");
-            var result = _context.Purchases.FirstOrDefault();
-            var test = result as MemberPurchase;
-            Assert.AreEqual(test.MemberId, member.Id);
+            MemberProduct p2 = new Lecture()
+            {
+                Count = 9,
+                Description = "ee",
+                Name = "ee",
+                Price = 10M
+            };
+            p2.GenerateNewIdentity();
+
         }
     }
 }

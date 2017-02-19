@@ -15,24 +15,15 @@ namespace MM.Business
     {
         ITutorMgr _tutorMgr;
         IProductMgr _productMgr;
-        IMemberMgr _memberMgr;
-        IPurchaseMgr _purchaseMgr;
-        IConsumptionMgr _consumptionMgr;
-        IMediumRepository _mediumRepository;
+        IMediumMgr _mediumMgr;
 
         public Administrator(ITutorMgr tutorMgr,
             IProductMgr productMgr,
-            IMemberMgr memberMgr,
-            IPurchaseMgr purchaseMgr,
-            IConsumptionMgr consumptionMgr,
-            IMediumRepository mediumRepository)
+            IMediumMgr mediumMgr)
         {
             _tutorMgr = tutorMgr;
             _productMgr = productMgr;
-            _memberMgr = memberMgr;
-            _purchaseMgr = purchaseMgr;
-            _consumptionMgr = consumptionMgr;
-            _mediumRepository = mediumRepository;
+            _mediumMgr = mediumMgr;
         }
 
         public void AddProduct(Product product)
@@ -45,12 +36,12 @@ namespace MM.Business
             var product = _productMgr.GetById(productId);
             product.Name = newProduct.Name;
             product.Price = newProduct.Price;
-            if (newProduct is MemberProduct)
+            if(newProduct is MemberProduct)
             {
                 var np = newProduct as MemberProduct;
                 var mp = product as MemberProduct;
                 mp.Count = np.Count;
-                if (newProduct is Lecture)
+                if(newProduct is Lecture)
                 {
                     var lnp = newProduct as Lecture;
                     var lp = product as Lecture;
@@ -87,7 +78,7 @@ namespace MM.Business
         /// 新建一个教师
         /// </summary>
         /// <returns>新建的教师对象</returns>
-        public Tutor CreateTutor(string name, Gender gender,
+        Tutor IAdministrator.CreateTutor(string name, Gender gender,
             string phoneNumber, string address, bool isManager)
         {
             return _tutorMgr.Create(name, gender, phoneNumber, address, isManager);
@@ -112,43 +103,6 @@ namespace MM.Business
             _tutorMgr.ResetTutorPassword(tutorId);
         }
 
-        #endregion
-
-        public void AddMedium(Medium medium)
-        {
-            ISpecification<Medium> spec = new DirectSpecification<Medium>(m => m.Name == medium.Name);
-            var result = _mediumRepository.FindBySpecification(spec).FirstOrDefault();
-            if (result != null) throw new MediumExistException();
-
-            _mediumRepository.Add(medium);
-            _mediumRepository.UnitOfWork.Commit();
-        }
-
-        public void RemoveMedium(Guid mediumId)
-        {
-            var medium = _mediumRepository.GetByKey(mediumId);
-            _mediumRepository.Remove(medium);
-
-            _mediumRepository.UnitOfWork.Commit();
-        }
-
-        #region Purchase
-        public IEnumerable<Purchase> ViewPurchase()
-        {
-            return _purchaseMgr.GetAll();
-        }
-
-        /// <summary>
-        /// Get Purchase records within 'domain'. The 'domain' could only be day, month or year.
-        /// </summary>
-        /// <param name="domain">The range of records</param>
-        /// <returns></returns>
-        public IEnumerable<Purchase> ViewPurchase(string domain)
-        {
-            var argument = domain.ToLower();
-            var result = _purchaseMgr.GetByDomain(argument);
-            return result;
-        }
         #endregion
     }
 }

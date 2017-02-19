@@ -5,8 +5,7 @@ using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
-using System.Threading;
+using System.Security.Permissions;
 
 namespace MM.Business
 {
@@ -24,6 +23,7 @@ namespace MM.Business
         /// 新建一个教师
         /// </summary>
         /// <returns>新建的教师对象</returns>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Administrator")]
         Tutor ITutorMgr.Create(string name, Gender gender,
             string phoneNumber, string address, bool isManager)
         {
@@ -73,6 +73,7 @@ namespace MM.Business
         /// <summary>
         /// 根据教师Id，删除教师对象
         /// </summary>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Administrator")]
         void ITutorMgr.Delete(Guid tutorId)
         {
             Tutor tutor = _tutorRepository.GetByKey(tutorId);
@@ -83,6 +84,7 @@ namespace MM.Business
             _tutorRepository.UnitOfWork.Commit();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Administrator")]
         void ITutorMgr.Modify(Tutor tutor)
         {
             _tutorRepository.Modify(tutor);
@@ -93,6 +95,7 @@ namespace MM.Business
         /// 重置指定教师的密码
         /// </summary>
         /// <param name="tutorId">教师Id</param>
+        [PrincipalPermission(SecurityAction.Demand, Role = "Administrator")]
         void ITutorMgr.ResetTutorPassword(Guid tutorId)
         {
             Tutor tutor = (this as ITutorMgr).GetById(tutorId);
