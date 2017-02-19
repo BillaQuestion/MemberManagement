@@ -23,8 +23,8 @@ namespace MM.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = base.Validate(validationContext).ToList();
-            if (Medium == null)
-                result.Add(new ValidationResult("Medium必须赋值！", new string[] { "Medium" }));
+            if (Medium == null && MediumId == Guid.Empty)
+                result.Add(new ValidationResult("介质必须赋值！", new string[] { "Medium" }));
             return result;
         }
     }
