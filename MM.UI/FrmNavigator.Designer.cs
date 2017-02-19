@@ -200,7 +200,6 @@
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "我的工作";
-            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSell),
@@ -226,6 +225,7 @@
             // navBarGroup2
             // 
             this.navBarGroup2.Caption = "系统管理";
+            this.navBarGroup2.Expanded = true;
             this.navBarGroup2.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiTutor),
@@ -236,7 +236,7 @@
             // 
             // nbiTutor
             // 
-            this.nbiTutor.Caption = "教师";
+            this.nbiTutor.Caption = "教师管理";
             this.nbiTutor.LargeImageIndex = 2;
             this.nbiTutor.Name = "nbiTutor";
             this.nbiTutor.SmallImageIndex = 3;
@@ -244,19 +244,19 @@
             // 
             // nbiTimesCard
             // 
-            this.nbiTimesCard.Caption = "会员卡";
+            this.nbiTimesCard.Caption = "次卡管理";
             this.nbiTimesCard.LargeImageIndex = 6;
             this.nbiTimesCard.Name = "nbiTimesCard";
             // 
             // nbiLecture
             // 
-            this.nbiLecture.Caption = "课程";
+            this.nbiLecture.Caption = "课程管理";
             this.nbiLecture.LargeImageIndex = 4;
             this.nbiLecture.Name = "nbiLecture";
             // 
             // nbiOneTimeExperience
             // 
-            this.nbiOneTimeExperience.Caption = "一次性体验";
+            this.nbiOneTimeExperience.Caption = "体验产品管理";
             this.nbiOneTimeExperience.LargeImageIndex = 11;
             this.nbiOneTimeExperience.Name = "nbiOneTimeExperience";
             // 
