@@ -31,7 +31,7 @@ namespace MM.Repository.Tests
         {
             var productRepository = new ProductRepository(new MMContext());
             var products = productRepository.GetAll().ToList();
-            Assert.AreEqual(10, products.Count);
+            Assert.AreEqual(11, products.Count);
         }
 
         [TestMethod()]
@@ -68,7 +68,7 @@ namespace MM.Repository.Tests
         [TestMethod()]
         public void ModifyTimesCardChangeMediumTest()
         {
-            string productId = "00000000-0000-0001-0002-000000000005";
+            string productId = "00000000-0000-0001-0002-000000000006";
             Guid mediumId = Guid.Parse("00000000-0000-0000-0001-000000000002");
             var context = new MMContext();
             var productRepository = new ProductRepository(context);

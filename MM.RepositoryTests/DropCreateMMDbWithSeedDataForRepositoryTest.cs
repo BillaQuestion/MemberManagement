@@ -88,6 +88,16 @@ namespace MM.Repository.Tests
             timesCard.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0002-000000000005"));
             context.TimesCards.Add(timesCard);
 
+            timesCard = new TimesCard()
+            {
+                Name = "1000元画布test",
+                Price = 1000,
+                Count = 18,
+                Medium = medium画布
+            };
+            timesCard.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0002-000000000006"));
+            context.TimesCards.Add(timesCard);
+
             var oneTimeExperience = new OneTimeExperience()
                 { Name = "一次性画纸", Price = 20 };
             oneTimeExperience.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0003-000000000001"));
