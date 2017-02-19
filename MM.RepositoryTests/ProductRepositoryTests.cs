@@ -100,5 +100,67 @@ namespace MM.Repository.Tests
             var product1 = productRepository.GetByKey(Guid.Parse(productId));
             Assert.AreEqual(description, (product1 as Lecture).Description);
         }
+
+        [TestMethod()]
+        public void AddOneTimeExperienceTest()
+        {
+            Guid productId = Guid.Parse("00000000-0000-0001-0003-000000000004");
+            var productRepository = new ProductRepository(new MMContext());
+            OneTimeExperience product = new OneTimeExperience()
+            { Name = "一次性画布Addtest", Price = 30 };
+            productRepository.Add(product);
+            product.ChangeCurrentIdentity(productId);
+            productRepository.UnitOfWork.Commit();
+
+            var productRepository1 = new ProductRepository(new MMContext());
+            var product1 = productRepository.GetByKey(productId);
+            Assert.AreEqual("一次性画布Addtest", product1.Name);
+        }
+
+        [TestMethod()]
+        public void AddTimesCardChangeMediumTest()
+        {
+            Guid productId = Guid.Parse("00000000-0000-0001-0002-000000000007");
+            Guid mediumId = Guid.Parse("00000000-0000-0000-0001-000000000002");
+            var context = new MMContext();
+            var productRepository = new ProductRepository(context);
+            var mediumRepository = new MediumRepository(context);
+            var medium画纸 = mediumRepository.GetByKey(mediumId);
+            TimesCard product = new TimesCard()
+            {
+                Name = "400元画纸test",
+                Price = 400,
+                Count = 12,
+                Medium = medium画纸
+            };
+            productRepository.Add(product);
+            product.ChangeCurrentIdentity(productId);
+            productRepository.UnitOfWork.Commit();
+
+            var productRepository1 = new ProductRepository(new MMContext());
+            var product1 = productRepository.GetByKey(productId);
+            Assert.AreEqual(mediumId, (product1 as TimesCard).MediumId);
+        }
+
+        [TestMethod()]
+        public void AddLectureTest()
+        {
+            Guid productId = Guid.Parse("00000000-0000-0001-0001-000000000003");
+            var productRepository = new ProductRepository(new MMContext());
+            Lecture product = new Lecture()
+            {
+                Name = "水粉画基础test",
+                Price = 998,
+                Count = 14,
+                Description = "从零开始学习水粉画的基本画法aa"
+            };
+            productRepository.Add(product);
+            product.ChangeCurrentIdentity(productId);
+            productRepository.UnitOfWork.Commit();
+
+            var productRepository1 = new ProductRepository(new MMContext());
+            var product1 = productRepository.GetByKey(productId);
+            Assert.AreEqual("从零开始学习水粉画的基本画法aa", (product1 as Lecture).Description);
+        }
     }
 }

@@ -16,9 +16,6 @@ namespace MM.Business.Tests
     public class AdministratorTests
     {
         MMContext context;
-         tutorR;
-         productR;
-         memberR;
         IPurchaseRepository purchaseR;
         IBalanceRepository balanceR;
         IConsumptionRepository consumptionR;
