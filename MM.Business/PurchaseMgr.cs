@@ -1,4 +1,5 @@
-﻿using MM.Model;
+﻿using Dayi.Data.Domain.Seedwork.Specification;
+using MM.Model;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,43 @@ namespace MM.Business
                 _purchaseRepository.Modify(purchase);
 
             _purchaseRepository.UnitOfWork.Commit();
+        }
+
+        IEnumerable<Purchase> IPurchaseMgr.GetAll()
+        {
+            return _purchaseRepository.GetAll();
+        }
+
+        IEnumerable<Purchase> IPurchaseMgr.GetByDomain(string domain)
+        {
+            var result = new List<Purchase>();
+
+
+            ISpecification<Purchase> spec = null;
+
+
+            switch (domain)
+            {
+                case "day":
+                    spec = new DirectSpecification<Purchase>(p => (DateTime.Now.Day - p.PurchaseDate.Day) < 1);
+                    break;
+                case "month":
+                    spec = new DirectSpecification<Purchase>(p => (DateTime.Now.Month - p.PurchaseDate.Month) < 1);
+                    break;
+                case "year":
+                    spec = new DirectSpecification<Purchase>(p => (DateTime.Now.Year - p.PurchaseDate.Year) < 1);
+                    break;
+                default: throw new ArgumentException("domain could ontly be one of day, month or year.");
+            }
+            result = _purchaseRepository.FindBySpecification(spec).ToList();
+            return result;
+        }
+
+        IEnumerable<MemberPurchase> IPurchaseMgr.GetByMember(Guid memberId)
+        {
+            //ISpecification<MemberPurchase> spec = new DirectSpecification<MemberPurchase>(p => p.MemberId == memberId);
+            //return _purchaseRepository.FindBySpecification(spec).ToList();
+            return null;
         }
     }
 }

@@ -14,5 +14,11 @@ namespace MM.Business
         /// 保存购买记录对象
         /// </summary>
         void Save(Purchase purchase);
+
+        IEnumerable<Purchase> GetAll();
+
+        IEnumerable<Purchase> GetByDomain(string domain);
+
+        IEnumerable<MemberPurchase> GetByMember(Guid memberId);
     }
 }
