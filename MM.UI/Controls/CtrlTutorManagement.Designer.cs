@@ -49,6 +49,7 @@
             this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsManager = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdTutors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTutors)).BeginInit();
@@ -68,8 +69,9 @@
             this.bbiAddNew,
             this.bbiModify,
             this.bbiDelete,
-            this.bbiChangePassword});
-            this.barManager.MaxItemId = 4;
+            this.bbiChangePassword,
+            this.bbiRefresh});
+            this.barManager.MaxItemId = 5;
             // 
             // bar1
             // 
@@ -81,7 +83,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiAddNew),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiModify),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiDelete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiChangePassword)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiChangePassword),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiRefresh)});
             this.bar1.Text = "Tools";
             // 
             // bbiAddNew
@@ -107,7 +110,7 @@
             // 
             // bbiChangePassword
             // 
-            this.bbiChangePassword.Caption = "修改密码";
+            this.bbiChangePassword.Caption = "重置密码";
             this.bbiChangePassword.Id = 3;
             this.bbiChangePassword.Name = "bbiChangePassword";
             this.bbiChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiChangePassword_ItemClick);
@@ -149,7 +152,7 @@
             this.grdTutors.MainView = this.gridViewTutors;
             this.grdTutors.MenuManager = this.barManager;
             this.grdTutors.Name = "grdTutors";
-            this.grdTutors.Size = new System.Drawing.Size(1125, 1027);
+            this.grdTutors.Size = new System.Drawing.Size(1267, 1027);
             this.grdTutors.TabIndex = 4;
             this.grdTutors.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTutors});
@@ -175,6 +178,7 @@
             this.colId});
             this.gridViewTutors.GridControl = this.grdTutors;
             this.gridViewTutors.Name = "gridViewTutors";
+            this.gridViewTutors.OptionsBehavior.Editable = false;
             this.gridViewTutors.OptionsView.ShowGroupPanel = false;
             this.gridViewTutors.RowHeight = 24;
             // 
@@ -183,9 +187,10 @@
             this.colName.Caption = "姓名";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
+            this.colName.OptionsColumn.AllowFocus = false;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
-            this.colName.Width = 137;
+            this.colName.Width = 154;
             // 
             // colPassword
             // 
@@ -198,42 +203,53 @@
             this.colGender.Caption = "性别";
             this.colGender.FieldName = "Gender";
             this.colGender.Name = "colGender";
+            this.colGender.OptionsColumn.AllowFocus = false;
             this.colGender.Visible = true;
             this.colGender.VisibleIndex = 1;
-            this.colGender.Width = 113;
+            this.colGender.Width = 127;
             // 
             // colPhoneNumber
             // 
             this.colPhoneNumber.Caption = "联系电话";
             this.colPhoneNumber.FieldName = "PhoneNumber";
             this.colPhoneNumber.Name = "colPhoneNumber";
+            this.colPhoneNumber.OptionsColumn.AllowFocus = false;
             this.colPhoneNumber.Visible = true;
             this.colPhoneNumber.VisibleIndex = 3;
-            this.colPhoneNumber.Width = 239;
+            this.colPhoneNumber.Width = 258;
             // 
             // colAddress
             // 
             this.colAddress.Caption = "联系地址";
             this.colAddress.FieldName = "Address";
             this.colAddress.Name = "colAddress";
+            this.colAddress.OptionsColumn.AllowFocus = false;
             this.colAddress.Visible = true;
             this.colAddress.VisibleIndex = 4;
-            this.colAddress.Width = 462;
+            this.colAddress.Width = 505;
             // 
             // colIsManager
             // 
             this.colIsManager.Caption = "是否为管理员";
             this.colIsManager.FieldName = "IsManager";
             this.colIsManager.Name = "colIsManager";
+            this.colIsManager.OptionsColumn.AllowFocus = false;
             this.colIsManager.Visible = true;
             this.colIsManager.VisibleIndex = 2;
-            this.colIsManager.Width = 140;
+            this.colIsManager.Width = 189;
             // 
             // colId
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
             this.colId.OptionsColumn.ReadOnly = true;
+            // 
+            // bbiRefresh
+            // 
+            this.bbiRefresh.Caption = "刷新";
+            this.bbiRefresh.Id = 4;
+            this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
             // 
             // CtrlTutorManagement
             // 
@@ -279,5 +295,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAddress;
         private DevExpress.XtraGrid.Columns.GridColumn colIsManager;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraBars.BarButtonItem bbiRefresh;
     }
 }
