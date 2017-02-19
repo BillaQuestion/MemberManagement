@@ -29,8 +29,8 @@ namespace MM.UI.Controls
 
         private void LoadTutors()
         {
-            _tutors = new ContainerBootstrapper().ChildContainer.Resolve<IAdministrator>()
-                .GetAllTutors().ToList();
+            _tutors = new ContainerBootstrapper().ChildContainer.Resolve<ITutorMgr>()
+                .GetAll().ToList();
             bindingSourceTutors.DataSource = _tutors;
         }
 
@@ -39,9 +39,9 @@ namespace MM.UI.Controls
             FrmTutor form = new FrmTutor();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                IAdministrator admin = new ContainerBootstrapper().ChildContainer.Resolve<IAdministrator>();
+                ITutorMgr tutorMgr = new ContainerBootstrapper().ChildContainer.Resolve<ITutorMgr>();
                 Tutor tutor = form.Tutor;
-                admin.CreateTutor(tutor.Name, tutor.Gender, tutor.PhoneNumber, tutor.Address, tutor.IsManager);
+                tutorMgr.Create(tutor.Name, tutor.Gender, tutor.PhoneNumber, tutor.Address, tutor.IsManager);
                 XtraMessageBox.Show("成功地新建国教师用户！\n\n默认密码为\"password\"");
                 LoadTutors();
             }
@@ -59,9 +59,9 @@ namespace MM.UI.Controls
             FrmTutor form = new FrmTutor(tutor);
             if (form.ShowDialog() == DialogResult.OK)
             {
-                IAdministrator admin = new ContainerBootstrapper().ChildContainer.Resolve<IAdministrator>();
+                ITutorMgr tutorMgr = new ContainerBootstrapper().ChildContainer.Resolve<ITutorMgr>();
                 tutor = form.Tutor;
-                admin.ModifyTutor(tutor);
+                tutorMgr.Modify(tutor);
                 XtraMessageBox.Show("成功地修改了教师用户！");
             }
         }
@@ -79,8 +79,8 @@ namespace MM.UI.Controls
                 "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                IAdministrator admin = new ContainerBootstrapper().ChildContainer.Resolve<IAdministrator>();
-                admin.DeleteTutor(tutor.Id);
+                ITutorMgr tutorMgr = new ContainerBootstrapper().ChildContainer.Resolve<ITutorMgr>();
+                tutorMgr.Delete(tutor.Id);
                 XtraMessageBox.Show("删除成功！");
                 LoadTutors();
             }
@@ -99,8 +99,8 @@ namespace MM.UI.Controls
                 "询问", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                IAdministrator admin = new ContainerBootstrapper().ChildContainer.Resolve<IAdministrator>();
-                admin.ResetTutorPassword(tutor.Id);
+                ITutorMgr tutorMgr = new ContainerBootstrapper().ChildContainer.Resolve<ITutorMgr>();
+                tutorMgr.ResetTutorPassword(tutor.Id);
                 XtraMessageBox.Show("重置密码成功！密码重置为\"password\"");
             }
         }

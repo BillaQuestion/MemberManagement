@@ -49,6 +49,7 @@
     <Compile Include="BalanceMgr.cs" />
     <Compile Include="IAdministrator.cs" />
     <Compile Include="IBalanceMgr.cs" />
+    <Compile Include="IMediumMgr.cs" />
     <Compile Include="IMemberMgr.cs" />
     <Compile Include="ConsumptionMgr.cs" />
     <Compile Include="Exceptions\MediumExistException.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="IPurchaseMgr.cs" />
     <Compile Include="IStudioService.cs" />
     <Compile Include="ITutorMgr.cs" />
+    <Compile Include="MediumMgr.cs" />
     <Compile Include="MemberMgr.cs" />
     <Compile Include="ProductMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

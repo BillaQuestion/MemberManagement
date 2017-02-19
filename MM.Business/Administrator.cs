@@ -15,24 +15,15 @@ namespace MM.Business
     {
         ITutorMgr _tutorMgr;
         IProductMgr _productMgr;
-        IMemberMgr _memberMgr;
-        IPurchaseMgr _purchaseMgr;
-        IConsumptionMgr _consumptionMgr;
-        IMediumRepository _mediumRepository;
+        IMediumMgr _mediumMgr;
 
         public Administrator(ITutorMgr tutorMgr,
             IProductMgr productMgr,
-            IMemberMgr memberMgr,
-            IPurchaseMgr purchaseMgr,
-            IConsumptionMgr consumptionMgr,
-            IMediumRepository mediumRepository)
+            IMediumMgr mediumMgr)
         {
             _tutorMgr = tutorMgr;
             _productMgr = productMgr;
-            _memberMgr = memberMgr;
-            _purchaseMgr = purchaseMgr;
-            _consumptionMgr = consumptionMgr;
-            _mediumRepository = mediumRepository;
+            _mediumMgr = mediumMgr;
         }
 
         public void AddProduct(Product product)
@@ -113,23 +104,5 @@ namespace MM.Business
         }
 
         #endregion
-
-        public void AddMedium(Medium medium)
-        {
-            ISpecification<Medium> spec = new DirectSpecification<Medium>(m => m.Name == medium.Name);
-            var result = _mediumRepository.FindBySpecification(spec).FirstOrDefault();
-            if (result != null) throw new MediumExistException();
-
-            _mediumRepository.Add(medium);
-            _mediumRepository.UnitOfWork.Commit();
-        }
-
-        public void RemoveMedium(Guid mediumId)
-        {
-            var medium = _mediumRepository.GetByKey(mediumId);
-            _mediumRepository.Remove(medium);
-
-            _mediumRepository.UnitOfWork.Commit();
-        }
     }
 }
