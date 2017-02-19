@@ -26,28 +26,6 @@ namespace MM.UI
         {
         }
 
-        protected virtual void Item_LinkClicked(object sender, NavBarLinkEventArgs e)
-        {
-        }
-
-        /// <summary>
-        /// 检查Mdi子窗体是否已经打开，如果没有打开，则生成并打开；否则，直接激活它。
-        /// </summary>
-        /// <param name="frmName"></param>
-        /// <returns>如果子窗体已经打开，则返回true；否则，返回false。</returns>
-        private bool IsOpened(string formName)
-        {
-            for (int x = 0; x < this.MdiParent.MdiChildren.Length; x++)
-            {
-                if (this.MdiParent.MdiChildren[x].Name == formName)
-                {
-                    this.MdiParent.MdiChildren[x].Activate();
-                    return true;
-                }
-            }
-            return false;
-        }
-
         private void nbiSell_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
 
@@ -58,12 +36,30 @@ namespace MM.UI
 
         }
 
-        private void nbiManagement_LinkClicked(object sender, NavBarLinkEventArgs e)
+        private void nbiTutor_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
             pnlMain.Controls.Clear();
             CtrlTutorManagement ctrl = new CtrlTutorManagement();
             pnlMain.Controls.Add(ctrl);
             ctrl.Dock = DockStyle.Fill;
+        }
+
+        private void nbiTimesCard_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            pnlMain.Controls.Clear();
+            CtrlTimesCardManagement ctrl = new CtrlTimesCardManagement();
+            pnlMain.Controls.Add(ctrl);
+            ctrl.Dock = DockStyle.Fill;
+        }
+
+        private void nbiLecture_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+
+        }
+
+        private void nbiOneTimeExperience_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+
         }
 
         private void nbiMedium_LinkClicked(object sender, NavBarLinkEventArgs e)

@@ -42,7 +42,7 @@ namespace MM.UI.Controls
                 ITutorMgr tutorMgr = new ContainerBootstrapper().ChildContainer.Resolve<ITutorMgr>();
                 Tutor tutor = form.Tutor;
                 tutorMgr.Create(tutor.Name, tutor.Gender, tutor.PhoneNumber, tutor.Address, tutor.IsManager);
-                XtraMessageBox.Show("成功地新建国教师用户！\n\n默认密码为\"password\"");
+                XtraMessageBox.Show("成功地新建了教师用户！\n\n默认密码为\"password\"");
                 LoadTutors();
             }
         }

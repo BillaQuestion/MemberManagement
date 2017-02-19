@@ -44,6 +44,7 @@
             this.nbiTimesCard = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiLecture = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiOneTimeExperience = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiMedium = new DevExpress.XtraNavBar.NavBarItem();
             this.pnlMain = new DevExpress.XtraEditors.PanelControl();
             this.picBox背景 = new System.Windows.Forms.PictureBox();
             this.imageCollection = new DevExpress.Utils.ImageCollection(this.components);
@@ -90,7 +91,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.nbiMedium = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -243,25 +243,35 @@
             this.nbiTutor.LargeImageIndex = 2;
             this.nbiTutor.Name = "nbiTutor";
             this.nbiTutor.SmallImageIndex = 3;
-            this.nbiTutor.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiManagement_LinkClicked);
+            this.nbiTutor.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiTutor_LinkClicked);
             // 
             // nbiTimesCard
             // 
             this.nbiTimesCard.Caption = "次卡管理";
             this.nbiTimesCard.LargeImageIndex = 6;
             this.nbiTimesCard.Name = "nbiTimesCard";
+            this.nbiTimesCard.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiTimesCard_LinkClicked);
             // 
             // nbiLecture
             // 
             this.nbiLecture.Caption = "课程管理";
             this.nbiLecture.LargeImageIndex = 4;
             this.nbiLecture.Name = "nbiLecture";
+            this.nbiLecture.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiLecture_LinkClicked);
             // 
             // nbiOneTimeExperience
             // 
             this.nbiOneTimeExperience.Caption = "体验产品管理";
             this.nbiOneTimeExperience.LargeImageIndex = 11;
             this.nbiOneTimeExperience.Name = "nbiOneTimeExperience";
+            this.nbiOneTimeExperience.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiOneTimeExperience_LinkClicked);
+            // 
+            // nbiMedium
+            // 
+            this.nbiMedium.Caption = "介质管理";
+            this.nbiMedium.LargeImageIndex = 1;
+            this.nbiMedium.Name = "nbiMedium";
+            this.nbiMedium.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMedium_LinkClicked);
             // 
             // pnlMain
             // 
@@ -688,13 +698,6 @@
             this.barButtonItem3.Caption = "barButtonItem3";
             this.barButtonItem3.Id = 31;
             this.barButtonItem3.Name = "barButtonItem3";
-            // 
-            // nbiMedium
-            // 
-            this.nbiMedium.Caption = "介质管理";
-            this.nbiMedium.LargeImageIndex = 1;
-            this.nbiMedium.Name = "nbiMedium";
-            this.nbiMedium.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiMedium_LinkClicked);
             // 
             // FrmNavigator
             // 

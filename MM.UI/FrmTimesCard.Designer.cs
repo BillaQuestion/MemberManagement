@@ -37,10 +37,10 @@
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.txtPrice = new DevExpress.XtraEditors.TextEdit();
             this.lkuMedium = new DevExpress.XtraEditors.LookUpEdit();
+            this.bindingSourceMediums = new System.Windows.Forms.BindingSource(this.components);
             this.txtCount = new DevExpress.XtraEditors.TextEdit();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.bindingSourceMediums = new System.Windows.Forms.BindingSource(this.components);
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             countLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
@@ -50,14 +50,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkuMedium.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMediums)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bindingSourceProduct
-            // 
-            this.bindingSourceProduct.DataSource = typeof(MM.Model.TimesCard);
             // 
             // countLabel
             // 
@@ -77,14 +73,6 @@
             nameLabel.TabIndex = 0;
             nameLabel.Text = "名  称：";
             // 
-            // txtName
-            // 
-            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Name", true));
-            this.txtName.Location = new System.Drawing.Point(168, 75);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(402, 36);
-            this.txtName.TabIndex = 1;
-            // 
             // priceLabel
             // 
             priceLabel.AutoSize = true;
@@ -93,14 +81,6 @@
             priceLabel.Size = new System.Drawing.Size(106, 24);
             priceLabel.TabIndex = 6;
             priceLabel.Text = "价  格：";
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Price", true));
-            this.txtPrice.Location = new System.Drawing.Point(168, 269);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(402, 36);
-            this.txtPrice.TabIndex = 7;
             // 
             // mediumLabel
             // 
@@ -111,9 +91,29 @@
             mediumLabel.TabIndex = 4;
             mediumLabel.Text = "介  质：";
             // 
+            // bindingSourceProduct
+            // 
+            this.bindingSourceProduct.DataSource = typeof(MM.Model.TimesCard);
+            // 
+            // txtName
+            // 
+            this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Name", true));
+            this.txtName.Location = new System.Drawing.Point(168, 75);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(402, 36);
+            this.txtName.TabIndex = 1;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Price", true));
+            this.txtPrice.Location = new System.Drawing.Point(168, 269);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(402, 36);
+            this.txtPrice.TabIndex = 7;
+            // 
             // lkuMedium
             // 
-            this.lkuMedium.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Medium", true));
+            this.lkuMedium.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "MediumId", true));
             this.lkuMedium.Location = new System.Drawing.Point(168, 206);
             this.lkuMedium.Name = "lkuMedium";
             this.lkuMedium.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -128,6 +128,10 @@
             this.lkuMedium.Properties.ValueMember = "Id";
             this.lkuMedium.Size = new System.Drawing.Size(402, 36);
             this.lkuMedium.TabIndex = 5;
+            // 
+            // bindingSourceMediums
+            // 
+            this.bindingSourceMediums.DataSource = typeof(MM.Model.Medium);
             // 
             // txtCount
             // 
@@ -154,10 +158,6 @@
             this.btnCancel.Size = new System.Drawing.Size(118, 40);
             this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "取消";
-            // 
-            // bindingSourceMediums
-            // 
-            this.bindingSourceMediums.DataSource = typeof(MM.Model.Medium);
             // 
             // errorProvider
             // 
@@ -192,8 +192,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkuMedium.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMediums)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

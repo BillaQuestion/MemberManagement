@@ -2,6 +2,7 @@
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MM.Business
 {
@@ -45,7 +46,7 @@ namespace MM.Business
         /// </summary>
         IEnumerable<Medium> IMediumMgr.GetAll()
         {
-            return _mediumRepository.GetAll();
+            return _mediumRepository.GetAll().ToList();
         }
 
         /// <summary>

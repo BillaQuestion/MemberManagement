@@ -65,6 +65,7 @@ namespace MM.UI
             container.RegisterType<IMemberMgr, MemberMgr>();
             container.RegisterType<IProductMgr, ProductMgr>();
             container.RegisterType<IPurchaseMgr, PurchaseMgr>();
+            container.RegisterType<IMediumMgr, MediumMgr>();
 
             container.RegisterType<IAuthenticator, StudioService>();
             container.RegisterType<IStudioService, StudioService>();

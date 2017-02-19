@@ -45,6 +45,8 @@
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMedium = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMediumId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEditMedium = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.bindingSourceMediums = new System.Windows.Forms.BindingSource(this.components);
             this.colCount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,6 +54,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditMedium)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMediums)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager
@@ -148,6 +152,8 @@
             this.grdCtrlProducts.MainView = this.gridViewProducts;
             this.grdCtrlProducts.MenuManager = this.barManager;
             this.grdCtrlProducts.Name = "grdCtrlProducts";
+            this.grdCtrlProducts.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEditMedium});
             this.grdCtrlProducts.Size = new System.Drawing.Size(1145, 1049);
             this.grdCtrlProducts.TabIndex = 5;
             this.grdCtrlProducts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -182,23 +188,45 @@
             this.colName.Caption = "产品名称";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
+            this.colName.OptionsColumn.AllowFocus = false;
             this.colName.Visible = true;
             this.colName.VisibleIndex = 0;
-            this.colName.Width = 995;
+            this.colName.Width = 1057;
             // 
             // colMedium
             // 
-            this.colMedium.Caption = "介质";
             this.colMedium.FieldName = "Medium";
             this.colMedium.Name = "colMedium";
-            this.colMedium.Visible = true;
-            this.colMedium.VisibleIndex = 1;
+            this.colMedium.OptionsColumn.AllowFocus = false;
             this.colMedium.Width = 522;
             // 
             // colMediumId
             // 
+            this.colMediumId.AppearanceCell.Options.UseTextOptions = true;
+            this.colMediumId.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colMediumId.Caption = "介质";
+            this.colMediumId.ColumnEdit = this.repositoryItemLookUpEditMedium;
             this.colMediumId.FieldName = "MediumId";
             this.colMediumId.Name = "colMediumId";
+            this.colMediumId.OptionsColumn.AllowFocus = false;
+            this.colMediumId.Visible = true;
+            this.colMediumId.VisibleIndex = 1;
+            this.colMediumId.Width = 465;
+            // 
+            // repositoryItemLookUpEditMedium
+            // 
+            this.repositoryItemLookUpEditMedium.AutoHeight = false;
+            this.repositoryItemLookUpEditMedium.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEditMedium.DataSource = this.bindingSourceMediums;
+            this.repositoryItemLookUpEditMedium.DisplayMember = "Name";
+            this.repositoryItemLookUpEditMedium.Name = "repositoryItemLookUpEditMedium";
+            this.repositoryItemLookUpEditMedium.NullText = "";
+            this.repositoryItemLookUpEditMedium.ValueMember = "Id";
+            // 
+            // bindingSourceMediums
+            // 
+            this.bindingSourceMediums.DataSource = typeof(MM.Model.Medium);
             // 
             // colCount
             // 
@@ -207,9 +235,10 @@
             this.colCount.Caption = "次数";
             this.colCount.FieldName = "Count";
             this.colCount.Name = "colCount";
+            this.colCount.OptionsColumn.AllowFocus = false;
             this.colCount.Visible = true;
             this.colCount.VisibleIndex = 2;
-            this.colCount.Width = 459;
+            this.colCount.Width = 454;
             // 
             // colPrice
             // 
@@ -217,6 +246,7 @@
             this.colPrice.DisplayFormat.FormatString = "0.00";
             this.colPrice.FieldName = "Price";
             this.colPrice.Name = "colPrice";
+            this.colPrice.OptionsColumn.AllowFocus = false;
             this.colPrice.Visible = true;
             this.colPrice.VisibleIndex = 3;
             this.colPrice.Width = 454;
@@ -244,6 +274,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEditMedium)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMediums)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,5 +302,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCount;
         private DevExpress.XtraGrid.Columns.GridColumn colPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditMedium;
+        private System.Windows.Forms.BindingSource bindingSourceMediums;
     }
 }
