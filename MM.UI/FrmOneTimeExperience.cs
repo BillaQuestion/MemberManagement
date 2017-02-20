@@ -1,10 +1,12 @@
-﻿using Microsoft.Practices.Unity;
+﻿using DevExpress.XtraEditors;
+using Microsoft.Practices.Unity;
 using MM.Business;
 using MM.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace MM.UI
@@ -32,6 +34,10 @@ namespace MM.UI
             var mediums = new ContainerBootstrapper().ChildContainer.Resolve<IMediumMgr>().GetAll();
             bindingSourceMediums.DataSource = mediums;
             bindingSourceProduct.DataSource = _product;
+
+            txtName.Validated += ValidatedHandler;
+            lkuMedium.Validated += ValidatedHandler;
+            txtPrice.Validated += ValidatedHandler;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -46,17 +52,31 @@ namespace MM.UI
                 DialogResult = DialogResult.OK;
             else
             {
-                foreach (var result in results)
+                XtraMessageBox.Show("请先完善数据！");
+            }
+        }
+
+        private void ValidatedHandler(object sender, EventArgs e)
+        {
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(_product,
+                new ValidationContext(_product),
+                results);
+
+            if (isValid)
+            {
+                errorProvider.SetError((sender as Control), string.Empty);
+                return;
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (Binding binding in (sender as Control).DataBindings)
                 {
-                    if (result.MemberNames.Contains("Name"))
-                    {
-                        errorProvider.SetError(txtName, result.ErrorMessage);
-                    }
-                    if (result.MemberNames.Contains("Medium") || result.MemberNames.Contains("MediumId"))
-                    {
-                        errorProvider.SetError(lkuMedium, result.ErrorMessage);
-                    }
+                    sb.Append(string.Join(",", results.Where(o => o.MemberNames.Contains(binding.BindingMemberInfo.BindingField))
+                        .Select(o => o.ErrorMessage)));
                 }
+                errorProvider.SetError((sender as Control), sb.ToString());
             }
         }
     }

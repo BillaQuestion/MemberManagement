@@ -2,6 +2,7 @@
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace MM.Business
@@ -19,6 +20,13 @@ namespace MM.Business
         /// </summary>
         void IMediumMgr.Save(Medium medium)
         {
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(medium,
+                new ValidationContext(medium),
+                results);
+            if (isValid)
+                throw new ArgumentException("介质数据不合法！");
+
             if (medium.IsTransient())
             {
                 medium.GenerateNewIdentity();

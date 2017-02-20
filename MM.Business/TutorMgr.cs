@@ -4,6 +4,7 @@ using MM.Model.Enums;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Permissions;
 
@@ -35,6 +36,13 @@ namespace MM.Business
                 Address = address,
                 IsManager = isManager
             };
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(tutor,
+                new ValidationContext(tutor),
+                results);
+            if (isValid)
+                throw new ArgumentException("教师数据不合法！");
+
             tutor.SetPassword("password");
 
             tutor.GenerateNewIdentity();

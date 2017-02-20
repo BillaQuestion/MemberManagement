@@ -3,6 +3,7 @@ using MM.Model.Exceptions;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MM.Business
 {
@@ -35,6 +36,13 @@ namespace MM.Business
         /// </summary>
         void IProductMgr.Save(Product product)
         {
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(product,
+                new ValidationContext(product),
+                results);
+            if (isValid)
+                throw new ArgumentException("产品数据不合法！");
+
             if (product.IsTransient())
             {
                 product.GenerateNewIdentity();

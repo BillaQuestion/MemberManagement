@@ -5,6 +5,7 @@ using MM.Model.Enums;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,13 @@ namespace MM.Business
         /// </summary>
         public void Save(Member member)
         {
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(member,
+                new ValidationContext(member),
+                results);
+            if (isValid)
+                throw new ArgumentException("会员数据不合法！");
+
             if (member.IsTransient())
             {
                 member.GenerateNewIdentity();

@@ -89,7 +89,7 @@
             // 
             this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Name", true));
             this.txtName.Location = new System.Drawing.Point(84, 38);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(201, 20);
             this.txtName.TabIndex = 1;
@@ -98,7 +98,7 @@
             // 
             this.txtPrice.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Price", true));
             this.txtPrice.Location = new System.Drawing.Point(84, 102);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(201, 20);
             this.txtPrice.TabIndex = 7;
@@ -107,7 +107,7 @@
             // 
             this.lkuMedium.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "MediumId", true));
             this.lkuMedium.Location = new System.Drawing.Point(84, 71);
-            this.lkuMedium.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lkuMedium.Margin = new System.Windows.Forms.Padding(2);
             this.lkuMedium.Name = "lkuMedium";
             this.lkuMedium.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -129,7 +129,7 @@
             // btnOk
             // 
             this.btnOk.Location = new System.Drawing.Point(93, 144);
-            this.btnOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(2);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(59, 20);
             this.btnOk.TabIndex = 8;
@@ -140,7 +140,7 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(189, 144);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(59, 20);
             this.btnCancel.TabIndex = 9;
@@ -166,7 +166,7 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(priceLabel);
             this.Controls.Add(this.txtPrice);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmOneTimeExperience";

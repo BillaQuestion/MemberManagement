@@ -35,7 +35,7 @@ namespace MM.Model
                 validateResults.Add(new ValidationResult("产品名称必须赋值！", new string[] { "Name" }));
             
             if (Medium == null && MediumId == Guid.Empty)
-                validateResults.Add(new ValidationResult("介质必须赋值！", new string[] { "Medium" }));
+                validateResults.Add(new ValidationResult("介质必须赋值！", new string[] { "Medium", "MediumId" }));
 
             return validateResults;
         }

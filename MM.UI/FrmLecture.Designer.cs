@@ -43,7 +43,7 @@
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.descriptionMemoEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.metDescription = new DevExpress.XtraEditors.MemoEdit();
             countLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             priceLabel = new System.Windows.Forms.Label();
@@ -56,48 +56,58 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMediums)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.descriptionMemoEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metDescription.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // countLabel
             // 
             countLabel.AutoSize = true;
-            countLabel.Location = new System.Drawing.Point(298, 43);
-            countLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            countLabel.Location = new System.Drawing.Point(596, 86);
+            countLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             countLabel.Name = "countLabel";
-            countLabel.Size = new System.Drawing.Size(53, 12);
+            countLabel.Size = new System.Drawing.Size(106, 24);
             countLabel.TabIndex = 2;
             countLabel.Text = "次  数：";
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(28, 40);
-            nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            nameLabel.Location = new System.Drawing.Point(56, 80);
+            nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(53, 12);
+            nameLabel.Size = new System.Drawing.Size(106, 24);
             nameLabel.TabIndex = 0;
             nameLabel.Text = "名  称：";
             // 
             // priceLabel
             // 
             priceLabel.AutoSize = true;
-            priceLabel.Location = new System.Drawing.Point(299, 73);
-            priceLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            priceLabel.Location = new System.Drawing.Point(598, 146);
+            priceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             priceLabel.Name = "priceLabel";
-            priceLabel.Size = new System.Drawing.Size(53, 12);
+            priceLabel.Size = new System.Drawing.Size(106, 24);
             priceLabel.TabIndex = 6;
             priceLabel.Text = "价  格：";
             // 
             // mediumLabel
             // 
             mediumLabel.AutoSize = true;
-            mediumLabel.Location = new System.Drawing.Point(28, 74);
-            mediumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            mediumLabel.Location = new System.Drawing.Point(56, 148);
+            mediumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             mediumLabel.Name = "mediumLabel";
-            mediumLabel.Size = new System.Drawing.Size(53, 12);
+            mediumLabel.Size = new System.Drawing.Size(106, 24);
             mediumLabel.TabIndex = 4;
             mediumLabel.Text = "介  质：";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.AutoSize = true;
+            descriptionLabel.Location = new System.Drawing.Point(32, 226);
+            descriptionLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new System.Drawing.Size(130, 24);
+            descriptionLabel.TabIndex = 8;
+            descriptionLabel.Text = "课程说明：";
             // 
             // bindingSourceProduct
             // 
@@ -106,26 +116,26 @@
             // txtName
             // 
             this.txtName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Name", true));
-            this.txtName.Location = new System.Drawing.Point(84, 38);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtName.Location = new System.Drawing.Point(168, 76);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(187, 20);
+            this.txtName.Size = new System.Drawing.Size(374, 36);
             this.txtName.TabIndex = 1;
             // 
             // txtPrice
             // 
             this.txtPrice.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Price", true));
-            this.txtPrice.Location = new System.Drawing.Point(355, 71);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrice.Location = new System.Drawing.Point(710, 142);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(104, 20);
+            this.txtPrice.Size = new System.Drawing.Size(208, 36);
             this.txtPrice.TabIndex = 7;
             // 
             // lkuMedium
             // 
             this.lkuMedium.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "MediumId", true));
-            this.lkuMedium.Location = new System.Drawing.Point(84, 71);
-            this.lkuMedium.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lkuMedium.Location = new System.Drawing.Point(168, 142);
+            this.lkuMedium.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lkuMedium.Name = "lkuMedium";
             this.lkuMedium.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -137,7 +147,7 @@
             this.lkuMedium.Properties.ShowFooter = false;
             this.lkuMedium.Properties.ShowHeader = false;
             this.lkuMedium.Properties.ValueMember = "Id";
-            this.lkuMedium.Size = new System.Drawing.Size(187, 20);
+            this.lkuMedium.Size = new System.Drawing.Size(374, 36);
             this.lkuMedium.TabIndex = 5;
             // 
             // bindingSourceMediums
@@ -147,18 +157,18 @@
             // txtCount
             // 
             this.txtCount.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Count", true));
-            this.txtCount.Location = new System.Drawing.Point(355, 38);
-            this.txtCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCount.Location = new System.Drawing.Point(710, 76);
+            this.txtCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCount.Name = "txtCount";
-            this.txtCount.Size = new System.Drawing.Size(104, 20);
+            this.txtCount.Size = new System.Drawing.Size(208, 36);
             this.txtCount.TabIndex = 3;
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(175, 246);
-            this.btnOk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOk.Location = new System.Drawing.Point(350, 492);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(59, 20);
+            this.btnOk.Size = new System.Drawing.Size(118, 40);
             this.btnOk.TabIndex = 10;
             this.btnOk.Text = "确定";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -166,10 +176,10 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(271, 246);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Location = new System.Drawing.Point(542, 492);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(59, 20);
+            this.btnCancel.Size = new System.Drawing.Size(118, 40);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "取消";
             // 
@@ -177,33 +187,25 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // descriptionLabel
+            // metDescription
             // 
-            descriptionLabel.AutoSize = true;
-            descriptionLabel.Location = new System.Drawing.Point(16, 113);
-            descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(65, 12);
-            descriptionLabel.TabIndex = 8;
-            descriptionLabel.Text = "课程说明：";
-            // 
-            // descriptionMemoEdit
-            // 
-            this.descriptionMemoEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Description", true));
-            this.descriptionMemoEdit.Location = new System.Drawing.Point(84, 109);
-            this.descriptionMemoEdit.Name = "descriptionMemoEdit";
-            this.descriptionMemoEdit.Size = new System.Drawing.Size(375, 123);
-            this.descriptionMemoEdit.TabIndex = 9;
+            this.metDescription.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceProduct, "Description", true));
+            this.metDescription.Location = new System.Drawing.Point(168, 218);
+            this.metDescription.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.metDescription.Name = "metDescription";
+            this.metDescription.Size = new System.Drawing.Size(750, 246);
+            this.metDescription.TabIndex = 9;
             // 
             // FrmLecture
             // 
             this.AcceptButton = this.btnOk;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(486, 285);
+            this.ClientSize = new System.Drawing.Size(972, 570);
             this.ControlBox = false;
             this.Controls.Add(descriptionLabel);
-            this.Controls.Add(this.descriptionMemoEdit);
+            this.Controls.Add(this.metDescription);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtCount);
@@ -215,7 +217,7 @@
             this.Controls.Add(priceLabel);
             this.Controls.Add(this.txtPrice);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmLecture";
@@ -230,7 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMediums)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.descriptionMemoEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metDescription.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +249,6 @@
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private System.Windows.Forms.BindingSource bindingSourceMediums;
         private System.Windows.Forms.ErrorProvider errorProvider;
-        private DevExpress.XtraEditors.MemoEdit descriptionMemoEdit;
+        private DevExpress.XtraEditors.MemoEdit metDescription;
     }
 }
