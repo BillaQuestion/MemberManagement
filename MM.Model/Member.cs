@@ -32,6 +32,10 @@ namespace MM.Model
                     _balances = new HashSet<Balance>();
                 return _balances;
             }
+            set
+            {
+                _balances = new HashSet<Balance>(value);
+            }
         }
         #endregion
 

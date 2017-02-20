@@ -37,7 +37,7 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.navMenu = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbiSell = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiSellOneTimeExperience = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiConsume = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiTutor = new DevExpress.XtraNavBar.NavBarItem();
@@ -91,6 +91,8 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.nbiSellTimesCard = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiSellLecture = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -156,18 +158,20 @@
             // panelControl1
             // 
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 63);
+            this.panelControl1.Location = new System.Drawing.Point(0, 120);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(6);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(972, 77);
+            this.panelControl1.Size = new System.Drawing.Size(1805, 10);
             this.panelControl1.TabIndex = 16;
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.navMenu);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl2.Location = new System.Drawing.Point(0, 140);
+            this.panelControl2.Location = new System.Drawing.Point(0, 130);
+            this.panelControl2.Margin = new System.Windows.Forms.Padding(6);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(150, 387);
+            this.panelControl2.Size = new System.Drawing.Size(279, 968);
             this.panelControl2.TabIndex = 17;
             // 
             // navMenu
@@ -179,19 +183,22 @@
             this.navBarGroup1,
             this.navBarGroup2});
             this.navMenu.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.nbiSell,
+            this.nbiSellOneTimeExperience,
             this.nbiConsume,
             this.nbiTutor,
             this.nbiTimesCard,
             this.nbiLecture,
             this.nbiOneTimeExperience,
-            this.nbiMedium});
+            this.nbiMedium,
+            this.nbiSellTimesCard,
+            this.nbiSellLecture});
             this.navMenu.LargeImages = this.imageListNav;
-            this.navMenu.Location = new System.Drawing.Point(2, 2);
+            this.navMenu.Location = new System.Drawing.Point(3, 3);
+            this.navMenu.Margin = new System.Windows.Forms.Padding(6);
             this.navMenu.Name = "navMenu";
             this.navMenu.NavigationPaneGroupClientHeight = 200;
-            this.navMenu.OptionsNavPane.ExpandedWidth = 146;
-            this.navMenu.Size = new System.Drawing.Size(146, 383);
+            this.navMenu.OptionsNavPane.ExpandedWidth = 273;
+            this.navMenu.Size = new System.Drawing.Size(273, 962);
             this.navMenu.SmallImages = this.imageListSmall;
             this.navMenu.TabIndex = 8;
             this.navMenu.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
@@ -202,17 +209,19 @@
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSell),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSellTimesCard),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSellLecture),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSellOneTimeExperience),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiConsume)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
-            // nbiSell
+            // nbiSellOneTimeExperience
             // 
-            this.nbiSell.Caption = "购买";
-            this.nbiSell.LargeImageIndex = 0;
-            this.nbiSell.Name = "nbiSell";
-            this.nbiSell.SmallImageIndex = 0;
-            this.nbiSell.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSell_LinkClicked);
+            this.nbiSellOneTimeExperience.Caption = "购买体验产品";
+            this.nbiSellOneTimeExperience.LargeImageIndex = 0;
+            this.nbiSellOneTimeExperience.Name = "nbiSellOneTimeExperience";
+            this.nbiSellOneTimeExperience.SmallImageIndex = 0;
+            this.nbiSellOneTimeExperience.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellOneTimeExperience_LinkClicked);
             // 
             // nbiConsume
             // 
@@ -274,9 +283,10 @@
             // 
             this.pnlMain.Controls.Add(this.picBox背景);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(150, 140);
+            this.pnlMain.Location = new System.Drawing.Point(279, 130);
+            this.pnlMain.Margin = new System.Windows.Forms.Padding(6);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(822, 387);
+            this.pnlMain.Size = new System.Drawing.Size(1526, 968);
             this.pnlMain.TabIndex = 18;
             // 
             // picBox背景
@@ -287,9 +297,10 @@
             this.picBox背景.ErrorImage = null;
             this.picBox背景.Image = ((System.Drawing.Image)(resources.GetObject("picBox背景.Image")));
             this.picBox背景.InitialImage = null;
-            this.picBox背景.Location = new System.Drawing.Point(2, 2);
+            this.picBox背景.Location = new System.Drawing.Point(3, 3);
+            this.picBox背景.Margin = new System.Windows.Forms.Padding(6);
             this.picBox背景.Name = "picBox背景";
-            this.picBox背景.Size = new System.Drawing.Size(818, 383);
+            this.picBox背景.Size = new System.Drawing.Size(1520, 962);
             this.picBox背景.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBox背景.TabIndex = 16;
             this.picBox背景.TabStop = false;
@@ -612,28 +623,32 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(972, 63);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(6);
+            this.barDockControlTop.Size = new System.Drawing.Size(1805, 120);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 527);
-            this.barDockControlBottom.Size = new System.Drawing.Size(972, 27);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1098);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(6);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1805, 50);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 63);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 464);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 120);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(6);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 978);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(972, 63);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 464);
+            this.barDockControlRight.Location = new System.Drawing.Point(1805, 120);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 978);
             // 
             // barButtonItem5
             // 
@@ -690,15 +705,29 @@
             this.barButtonItem3.Id = 31;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
+            // nbiSellTimesCard
+            // 
+            this.nbiSellTimesCard.Caption = "购买次卡";
+            this.nbiSellTimesCard.LargeImageIndex = 2;
+            this.nbiSellTimesCard.Name = "nbiSellTimesCard";
+            this.nbiSellTimesCard.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellTimesCard_LinkClicked);
+            // 
+            // nbiSellLecture
+            // 
+            this.nbiSellLecture.Caption = "购买课程";
+            this.nbiSellLecture.LargeImageIndex = 5;
+            this.nbiSellLecture.Name = "nbiSellLecture";
+            this.nbiSellLecture.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellLecture_LinkClicked);
+            // 
             // FrmNavigator
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(700, 500);
-            this.ClientSize = new System.Drawing.Size(972, 554);
+            this.ClientSize = new System.Drawing.Size(1805, 1148);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -707,6 +736,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmNavigator";
             this.Text = "印象色彩CMS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -734,7 +764,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         public DevExpress.XtraNavBar.NavBarControl navMenu;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
-        private DevExpress.XtraNavBar.NavBarItem nbiSell;
+        private DevExpress.XtraNavBar.NavBarItem nbiSellOneTimeExperience;
         private DevExpress.XtraNavBar.NavBarItem nbiConsume;
         private DevExpress.XtraNavBar.NavBarItem nbiTutor;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
@@ -788,6 +818,8 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraNavBar.NavBarItem nbiMedium;
+        private DevExpress.XtraNavBar.NavBarItem nbiSellTimesCard;
+        private DevExpress.XtraNavBar.NavBarItem nbiSellLecture;
     }
 }
 

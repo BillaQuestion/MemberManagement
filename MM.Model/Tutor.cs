@@ -53,7 +53,7 @@ namespace MM.Model
             };
 
             // 2、增加会员的产品余额
-            balance = member.Balances.FirstOrDefault(x => x.Product.Name == product.Name);
+            balance = member.Balances.FirstOrDefault(x => x.MemberProductId == product.Id);
             if (balance == null)
             {
                 balance = new Balance()

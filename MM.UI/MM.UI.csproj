@@ -156,6 +156,12 @@
     <Compile Include="FrmOneTimeExperience.Designer.cs">
       <DependentUpon>FrmOneTimeExperience.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTimesCardPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTimesCardPurchase.Designer.cs">
+      <DependentUpon>FrmTimesCardPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTimesCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,9 @@
     <EmbeddedResource Include="FrmOneTimeExperience.resx">
       <DependentUpon>FrmOneTimeExperience.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmTimesCardPurchase.resx">
+      <DependentUpon>FrmTimesCardPurchase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTimesCard.resx">
       <DependentUpon>FrmTimesCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,10 +231,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MM.Model.Consumption.datasource" />
     <None Include="Properties\DataSources\MM.Model.Lecture.datasource" />
     <None Include="Properties\DataSources\MM.Model.Medium.datasource" />
+    <None Include="Properties\DataSources\MM.Model.MemberPurchase.datasource" />
     <None Include="Properties\DataSources\MM.Model.OneTimeExperience.datasource" />
     <None Include="Properties\DataSources\MM.Model.Product.datasource" />
+    <None Include="Properties\DataSources\MM.Model.Purchase.datasource" />
     <None Include="Properties\DataSources\MM.Model.TimesCard.datasource" />
     <None Include="Properties\DataSources\MM.Model.Tutor.datasource" />
     <None Include="Properties\Settings.settings">

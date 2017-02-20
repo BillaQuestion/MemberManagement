@@ -20,9 +20,8 @@ namespace MM.Business
         /// </summary>
         /// <param name="phoneNumber">手机号码</param>
         /// <returns>会员对象</returns>
-        Member FindByPhoneNumber(string phoneNumber);
+        Member GetByPhoneNumber(string phoneNumber);
 
-        Member Get(string phoneNumber);
         IEnumerable<Member> GetAll();
         void Modify(Member member);
         void Remove(Guid memberId);

@@ -58,24 +58,18 @@ namespace MM.Business
             _memberRepository.UnitOfWork.Commit();
         }
 
-        /// <summary>
-        /// 根据手机号码查找会员
-        /// </summary>
-        /// <param name="phoneNumber">手机号码</param>
-        /// <returns>会员对象</returns>
-        public Member FindByPhoneNumber(string phoneNumber)
-        {
-            ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == phoneNumber);
-            return _memberRepository.FindBySpecification(spec).FirstOrDefault();
-        }
-
-
         IEnumerable<Member> IMemberMgr.GetAll()
         {
             return _memberRepository.GetAll();
         }
 
-        Member IMemberMgr.Get(string phoneNumber)
+
+        /// <summary>
+        /// 根据手机号码查找会员
+        /// </summary>
+        /// <param name="phoneNumber">手机号码</param>
+         /// <returns>会员对象</returns>
+       Member IMemberMgr.GetByPhoneNumber(string phoneNumber)
         {
             ISpecification<Member> spec = new DirectSpecification<Member>(m => m.PhoneNumber == phoneNumber);
             return _memberRepository.FindBySpecification(spec).FirstOrDefault();

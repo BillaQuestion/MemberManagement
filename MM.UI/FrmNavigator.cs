@@ -27,7 +27,18 @@ namespace MM.UI
         {
         }
 
-        private void nbiSell_LinkClicked(object sender, NavBarLinkEventArgs e)
+        private void nbiSellTimesCard_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+            FrmTimesCardPurchase form = new UI.FrmTimesCardPurchase();
+            form.ShowDialog();
+        }
+
+        private void nbiSellLecture_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+
+        }
+
+        private void nbiSellOneTimeExperience_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
 
         }

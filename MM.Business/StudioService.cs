@@ -70,13 +70,13 @@ namespace MM.Business
         /// <summary>
         /// 销售产品
         /// </summary>
-        /// <param name="tutorId">教师Id</param>
+        /// <param name="tutorName">教师姓名</param>
         /// <param name="productId">产品Id</param>
         /// <param name="customerName">顾客姓名</param>
         /// <param name="phoneNumber">顾客手机号码</param>
-        public void Sell(Guid tutorId, Guid productId, string customerName, string phoneNumber)
+        public void Sell(string tutorName, Guid productId, string customerName, string phoneNumber)
         {
-            var tutor = _tutorMgr.GetById(tutorId);
+            var tutor = _tutorMgr.GetByName(tutorName);
             var product = _productMgr.GetById(productId);
             //if (product is OneTimeExperience)
             //    throw new 
@@ -87,7 +87,7 @@ namespace MM.Business
                 Member member = null;
                 if (product is MemberProduct)
                 {
-                    member = _memberMgr.FindByPhoneNumber(phoneNumber);
+                    member = _memberMgr.GetByPhoneNumber(phoneNumber);
                     if (member == null)
                     {
                         member = new Member()
@@ -98,8 +98,9 @@ namespace MM.Business
                     }
                     var balance = new Balance();
                     purchase = tutor.Sell((MemberProduct)product, member, out balance);
-                    _memberMgr.Save(member);
                     _balanceMgr.Save(balance);
+                    _memberMgr.Save(member);
+                    _purchaseMgr.Save(purchase);
                 }
                 scope.Complete();
             }
@@ -108,11 +109,11 @@ namespace MM.Business
         /// <summary>
         /// 销售产品
         /// </summary>
-        /// <param name="tutorId">教师Id</param>
+        /// <param name="tutorName">教师姓名</param>
         /// <param name="productId">产品Id</param>
-        void IStudioService.Sell(Guid tutorId, Guid productId)
+        void IStudioService.Sell(string tutorName, Guid productId)
         {
-            var tutor = _tutorMgr.GetById(tutorId);
+            var tutor = _tutorMgr.GetByName(tutorName);
             var product = _productMgr.GetById(productId);
             if (product is MemberProduct)
                 throw new ArgumentException("调用方法错误：需要会员信息");
@@ -146,7 +147,7 @@ namespace MM.Business
         /// <param name="memberPhoneNumber">会员电话号码</param>
         void IStudioService.TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
         {
-            var member = _memberMgr.FindByPhoneNumber(memberPhoneNumber);
+            var member = _memberMgr.GetByPhoneNumber(memberPhoneNumber);
             if (member == null)
                 throw new MemberNotExistException("会员不存在！");
 
