@@ -15,12 +15,10 @@ namespace MM.Business
     public class MemberMgr : IMemberMgr
     {
         IMemberRepository _memberRepository;
-        IBalanceRepository _balanceRepository;
 
-        public MemberMgr(IMemberRepository memberRepository, IBalanceRepository balanceRepository)
+        public MemberMgr(IMemberRepository memberRepository)
         {
             _memberRepository = memberRepository;
-            _balanceRepository = balanceRepository;
         }
 
         /// <summary>
@@ -43,16 +41,6 @@ namespace MM.Business
             else
             {
                 _memberRepository.Modify(member);
-                foreach (var balance in member.Balances)
-                {
-                    if (balance.IsTransient())
-                    {
-                        balance.GenerateNewIdentity();
-                        _balanceRepository.Add(balance);
-                    }
-                    else
-                        _balanceRepository.Modify(balance);
-                }
             }
 
             _memberRepository.UnitOfWork.Commit();
