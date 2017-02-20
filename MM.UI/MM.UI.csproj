@@ -168,7 +168,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MM.Model.Lecture.datasource" />
     <None Include="Properties\DataSources\MM.Model.Medium.datasource" />
+    <None Include="Properties\DataSources\MM.Model.OneTimeExperience.datasource" />
     <None Include="Properties\DataSources\MM.Model.Product.datasource" />
     <None Include="Properties\DataSources\MM.Model.TimesCard.datasource" />
     <None Include="Properties\DataSources\MM.Model.Tutor.datasource" />

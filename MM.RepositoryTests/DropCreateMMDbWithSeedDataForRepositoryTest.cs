@@ -23,6 +23,7 @@ namespace MM.Repository.Tests
                 Name = "水粉画基础",
                 Price = 998,
                 Count = 14,
+                Medium = medium画纸,
                 Description = "从零开始学习水粉画的基本画法"
             };
             lecture.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0001-000000000001"));
@@ -33,6 +34,7 @@ namespace MM.Repository.Tests
                 Name = "水粉画基础test",
                 Price = 998,
                 Count = 14,
+                Medium = medium画纸,
                 Description = "从零开始学习水粉画的基本画法"
             };
             lecture.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0001-000000000002"));
@@ -99,17 +101,17 @@ namespace MM.Repository.Tests
             context.TimesCards.Add(timesCard);
 
             var oneTimeExperience = new OneTimeExperience()
-                { Name = "一次性画纸", Price = 20 };
+                { Name = "一次性画纸", Price = 20, Medium = medium画纸 };
             oneTimeExperience.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0003-000000000001"));
             context.OneTimeExperiences.Add(oneTimeExperience);
 
             oneTimeExperience = new Model.OneTimeExperience()
-            { Name = "一次性画布", Price = 30 };
+            { Name = "一次性画布", Price = 30, Medium = medium画纸 };
             oneTimeExperience.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0003-000000000002"));
             context.OneTimeExperiences.Add(oneTimeExperience);
 
             oneTimeExperience = new Model.OneTimeExperience()
-            { Name = "一次性画布test", Price = 30 };
+            { Name = "一次性画布test", Price = 30, Medium = medium画纸 };
             oneTimeExperience.ChangeCurrentIdentity(Guid.Parse("00000000-0000-0001-0003-000000000003"));
             context.OneTimeExperiences.Add(oneTimeExperience);
 

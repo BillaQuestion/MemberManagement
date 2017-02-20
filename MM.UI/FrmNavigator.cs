@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
 using MM.UI.Controls;
+using MM.Model;
 
 namespace MM.UI
 {
@@ -54,12 +55,18 @@ namespace MM.UI
 
         private void nbiLecture_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-
+            pnlMain.Controls.Clear();
+            //CtrlLectureManagement ctrl = new CtrlLectureManagement();
+            //pnlMain.Controls.Add(ctrl);
+            //ctrl.Dock = DockStyle.Fill;
         }
 
         private void nbiOneTimeExperience_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-
+            pnlMain.Controls.Clear();
+            //CtrlOneTimeExperienceManagement ctrl = new CtrlOneTimeExperienceManagement();
+            //pnlMain.Controls.Add(ctrl);
+            //ctrl.Dock = DockStyle.Fill;
         }
 
         private void nbiMedium_LinkClicked(object sender, NavBarLinkEventArgs e)

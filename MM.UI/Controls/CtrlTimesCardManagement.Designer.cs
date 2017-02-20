@@ -120,41 +120,47 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1328, 58);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlTop.Size = new System.Drawing.Size(664, 31);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1116);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1328, 0);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 558);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlBottom.Size = new System.Drawing.Size(664, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 58);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1058);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 527);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1328, 58);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 1058);
+            this.barDockControlRight.Location = new System.Drawing.Point(664, 31);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 527);
             // 
             // grdCtrlProducts
             // 
             this.grdCtrlProducts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.grdCtrlProducts.DataSource = this.bindingSourceProducts;
-            this.grdCtrlProducts.Location = new System.Drawing.Point(3, 64);
+            this.grdCtrlProducts.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.grdCtrlProducts.Location = new System.Drawing.Point(2, 32);
             this.grdCtrlProducts.MainView = this.gridViewProducts;
+            this.grdCtrlProducts.Margin = new System.Windows.Forms.Padding(2);
             this.grdCtrlProducts.MenuManager = this.barManager;
             this.grdCtrlProducts.Name = "grdCtrlProducts";
             this.grdCtrlProducts.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEditMedium});
-            this.grdCtrlProducts.Size = new System.Drawing.Size(1145, 1049);
+            this.grdCtrlProducts.Size = new System.Drawing.Size(572, 524);
             this.grdCtrlProducts.TabIndex = 5;
             this.grdCtrlProducts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewProducts});
@@ -257,9 +263,9 @@
             this.colId.Name = "colId";
             this.colId.OptionsColumn.ReadOnly = true;
             // 
-            // CtrlTimesCardManagement
+            // CtrlProductManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.grdCtrlProducts);
@@ -267,8 +273,9 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "CtrlTimesCardManagement";
-            this.Size = new System.Drawing.Size(1328, 1116);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "CtrlProductManagement";
+            this.Size = new System.Drawing.Size(664, 558);
             this.Load += new System.EventHandler(this.CtrlTimesCardManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlProducts)).EndInit();
@@ -293,9 +300,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraGrid.GridControl grdCtrlProducts;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewProducts;
-        private System.Windows.Forms.BindingSource bindingSourceProducts;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colMedium;
         private DevExpress.XtraGrid.Columns.GridColumn colMediumId;
@@ -304,5 +308,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEditMedium;
         private System.Windows.Forms.BindingSource bindingSourceMediums;
+        protected System.Windows.Forms.BindingSource bindingSourceProducts;
+        public DevExpress.XtraGrid.GridControl grdCtrlProducts;
+        public DevExpress.XtraGrid.Views.Grid.GridView gridViewProducts;
     }
 }

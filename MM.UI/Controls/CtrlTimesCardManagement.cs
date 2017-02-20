@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MM.Model;
-using MM.Business;
+﻿using DevExpress.XtraEditors;
 using Microsoft.Practices.Unity;
-using DevExpress.XtraEditors;
+using MM.Business;
+using MM.Model;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace MM.UI.Controls
 {
@@ -23,6 +17,8 @@ namespace MM.UI.Controls
 
         private void CtrlTimesCardManagement_Load(object sender, EventArgs e)
         {
+            if (string.Compare(System.Diagnostics.Process.GetCurrentProcess().ProcessName, "devenv") == 0) return;
+
             var mediums = new ContainerBootstrapper().ChildContainer.Resolve<IMediumMgr>().GetAll();
             bindingSourceMediums.DataSource = mediums;
             LoadProducts();
@@ -32,7 +28,9 @@ namespace MM.UI.Controls
         {
             IProductMgr productMgr = new ContainerBootstrapper().ChildContainer.Resolve<IProductMgr>();
             bindingSourceProducts.DataSource = productMgr.GetAll().OfType<TimesCard>();
+            //bindingSourceProducts.DataSource = productMgr.GetAll().OfType<T>();
         }
+
         private void bbiAddNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             FrmTimesCard form = new FrmTimesCard();

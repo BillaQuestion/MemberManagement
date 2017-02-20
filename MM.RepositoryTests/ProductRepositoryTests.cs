@@ -105,9 +105,13 @@ namespace MM.Repository.Tests
         public void AddOneTimeExperienceTest()
         {
             Guid productId = Guid.Parse("00000000-0000-0001-0003-000000000004");
-            var productRepository = new ProductRepository(new MMContext());
+            Guid mediumId = Guid.Parse("00000000-0000-0000-0001-000000000002");
+            var context = new MMContext();
+            var productRepository = new ProductRepository(context);
+            var mediumRepository = new MediumRepository(context);
+            var medium画纸 = mediumRepository.GetByKey(mediumId);
             OneTimeExperience product = new OneTimeExperience()
-            { Name = "一次性画布Addtest", Price = 30 };
+            { Name = "一次性画布Addtest", Price = 30, Medium = medium画纸 };
             productRepository.Add(product);
             product.ChangeCurrentIdentity(productId);
             productRepository.UnitOfWork.Commit();
@@ -146,12 +150,17 @@ namespace MM.Repository.Tests
         public void AddLectureTest()
         {
             Guid productId = Guid.Parse("00000000-0000-0001-0001-000000000003");
-            var productRepository = new ProductRepository(new MMContext());
+            Guid mediumId = Guid.Parse("00000000-0000-0000-0001-000000000002");
+            var context = new MMContext();
+            var productRepository = new ProductRepository(context);
+            var mediumRepository = new MediumRepository(context);
+            var medium画纸 = mediumRepository.GetByKey(mediumId);
             Lecture product = new Lecture()
             {
                 Name = "水粉画基础test",
                 Price = 998,
                 Count = 14,
+                Medium = medium画纸,
                 Description = "从零开始学习水粉画的基本画法aa"
             };
             productRepository.Add(product);
