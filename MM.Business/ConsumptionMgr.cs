@@ -26,7 +26,7 @@ namespace MM.Business
             bool isValid = Validator.TryValidateObject(consumption,
                 new ValidationContext(consumption),
                 results);
-            if (isValid)
+            if (!isValid)
                 throw new ArgumentException("消费数据不合法！");
 
             if (consumption.IsTransient())

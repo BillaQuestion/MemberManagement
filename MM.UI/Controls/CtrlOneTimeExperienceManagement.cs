@@ -78,8 +78,8 @@ namespace MM.UI.Controls
             {
                 IProductMgr productMgr = new ContainerBootstrapper().ChildContainer.Resolve<IProductMgr>();
                 productMgr.Delete(product.Id);
-                XtraMessageBox.Show("删除成功！");
                 LoadProducts();
+                XtraMessageBox.Show("删除成功！");
             }
         }
 

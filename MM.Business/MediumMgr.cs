@@ -24,7 +24,7 @@ namespace MM.Business
             bool isValid = Validator.TryValidateObject(medium,
                 new ValidationContext(medium),
                 results);
-            if (isValid)
+            if (!isValid)
                 throw new ArgumentException("介质数据不合法！");
 
             if (medium.IsTransient())

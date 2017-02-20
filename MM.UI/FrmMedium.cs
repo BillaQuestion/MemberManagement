@@ -1,55 +1,47 @@
 ﻿using DevExpress.XtraEditors;
-using Microsoft.Practices.Unity;
-using MM.Business;
 using MM.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MM.UI
 {
-    public partial class FrmLecture : Form
+    public partial class FrmMedium : Form
     {
-        Lecture _product;
+        Medium _medium;
+        public Medium Medium { get { return _medium; } }
 
-        public Lecture Product { get { return _product; } }
-
-        public FrmLecture()
+        public FrmMedium()
         {
             InitializeComponent();
-            _product = new Lecture();
+            _medium = new Medium();
         }
 
-        public FrmLecture(Lecture product)
+        public FrmMedium(Medium medium)
         {
             InitializeComponent();
-            _product = product;
+            _medium = medium;
         }
 
-        private void FrmLecture_Load(object sender, EventArgs e)
+        private void FrmMedium_Load(object sender, EventArgs e)
         {
-            var mediums = new ContainerBootstrapper().ChildContainer.Resolve<IMediumMgr>().GetAll();
-            bindingSourceMediums.DataSource = mediums;
-            bindingSourceProduct.DataSource = _product;
-
-            txtName.Validated += ValidatedHandler;
-            txtCount.Validated += ValidatedHandler;
-            lkuMedium.Validated += ValidatedHandler;
-            txtPrice.Validated += ValidatedHandler;
-            metDescription.Validated += ValidatedHandler;
+            bindingSourceMedium.DataSource = _medium;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            bindingSourceProduct.EndEdit();
+            bindingSourceMedium.EndEdit();
 
             List<ValidationResult> results = new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(_product,
-                new ValidationContext(_product),
+            bool isValid = Validator.TryValidateObject(_medium,
+                new ValidationContext(_medium),
                 results);
             if (isValid)
                 DialogResult = DialogResult.OK;
@@ -58,11 +50,12 @@ namespace MM.UI
                 XtraMessageBox.Show("请先完善数据！");
             }
         }
+
         private void ValidatedHandler(object sender, EventArgs e)
         {
             List<ValidationResult> results = new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(_product,
-                new ValidationContext(_product),
+            bool isValid = Validator.TryValidateObject(_medium,
+                new ValidationContext(_medium),
                 results);
 
             if (isValid)

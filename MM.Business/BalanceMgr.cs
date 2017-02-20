@@ -5,6 +5,7 @@ using System.Text;
 using MM.Model;
 using MM.Model.IRepositories;
 using Dayi.Data.Domain.Seedwork.Specification;
+using System.ComponentModel.DataAnnotations;
 
 namespace MM.Business
 {
@@ -19,6 +20,13 @@ namespace MM.Business
 
         void IBalanceMgr.Save(Balance balance)
         {
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(balance,
+                new ValidationContext(balance),
+                results);
+            if (!isValid)
+                throw new ArgumentException("余额数据不合法！");
+
             if (balance.Remainder == 0)
             {
                 _balanceRepository.Remove(balance);

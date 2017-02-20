@@ -81,8 +81,8 @@ namespace MM.UI.Controls
             {
                 ITutorMgr tutorMgr = new ContainerBootstrapper().ChildContainer.Resolve<ITutorMgr>();
                 tutorMgr.Delete(tutor.Id);
-                XtraMessageBox.Show("删除成功！");
                 LoadTutors();
+                XtraMessageBox.Show("删除成功！");
             }
         }
 

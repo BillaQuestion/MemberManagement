@@ -40,7 +40,7 @@ namespace MM.Business
             bool isValid = Validator.TryValidateObject(product,
                 new ValidationContext(product),
                 results);
-            if (isValid)
+            if (!isValid)
                 throw new ArgumentException("产品数据不合法！");
 
             if (product.IsTransient())

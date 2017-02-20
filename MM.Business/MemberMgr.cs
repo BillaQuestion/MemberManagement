@@ -32,7 +32,7 @@ namespace MM.Business
             bool isValid = Validator.TryValidateObject(member,
                 new ValidationContext(member),
                 results);
-            if (isValid)
+            if (!isValid)
                 throw new ArgumentException("会员数据不合法！");
 
             if (member.IsTransient())

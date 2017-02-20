@@ -27,7 +27,7 @@ namespace MM.Business
             bool isValid = Validator.TryValidateObject(purchase,
                 new ValidationContext(purchase),
                 results);
-            if (isValid)
+            if (!isValid)
                 throw new ArgumentException("购买记录数据不合法！");
 
             if (purchase.IsTransient())

@@ -71,7 +71,10 @@ namespace MM.UI
 
         private void nbiMedium_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-
+            pnlMain.Controls.Clear();
+            CtrlMediumManagement ctrl = new CtrlMediumManagement();
+            pnlMain.Controls.Add(ctrl);
+            ctrl.Dock = DockStyle.Fill;
         }
 
         private void bbi退出系统_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -36,12 +36,7 @@ namespace MM.Business
                 Address = address,
                 IsManager = isManager
             };
-            List<ValidationResult> results = new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(tutor,
-                new ValidationContext(tutor),
-                results);
-            if (isValid)
-                throw new ArgumentException("教师数据不合法！");
+            Validate(tutor);
 
             tutor.SetPassword("password");
 
@@ -50,6 +45,19 @@ namespace MM.Business
             _tutorRepository.UnitOfWork.Commit();
 
             return tutor;
+        }
+
+        /// <summary>
+        /// 验证数据合法性
+        /// </summary>
+        private void Validate(Tutor tutor)
+        {
+            List<ValidationResult> results = new List<ValidationResult>();
+            bool isValid = Validator.TryValidateObject(tutor,
+                new ValidationContext(tutor),
+                results);
+            if (!isValid)
+                throw new ArgumentException("教师数据不合法！");
         }
 
         /// <summary>
@@ -95,6 +103,7 @@ namespace MM.Business
         [PrincipalPermission(SecurityAction.Demand, Role = "Administrator")]
         void ITutorMgr.Modify(Tutor tutor)
         {
+            Validate(tutor);
             _tutorRepository.Modify(tutor);
             _tutorRepository.UnitOfWork.Commit();
         }
