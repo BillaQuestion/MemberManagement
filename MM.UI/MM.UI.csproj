@@ -90,6 +90,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContainerBootstrapper.cs" />
+    <Compile Include="Controls\CtrlLectureManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlLectureManagement.Designer.cs">
+      <DependentUpon>CtrlLectureManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CtrlOneTimeExperienceManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlOneTimeExperienceManagement.Designer.cs">
+      <DependentUpon>CtrlOneTimeExperienceManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CtrlTimesCardManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +132,18 @@
     <Compile Include="FrmNavigator.Designer.cs">
       <DependentUpon>FrmNavigator.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLecture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLecture.Designer.cs">
+      <DependentUpon>FrmLecture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmOneTimeExperience.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOneTimeExperience.Designer.cs">
+      <DependentUpon>FrmOneTimeExperience.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTimesCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +158,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\CtrlLectureManagement.resx">
+      <DependentUpon>CtrlLectureManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrlOneTimeExperienceManagement.resx">
+      <DependentUpon>CtrlOneTimeExperienceManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CtrlTimesCardManagement.resx">
       <DependentUpon>CtrlTimesCardManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +179,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNavigator.resx">
       <DependentUpon>FrmNavigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLecture.resx">
+      <DependentUpon>FrmLecture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmOneTimeExperience.resx">
+      <DependentUpon>FrmOneTimeExperience.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTimesCard.resx">
       <DependentUpon>FrmTimesCard.cs</DependentUpon>

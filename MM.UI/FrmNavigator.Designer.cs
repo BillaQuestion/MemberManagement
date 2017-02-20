@@ -156,20 +156,18 @@
             // panelControl1
             // 
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 120);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(6);
+            this.panelControl1.Location = new System.Drawing.Point(0, 63);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1805, 160);
+            this.panelControl1.Size = new System.Drawing.Size(972, 77);
             this.panelControl1.TabIndex = 16;
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.navMenu);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControl2.Location = new System.Drawing.Point(0, 280);
-            this.panelControl2.Margin = new System.Windows.Forms.Padding(6);
+            this.panelControl2.Location = new System.Drawing.Point(0, 140);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(279, 923);
+            this.panelControl2.Size = new System.Drawing.Size(150, 387);
             this.panelControl2.TabIndex = 17;
             // 
             // navMenu
@@ -189,12 +187,11 @@
             this.nbiOneTimeExperience,
             this.nbiMedium});
             this.navMenu.LargeImages = this.imageListNav;
-            this.navMenu.Location = new System.Drawing.Point(3, 3);
-            this.navMenu.Margin = new System.Windows.Forms.Padding(6);
+            this.navMenu.Location = new System.Drawing.Point(2, 2);
             this.navMenu.Name = "navMenu";
             this.navMenu.NavigationPaneGroupClientHeight = 200;
-            this.navMenu.OptionsNavPane.ExpandedWidth = 273;
-            this.navMenu.Size = new System.Drawing.Size(273, 917);
+            this.navMenu.OptionsNavPane.ExpandedWidth = 146;
+            this.navMenu.Size = new System.Drawing.Size(146, 383);
             this.navMenu.SmallImages = this.imageListSmall;
             this.navMenu.TabIndex = 8;
             this.navMenu.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
@@ -202,6 +199,7 @@
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "我的工作";
+            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSell),
@@ -227,7 +225,6 @@
             // navBarGroup2
             // 
             this.navBarGroup2.Caption = "系统管理";
-            this.navBarGroup2.Expanded = true;
             this.navBarGroup2.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsText;
             this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiTutor),
@@ -277,10 +274,9 @@
             // 
             this.pnlMain.Controls.Add(this.picBox背景);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(279, 280);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(6);
+            this.pnlMain.Location = new System.Drawing.Point(150, 140);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1526, 923);
+            this.pnlMain.Size = new System.Drawing.Size(822, 387);
             this.pnlMain.TabIndex = 18;
             // 
             // picBox背景
@@ -291,10 +287,9 @@
             this.picBox背景.ErrorImage = null;
             this.picBox背景.Image = ((System.Drawing.Image)(resources.GetObject("picBox背景.Image")));
             this.picBox背景.InitialImage = null;
-            this.picBox背景.Location = new System.Drawing.Point(3, 3);
-            this.picBox背景.Margin = new System.Windows.Forms.Padding(6);
+            this.picBox背景.Location = new System.Drawing.Point(2, 2);
             this.picBox背景.Name = "picBox背景";
-            this.picBox背景.Size = new System.Drawing.Size(1520, 917);
+            this.picBox背景.Size = new System.Drawing.Size(818, 383);
             this.picBox背景.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picBox背景.TabIndex = 16;
             this.picBox背景.TabStop = false;
@@ -617,32 +612,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(6);
-            this.barDockControlTop.Size = new System.Drawing.Size(1805, 120);
+            this.barDockControlTop.Size = new System.Drawing.Size(972, 63);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1203);
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(6);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1805, 50);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 527);
+            this.barDockControlBottom.Size = new System.Drawing.Size(972, 27);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 120);
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(6);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1083);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 63);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 464);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1805, 120);
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 1083);
+            this.barDockControlRight.Location = new System.Drawing.Point(972, 63);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 464);
             // 
             // barButtonItem5
             // 
@@ -703,11 +694,11 @@
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(700, 500);
-            this.ClientSize = new System.Drawing.Size(1805, 1253);
+            this.ClientSize = new System.Drawing.Size(972, 554);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -716,7 +707,6 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FrmNavigator";
             this.Text = "印象色彩CMS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
