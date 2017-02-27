@@ -1,3 +1,4 @@
+
 # MemberManagement
 ## What is this?
 Well, it's a long story. Briefly, I'm currently in a group to develop a management system for a paint workshorp. <br><br>
@@ -11,3 +12,5 @@ The shopkeeper is pleasant to sale membership card in a reasonable lower price a
 * The shopkeeper would like to have ability as much as possible to change settings.
 * After finishing every lecture, tutors should add description to specific lecture of specific customer.
 * Data would be stored into database.
+
+## It is RELEASED!
