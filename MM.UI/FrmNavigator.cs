@@ -8,6 +8,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraNavBar;
 using MM.UI.Controls;
 using MM.Model;
+using System.Threading;
 
 namespace MM.UI
 {
@@ -25,6 +26,8 @@ namespace MM.UI
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            bsi当前用户.Caption = "当前用户：" + Thread.CurrentPrincipal.Identity.Name;
+            bsiLoginTime.Caption = "登录时间：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm");
         }
 
         private void nbiSellTimesCard_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -45,7 +48,12 @@ namespace MM.UI
             form.ShowDialog();
         }
 
-        private void nbiConsume_LinkClicked(object sender, NavBarLinkEventArgs e)
+        private void nbiTimesCardConsume_LinkClicked(object sender, NavBarLinkEventArgs e)
+        {
+
+        }
+
+        private void nbiLectureConsume_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
 
         }

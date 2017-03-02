@@ -21,11 +21,6 @@ namespace MM.Model
         public Guid MemberProductId { get; set; }
 
         /// <summary>
-        /// 购买价格
-        /// </summary>
-        public decimal Price { get; set; }
-
-        /// <summary>
         /// 画布介质名称
         /// </summary>
         public string MediumName { get; set; }
@@ -34,6 +29,11 @@ namespace MM.Model
         /// 总次数
         /// </summary>
         public int Count { get; set; }
+
+        /// <summary>
+        /// 购买日期
+        /// </summary>
+        public DateTime PurchaseDate { get; set; }
 
         /// <summary>
         /// 余额
@@ -46,9 +46,6 @@ namespace MM.Model
             if (Product == null && MemberProductId == Guid.Empty)
                 result.Add(new ValidationResult("必须给会员卡对象中的产品赋值！", 
                     new string[] { "MemberProduct", "MemberProductId" }));
-            if (Price == 0)
-                result.Add(new ValidationResult("必须给会员卡对象中的购买价格赋值！",
-                    new string[] { "Price" }));
             if (string.IsNullOrEmpty(MediumName))
                 result.Add(new ValidationResult("必须给会员卡对象中的介质名称赋值！",
                     new string[] { "MediumName" }));

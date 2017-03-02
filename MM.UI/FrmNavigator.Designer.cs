@@ -37,8 +37,11 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.navMenu = new DevExpress.XtraNavBar.NavBarControl();
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbiSellTimesCard = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiSellLecture = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiSellOneTimeExperience = new DevExpress.XtraNavBar.NavBarItem();
-            this.nbiConsume = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiTimesCardConsume = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiLectureConsume = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiTutor = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiTimesCard = new DevExpress.XtraNavBar.NavBarItem();
@@ -91,8 +94,6 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.nbiSellTimesCard = new DevExpress.XtraNavBar.NavBarItem();
-            this.nbiSellLecture = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -184,14 +185,15 @@
             this.navBarGroup2});
             this.navMenu.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.nbiSellOneTimeExperience,
-            this.nbiConsume,
+            this.nbiTimesCardConsume,
             this.nbiTutor,
             this.nbiTimesCard,
             this.nbiLecture,
             this.nbiOneTimeExperience,
             this.nbiMedium,
             this.nbiSellTimesCard,
-            this.nbiSellLecture});
+            this.nbiSellLecture,
+            this.nbiLectureConsume});
             this.navMenu.LargeImages = this.imageListNav;
             this.navMenu.Location = new System.Drawing.Point(3, 3);
             this.navMenu.Margin = new System.Windows.Forms.Padding(6);
@@ -212,8 +214,23 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSellTimesCard),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSellLecture),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSellOneTimeExperience),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiConsume)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiTimesCardConsume),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiLectureConsume)});
             this.navBarGroup1.Name = "navBarGroup1";
+            // 
+            // nbiSellTimesCard
+            // 
+            this.nbiSellTimesCard.Caption = "购买次卡";
+            this.nbiSellTimesCard.LargeImageIndex = 2;
+            this.nbiSellTimesCard.Name = "nbiSellTimesCard";
+            this.nbiSellTimesCard.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellTimesCard_LinkClicked);
+            // 
+            // nbiSellLecture
+            // 
+            this.nbiSellLecture.Caption = "购买课程";
+            this.nbiSellLecture.LargeImageIndex = 5;
+            this.nbiSellLecture.Name = "nbiSellLecture";
+            this.nbiSellLecture.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellLecture_LinkClicked);
             // 
             // nbiSellOneTimeExperience
             // 
@@ -223,13 +240,20 @@
             this.nbiSellOneTimeExperience.SmallImageIndex = 0;
             this.nbiSellOneTimeExperience.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellOneTimeExperience_LinkClicked);
             // 
-            // nbiConsume
+            // nbiTimesCardConsume
             // 
-            this.nbiConsume.Caption = "消费";
-            this.nbiConsume.LargeImageIndex = 1;
-            this.nbiConsume.Name = "nbiConsume";
-            this.nbiConsume.SmallImageIndex = 1;
-            this.nbiConsume.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiConsume_LinkClicked);
+            this.nbiTimesCardConsume.Caption = "次卡消费";
+            this.nbiTimesCardConsume.LargeImageIndex = 1;
+            this.nbiTimesCardConsume.Name = "nbiTimesCardConsume";
+            this.nbiTimesCardConsume.SmallImageIndex = 1;
+            this.nbiTimesCardConsume.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiTimesCardConsume_LinkClicked);
+            // 
+            // nbiLectureConsume
+            // 
+            this.nbiLectureConsume.Caption = "课程消费";
+            this.nbiLectureConsume.LargeImageIndex = 10;
+            this.nbiLectureConsume.Name = "nbiLectureConsume";
+            this.nbiLectureConsume.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiLectureConsume_LinkClicked);
             // 
             // navBarGroup2
             // 
@@ -587,16 +611,15 @@
             // 
             // bsiToolTips
             // 
-            this.bsiToolTips.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
             this.bsiToolTips.Caption = " 欢迎使用本系统 ！";
             this.bsiToolTips.Id = 27;
             this.bsiToolTips.Name = "bsiToolTips";
-            this.bsiToolTips.Size = new System.Drawing.Size(32, 0);
+            this.bsiToolTips.Size = new System.Drawing.Size(400, 0);
             this.bsiToolTips.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // bsiCopyright
             // 
-            this.bsiCopyright.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiCopyright.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Left;
             this.bsiCopyright.Caption = "  郑州大羿计算机科技发展有限公司  版权所有 联系电话：0371-60301782";
             this.bsiCopyright.Id = 29;
             this.bsiCopyright.Name = "bsiCopyright";
@@ -705,20 +728,6 @@
             this.barButtonItem3.Id = 31;
             this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // nbiSellTimesCard
-            // 
-            this.nbiSellTimesCard.Caption = "购买次卡";
-            this.nbiSellTimesCard.LargeImageIndex = 2;
-            this.nbiSellTimesCard.Name = "nbiSellTimesCard";
-            this.nbiSellTimesCard.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellTimesCard_LinkClicked);
-            // 
-            // nbiSellLecture
-            // 
-            this.nbiSellLecture.Caption = "购买课程";
-            this.nbiSellLecture.LargeImageIndex = 5;
-            this.nbiSellLecture.Name = "nbiSellLecture";
-            this.nbiSellLecture.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSellLecture_LinkClicked);
-            // 
             // FrmNavigator
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -765,7 +774,7 @@
         public DevExpress.XtraNavBar.NavBarControl navMenu;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
         private DevExpress.XtraNavBar.NavBarItem nbiSellOneTimeExperience;
-        private DevExpress.XtraNavBar.NavBarItem nbiConsume;
+        private DevExpress.XtraNavBar.NavBarItem nbiTimesCardConsume;
         private DevExpress.XtraNavBar.NavBarItem nbiTutor;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem nbiTimesCard;
@@ -820,6 +829,7 @@
         private DevExpress.XtraNavBar.NavBarItem nbiMedium;
         private DevExpress.XtraNavBar.NavBarItem nbiSellTimesCard;
         private DevExpress.XtraNavBar.NavBarItem nbiSellLecture;
+        private DevExpress.XtraNavBar.NavBarItem nbiLectureConsume;
     }
 }
 

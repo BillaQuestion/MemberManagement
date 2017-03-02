@@ -52,25 +52,17 @@ namespace MM.Model
                 PurchaseDate = DateTime.Now
             };
 
-            // 2、增加会员的产品余额
-            memberCard = member.MemberCards.FirstOrDefault(x => x.MemberProductId == product.Id);
-            if (memberCard == null)
+            // 2、增加一张新的会员卡
+            memberCard = new MemberCard()
             {
-                memberCard = new MemberCard()
-                {
-                    Product = product,
-                    MemberProductId = product.Id,
-                    Price = product.Price,
-                    Count = product.Count,
-                    MediumName = product.Medium.Name,
-                    Remainder = product.Count
-                };
-                member.MemberCards.Add(memberCard);
-            }
-            else
-            {
-                memberCard.Remainder = memberCard.Remainder + product.Count;
-            }
+                Product = product,
+                MemberProductId = product.Id,
+                Count = product.Count,
+                MediumName = product.Medium.Name,
+                Remainder = product.Count,
+                PurchaseDate = DateTime.Now
+            };
+            member.MemberCards.Add(memberCard);
 
             return purchase;
         }
