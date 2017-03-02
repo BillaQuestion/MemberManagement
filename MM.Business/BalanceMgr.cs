@@ -11,14 +11,14 @@ namespace MM.Business
 {
     public class BalanceMgr : IBalanceMgr
     {
-        IBalanceRepository _balanceRepository;
+        IMemberCardRepository _balanceRepository;
 
-        public BalanceMgr(IBalanceRepository balanceRepository)
+        public BalanceMgr(IMemberCardRepository balanceRepository)
         {
             _balanceRepository = balanceRepository;
         }
 
-        void IBalanceMgr.Save(Balance balance)
+        void IBalanceMgr.Save(MemberCard balance)
         {
             List<ValidationResult> results = new List<ValidationResult>();
             bool isValid = Validator.TryValidateObject(balance,

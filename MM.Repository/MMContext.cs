@@ -113,17 +113,17 @@ namespace MM.Repository
         #endregion
 
         #region 余额集
-        public IDbSet<Balance> Balances
+        public IDbSet<MemberCard> Balances
         {
             get
             {
                 if (_balances == null)
-                    _balances = base.Set<Balance>();
+                    _balances = base.Set<MemberCard>();
 
                 return _balances;
             }
         }
-        IDbSet<Balance> _balances;
+        IDbSet<MemberCard> _balances;
         #endregion
 
         #region 教师集
@@ -195,7 +195,7 @@ namespace MM.Repository
             modelBuilder.Configurations.Add(new LectureConfiguration());
             modelBuilder.Configurations.Add(new TimesCardConfiguration());
             modelBuilder.Configurations.Add(new PurchaseConfiguration());
-            modelBuilder.Configurations.Add(new BalanceConfiguration());
+            modelBuilder.Configurations.Add(new MemberCardConfiguration());
             modelBuilder.Configurations.Add(new TutorConfiguration());
             modelBuilder.Configurations.Add(new ConsumptionConfiguration());
             modelBuilder.Configurations.Add(new SessionConfiguration());

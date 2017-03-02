@@ -10,7 +10,7 @@ namespace MM.Model
 {
     public class Member : Entity
     {
-        private HashSet<Balance> _balances;
+        private HashSet<MemberCard> _memberCards;
 
         #region Properties
         public string Name { get; set; }
@@ -22,19 +22,19 @@ namespace MM.Model
         public string Address { get; set; }
 
         /// <summary>
-        /// 会员卡余额
+        /// 会员卡
         /// </summary>  
-        public ICollection<Balance> Balances
+        public ICollection<MemberCard> MemberCards
         {
             get
             {
-                if (_balances == null)
-                    _balances = new HashSet<Balance>();
-                return _balances;
+                if (_memberCards == null)
+                    _memberCards = new HashSet<MemberCard>();
+                return _memberCards;
             }
             set
             {
-                _balances = new HashSet<Balance>(value);
+                _memberCards = new HashSet<MemberCard>(value);
             }
         }
         #endregion
@@ -47,10 +47,10 @@ namespace MM.Model
         /// <returns>消费记录</returns>
         public Consumption Consume(TimesCard timesCardProduct, Tutor tutor)
         {
-            var balance = _balances.FirstOrDefault(x => x.MemberProductId == timesCardProduct.Id);
+            var balance = _memberCards.FirstOrDefault(x => x.MemberProductId == timesCardProduct.Id);
             if (balance == null) throw new BalanceNotEnoughException("余额不足！");
             balance.Remainder--;
-            if (balance.Remainder == 0) _balances.Remove(balance);
+            if (balance.Remainder == 0) _memberCards.Remove(balance);
 
             Consumption consumption = new Consumption()
             {
@@ -75,10 +75,10 @@ namespace MM.Model
         /// <returns>消费记录</returns>
         public Consumption Consume(Lecture lectureProduct, Tutor tutor, string lectureDescription)
         {
-            var balance = _balances.FirstOrDefault(x => x.MemberProductId == lectureProduct.Id);
+            var balance = _memberCards.FirstOrDefault(x => x.MemberProductId == lectureProduct.Id);
             if (balance == null) throw new BalanceNotEnoughException("余额不足！");
             balance.Remainder--;
-            if (balance.Remainder == 0) _balances.Remove(balance);
+            if (balance.Remainder == 0) _memberCards.Remove(balance);
 
             Session session = new Session()
             {

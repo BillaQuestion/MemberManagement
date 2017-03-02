@@ -2,7 +2,7 @@
 
 namespace MM.Model.IRepositories
 {
-    public interface IBalanceRepository : IRepository<Balance>
+    public interface IMemberCardRepository : IRepository<MemberCard>
     {
     }
 }

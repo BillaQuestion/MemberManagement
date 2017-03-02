@@ -38,7 +38,7 @@ namespace MM.Model
         /// 向会员销售
         /// </summary>
         /// <returns>购买记录</returns>
-        public Purchase Sell(MemberProduct product, Member member, out Balance balance)
+        public Purchase Sell(MemberProduct product, Member member, out MemberCard memberCard)
         {
             // 1、新建一个购买记录
             MemberPurchase purchase = new MemberPurchase()
@@ -53,20 +53,23 @@ namespace MM.Model
             };
 
             // 2、增加会员的产品余额
-            balance = member.Balances.FirstOrDefault(x => x.MemberProductId == product.Id);
-            if (balance == null)
+            memberCard = member.MemberCards.FirstOrDefault(x => x.MemberProductId == product.Id);
+            if (memberCard == null)
             {
-                balance = new Balance()
+                memberCard = new MemberCard()
                 {
                     Product = product,
                     MemberProductId = product.Id,
+                    Price = product.Price,
+                    Count = product.Count,
+                    MediumName = product.Medium.Name,
                     Remainder = product.Count
                 };
-                member.Balances.Add(balance);
+                member.MemberCards.Add(memberCard);
             }
             else
             {
-                balance.Remainder = balance.Remainder + product.Count;
+                memberCard.Remainder = memberCard.Remainder + product.Count;
             }
 
             return purchase;

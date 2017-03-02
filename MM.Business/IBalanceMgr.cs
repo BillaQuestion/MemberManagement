@@ -9,6 +9,6 @@ namespace MM.Business
 {
     public interface IBalanceMgr
     {
-        void Save(Balance balance);
+        void Save(MemberCard balance);
     }
 }

@@ -6,12 +6,9 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>EAAAAAEIAACAAACAAAAAQAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAJAACAAACAAAAAQAQAAAABAAACAAAAAAAAAAA=</HashCode>
       <FileName>Member.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Balances" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MM.Model.Lecture">
     <Position X="1.5" Y="10.5" Width="1.5" />
@@ -77,8 +74,8 @@
     <Position X="8.5" Y="3" Width="1.75" />
     <AssociationLine Name="Member" Type="MM.Model.Member" FixedToPoint="true">
       <Path>
-        <Point X="8.5" Y="3.687" />
-        <Point X="7.5" Y="3.687" />
+        <Point X="8.5" Y="3.771" />
+        <Point X="7.5" Y="3.771" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="MemberProduct" Type="MM.Model.MemberProduct" FixedFromPoint="true" FixedToPoint="true">
@@ -105,18 +102,18 @@
       <Property Name="Tutor" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="MM.Model.Balance">
+  <Class Name="MM.Model.MemberCard">
     <Position X="5.75" Y="5.75" Width="1.75" />
     <AssociationLine Name="Product" Type="MM.Model.MemberProduct" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.625" Y="7.568" />
+        <Point X="6.625" Y="8.122" />
         <Point X="6.625" Y="8.688" />
         <Point X="4" Y="8.688" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAA=</HashCode>
-      <FileName>Balance.cs</FileName>
+      <HashCode>AAACAAAAAQCAAAAAAAAAAAQAAAAAAAAAAgAEAABAAAA=</HashCode>
+      <FileName>MemberCard.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Product" />

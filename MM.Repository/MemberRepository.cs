@@ -14,14 +14,14 @@ namespace MM.Repository
 
         public override IQueryable<Member> FindBySpecification(ISpecification<Member> specification)
         {
-            return base.FindBySpecification(specification).Include(o => o.Balances);
+            return base.FindBySpecification(specification).Include(o => o.MemberCards);
         }
 
         public override IEnumerable<Member> GetAll()
         {
             var members = base.GetAll();
             foreach (var member in members)
-                (UnitOfWork as MMContext).Entry(member).Collection(o => o.Balances).Load();
+                (UnitOfWork as MMContext).Entry(member).Collection(o => o.MemberCards).Load();
 
             return members;
         }
@@ -30,7 +30,7 @@ namespace MM.Repository
         {
             var member = base.GetByKey(keyValues);
             if (member != null)
-                (UnitOfWork as MMContext).Entry(member).Collection(o => o.Balances).Load();
+                (UnitOfWork as MMContext).Entry(member).Collection(o => o.MemberCards).Load();
 
             return member;
         }

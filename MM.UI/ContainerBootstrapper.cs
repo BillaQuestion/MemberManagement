@@ -54,7 +54,7 @@ namespace MM.UI
             container.RegisterType<ILectureRepository, LectureRepository>();
             container.RegisterType<ITimesCardRepository, TimesCardRepository>();
             container.RegisterType<IMemberRepository, MemberRepository>();
-            container.RegisterType<IBalanceRepository, BalanceRepository>();
+            container.RegisterType<IMemberCardRepository, MemberCardRepository>();
             container.RegisterType<IConsumptionRepository, ConsumptionRepository>();
             container.RegisterType<IMediumRepository, MediumRepository>();
             container.RegisterType<ISessionRepository, ISessionRepository>();

@@ -56,10 +56,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BalanceRepository.cs" />
+    <Compile Include="MemberCardRepository.cs" />
     <Compile Include="ConsumptionRepository.cs" />
     <Compile Include="LectureRepository.cs" />
-    <Compile Include="Mappings\BalanceConfiguration.cs" />
+    <Compile Include="Mappings\MemberCardConfiguration.cs" />
     <Compile Include="Mappings\ConsumptionConfiguration.cs" />
     <Compile Include="Mappings\LectureConfiguration.cs" />
     <Compile Include="Mappings\MediumConfiguration.cs" />

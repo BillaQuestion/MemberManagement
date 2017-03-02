@@ -3,11 +3,11 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace MM.Repository.Mappings
 {
-    public class BalanceConfiguration:EntityTypeConfiguration<Balance>
+    public class MemberCardConfiguration:EntityTypeConfiguration<MemberCard>
     {
-        public BalanceConfiguration()
+        public MemberCardConfiguration()
         {
-            ToTable("Balances");
+            ToTable("MemberCards");
             //HasRequired(b => b.MemberProduct);
         }
     }

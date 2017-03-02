@@ -96,7 +96,7 @@ namespace MM.Business
                             PhoneNumber = phoneNumber
                         };
                     }
-                    var balance = new Balance();
+                    var balance = new MemberCard();
                     purchase = tutor.Sell((MemberProduct)product, member, out balance);
                     _balanceMgr.Save(balance);
                     _memberMgr.Save(member);
