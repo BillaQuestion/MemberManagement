@@ -29,7 +29,7 @@ namespace MM.UI
 
         private void nbiSellTimesCard_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            FrmTimesCardPurchase form = new UI.FrmTimesCardPurchase();
+            FrmTimesCardPurchase form = new FrmTimesCardPurchase();
             form.ShowDialog();
         }
 
@@ -40,7 +40,8 @@ namespace MM.UI
 
         private void nbiSellOneTimeExperience_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-
+            FrmOneTimeExperiencePurchase form = new FrmOneTimeExperiencePurchase();
+            form.ShowDialog();
         }
 
         private void nbiConsume_LinkClicked(object sender, NavBarLinkEventArgs e)

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="MM.Business.StudioService">
-    <Position X="1.25" Y="0.5" Width="2.5" />
+    <Position X="1.25" Y="0.5" Width="3" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -12,29 +12,29 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MM.Business.TutorMgr">
-    <Position X="2.75" Y="4" Width="1.5" />
+    <Position X="3.75" Y="4" Width="2.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AABAQAQAAAAAAAAAAAAAgAACIEAABAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AABAQAQAAACAAAAAAAAAgAACIEAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>TutorMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MM.Business.MemberMgr">
-    <Position X="0.75" Y="4" Width="1.5" />
+    <Position X="0.75" Y="4" Width="2.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAgAAIAAEAAAAAAAAAAQAAAAAAAAAAAAAAIBIAAIAAA=</HashCode>
+      <HashCode>AAAAIIAAEAAAAAAAAAAAAAAAAAAAAAAAAAIBIAAAAAA=</HashCode>
       <FileName>MemberMgr.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MM.Business.ProductMgr">
-    <Position X="4.75" Y="4" Width="1.75" />
+    <Position X="7.25" Y="4" Width="2" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -45,7 +45,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="MM.Business.BalanceMgr">
-    <Position X="7.25" Y="4" Width="1.5" />
+    <Position X="10" Y="4" Width="1.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
