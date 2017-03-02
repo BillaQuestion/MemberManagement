@@ -35,7 +35,8 @@ namespace MM.UI
 
         private void nbiSellLecture_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-
+            FrmLecturePurchase form = new FrmLecturePurchase();
+            form.ShowDialog();
         }
 
         private void nbiSellOneTimeExperience_LinkClicked(object sender, NavBarLinkEventArgs e)

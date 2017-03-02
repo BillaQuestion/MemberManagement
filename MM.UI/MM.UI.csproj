@@ -162,6 +162,12 @@
     <Compile Include="FrmOneTimeExperiencePurchase.Designer.cs">
       <DependentUpon>FrmOneTimeExperiencePurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmLecturePurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLecturePurchase.Designer.cs">
+      <DependentUpon>FrmLecturePurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTimesCardPurchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOneTimeExperiencePurchase.resx">
       <DependentUpon>FrmOneTimeExperiencePurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLecturePurchase.resx">
+      <DependentUpon>FrmLecturePurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTimesCardPurchase.resx">
       <DependentUpon>FrmTimesCardPurchase.cs</DependentUpon>

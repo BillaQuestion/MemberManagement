@@ -12,7 +12,7 @@
          <PropertyUISetting Name="Description">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
-                  <BindableControlInfo Name="MemoEdit" Type="DevExpress.XtraEditors.MemoEdit" AssemblyName="DevExpress.XtraEditors.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.6.1;.NETFramework,Version=v4.5.2" />
+                  <BindableControlInfo Name="MemoEdit" Type="DevExpress.XtraEditors.MemoEdit" AssemblyName="DevExpress.XtraEditors.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Frameworks=".NETFramework,Version=v4.0;.NETFramework,Version=v4.5.2;.NETFramework,Version=v4.6.1" />
                </ControlSetting>
             </ControlSettings>
          </PropertyUISetting>
