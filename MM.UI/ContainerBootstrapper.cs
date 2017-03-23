@@ -47,7 +47,7 @@ namespace MM.UI
             container.RegisterType<IQueryableUnitOfWork, MMContext>(lifetimeManager);
 
             container.RegisterType<ITutorRepository, TutorRepository>();
-            container.RegisterType<IPurchaseRepository, PurchaseRepository>();
+            container.RegisterType<ISellRecordRepository, SellRecordRepository>();
             container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IOneTimeExperienceRepository, OneTimeExperienceRepository>();
             container.RegisterType<IMemberProductRepository, MemberProductRepository>();
@@ -60,11 +60,11 @@ namespace MM.UI
             container.RegisterType<ISessionRepository, ISessionRepository>();
 
             container.RegisterType<ITutorMgr, TutorMgr>();
-            container.RegisterType<IBalanceMgr, BalanceMgr>();
+            container.RegisterType<IMemberCardMgr, MemberCardMgr>();
             container.RegisterType<IConsumptionMgr, ConsumptionMgr>();
             container.RegisterType<IMemberMgr, MemberMgr>();
             container.RegisterType<IProductMgr, ProductMgr>();
-            container.RegisterType<IPurchaseMgr, PurchaseMgr>();
+            container.RegisterType<ISellRecordMgr, SellRecordMgr>();
             container.RegisterType<IMediumMgr, MediumMgr>();
 
             container.RegisterType<IAuthenticator, StudioService>();

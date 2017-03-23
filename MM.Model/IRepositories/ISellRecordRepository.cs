@@ -2,7 +2,7 @@
 
 namespace MM.Model.IRepositories
 {
-    public interface IPurchaseRepository:IRepository<Purchase>
+    public interface ISellRecordRepository:IRepository<SellRecord>
     {
     }
 }

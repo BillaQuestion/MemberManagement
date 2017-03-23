@@ -11,23 +11,14 @@ namespace MM.Model
     public class Consumption : Entity
     {
         /// <summary>
-        /// 会员Id
+        /// 会员卡Id
         /// </summary>
-        public Guid MemberId { get; set; }
+        public Guid MemberCardId { get; set; }
 
         /// <summary>
-        /// 会员
+        /// 会员卡
         /// </summary>
-        public Member Member { get; set; }
-        /// <summary>
-        /// 会员产品
-        /// </summary>
-        public MemberProduct MemberProduct { get; set; }
-
-        /// <summary>
-        /// 会员产品的Id
-        /// </summary>
-        public Guid MemberProductId { get; set; }
+        public MemberCard MemberCard { get; set; }
 
         /// <summary>
         /// 购买日期
@@ -47,9 +38,9 @@ namespace MM.Model
         public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var result = new List<ValidationResult>();
-            if (MemberProduct == null && MemberProductId == Guid.Empty)
-                result.Add(new ValidationResult("产品必须赋值！",
-                    new string[] { "MemberProduct", "MemberProductId" }));
+            if (MemberCard == null && MemberCardId == Guid.Empty)
+                result.Add(new ValidationResult("会员卡必须赋值！",
+                    new string[] { "MemberCard", "MemberCardId" }));
             if (Tutor == null && TutorId == Guid.Empty)
                 result.Add(new ValidationResult("教师必须赋值！",
                     new string[] { "Tutor", "TutorId" }));

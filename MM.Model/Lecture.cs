@@ -29,5 +29,23 @@ namespace MM.Model
                 result.Add(new ValidationResult("Description必须赋值！", new string[] { "Description" }));
             return result;
         }
+
+        protected override MemberCard CreateMemberCart(Member member, SellRecord sellRecord)
+        {
+            var memberCard = new LectureMemberCard()
+            {
+                Name = this.Name,
+                MediumName = this.Medium.Name,
+                TotalCount = this.Count,
+                Remainder = this.Count,
+                SellRecord = sellRecord,
+                Description = this.Description,
+                Product = this,
+                ProductId = this.Id,
+                PurchaseDate = DateTime.Now
+            };
+
+            return memberCard;
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace MM.Repository.Mappings
             Property(m => m.Name).HasMaxLength(10);
             Property(m => m.PhoneNumber).HasMaxLength(40);
             Property(m => m.Address).HasMaxLength(100);
+
+            HasMany(m => m.MemberCards).WithRequired(mc => mc.Member).HasForeignKey(mc => mc.MemeberId).WillCascadeOnDelete(true);
         }
     }
 }

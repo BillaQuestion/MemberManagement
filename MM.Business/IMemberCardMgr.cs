@@ -7,8 +7,10 @@ using MM.Model;
 
 namespace MM.Business
 {
-    public interface IBalanceMgr
+    public interface IMemberCardMgr
     {
+        MemberCard GetById(Guid memberCardId);
+
         void Save(MemberCard balance);
     }
 }

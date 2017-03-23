@@ -66,7 +66,7 @@
     <Compile Include="Mappings\MemberConfiguration.cs" />
     <Compile Include="Mappings\MemberProductConfiguration.cs" />
     <Compile Include="Mappings\ProductConfiguration.cs" />
-    <Compile Include="Mappings\PurchaseConfiguration.cs" />
+    <Compile Include="Mappings\SellRecordConfiguration.cs" />
     <Compile Include="Mappings\SessionConfiguration.cs" />
     <Compile Include="Mappings\TimesCardConfiguration.cs" />
     <Compile Include="Mappings\TutorConfiguration.cs" />
@@ -78,7 +78,7 @@
     <Compile Include="OneTimeExperienceRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseRepository.cs" />
+    <Compile Include="SellRecordRepository.cs" />
     <Compile Include="SessionRepository.cs" />
     <Compile Include="TimesCardRepository.cs" />
     <Compile Include="TutorRepository.cs" />

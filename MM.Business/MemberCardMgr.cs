@@ -9,16 +9,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MM.Business
 {
-    public class BalanceMgr : IBalanceMgr
+    public class MemberCardMgr : IMemberCardMgr
     {
-        IMemberCardRepository _balanceRepository;
+        IMemberCardRepository _memberCardRepository;
 
-        public BalanceMgr(IMemberCardRepository balanceRepository)
+        public MemberCardMgr(IMemberCardRepository memberCardRepository)
         {
-            _balanceRepository = balanceRepository;
+            _memberCardRepository = memberCardRepository;
+        }
+        MemberCard IMemberCardMgr.GetById(Guid memberCardId)
+        {
+            return _memberCardRepository.GetByKey(memberCardId);
         }
 
-        void IBalanceMgr.Save(MemberCard balance)
+        void IMemberCardMgr.Save(MemberCard balance)
         {
             List<ValidationResult> results = new List<ValidationResult>();
             bool isValid = Validator.TryValidateObject(balance,
@@ -29,19 +33,19 @@ namespace MM.Business
 
             if (balance.Remainder == 0)
             {
-                _balanceRepository.Remove(balance);
+                _memberCardRepository.Remove(balance);
             }
             else
             {
                 if (balance.IsTransient())
                 {
                     balance.GenerateNewIdentity();
-                    _balanceRepository.Add(balance);
+                    _memberCardRepository.Add(balance);
                 }
                 else
-                    _balanceRepository.Modify(balance);
+                    _memberCardRepository.Modify(balance);
             }
-            _balanceRepository.UnitOfWork.Commit();
+            _memberCardRepository.UnitOfWork.Commit();
         }
     }
 }

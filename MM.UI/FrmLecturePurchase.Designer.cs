@@ -66,7 +66,7 @@
             // 
             // bindingSourcePurchase
             // 
-            this.bindingSourcePurchase.DataSource = typeof(MM.Model.Purchase);
+            this.bindingSourcePurchase.DataSource = typeof(MM.Model.SellRecord);
             // 
             // labelControl1
             // 

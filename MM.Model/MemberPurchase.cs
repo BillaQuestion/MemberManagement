@@ -2,7 +2,7 @@
 
 namespace MM.Model
 {
-    public class MemberPurchase : Purchase
+    public class MemberPurchase : SellRecord
     {
         public Guid MemberId { get; set; }
 

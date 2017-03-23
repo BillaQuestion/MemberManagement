@@ -27,21 +27,19 @@ namespace MM.Business
         void Sell(string tutorName, Guid productId);
 
         /// <summary>
-        /// 消费会员产品
+        /// 消费次卡产品
         /// </summary>
         /// <param name="tutorId">教师Id</param>
-        /// <param name="memberProductId">成员产品Id</param>
-        /// <param name="memberPhoneNumber">会员电话号码</param>
-        void TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber);
+        /// <param name="timesCardMemberCardId">次卡产品Id</param>
+        void TakeMemberProduct(Guid tutorId, Guid timesCardMemberCardId);
 
         /// <summary>
-        /// 消费会员产品
+        /// 学习课程
         /// </summary>
         /// <param name="tutorId">教师Id</param>
-        /// <param name="lectureId">课程Id</param>
+        /// <param name="lectureMemberCardId">课程会员卡Id</param>
         /// <param name="lectureDescription">授课内容说明</param>
-        /// <param name="memberPhoneNumber">会员电话号码</param>
-        void TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber);
+        void TakeMemberProduct(Guid tutorId, Guid lectureMemberCardId, string lectureDescription);
 
         /// <summary>
         /// 获取系统中的所有产品

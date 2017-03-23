@@ -9,8 +9,8 @@ using Dayi.Infrastructure.Data.Seedwork;
 
 namespace MM.Repository
 {
-    public class PurchaseRepository : Repository<Purchase>, IPurchaseRepository
+    public class SellRecordRepository : Repository<SellRecord>, ISellRecordRepository
     {
-        public PurchaseRepository(IQueryableUnitOfWork unitOfWork) : base(unitOfWork) { }
+        public SellRecordRepository(IQueryableUnitOfWork unitOfWork) : base(unitOfWork) { }
     }
 }

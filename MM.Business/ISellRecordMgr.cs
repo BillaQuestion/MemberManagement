@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace MM.Business
 {
-    public interface IPurchaseMgr
+    public interface ISellRecordMgr
     {
 
         /// <summary>
         /// 保存购买记录对象
         /// </summary>
-        void Save(Purchase purchase);
+        void Save(SellRecord purchase);
 
-        IEnumerable<Purchase> GetAll();
+        IEnumerable<SellRecord> GetAll();
 
-        IEnumerable<Purchase> GetByDomain(string domain);
+        IEnumerable<SellRecord> GetByDomain(string domain);
 
-        IEnumerable<MemberPurchase> GetByMember(Guid memberId);
+        IEnumerable<SellRecord> GetByMember(Guid memberId);
     }
 }

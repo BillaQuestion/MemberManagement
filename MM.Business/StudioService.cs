@@ -24,23 +24,23 @@ namespace MM.Business
         ITutorMgr _tutorMgr;
         IProductMgr _productMgr;
         IMemberMgr _memberMgr;
-        IPurchaseMgr _purchaseMgr;
+        ISellRecordMgr _purchaseMgr;
         IConsumptionMgr _consumptionMgr;
-        IBalanceMgr _balanceMgr;
+        IMemberCardMgr _memberCardMgr;
 
         public StudioService(ITutorMgr tutorMgr,
             IProductMgr productMgr,
             IMemberMgr memberMgr,
-            IPurchaseMgr purchaseMgr,
+            ISellRecordMgr purchaseMgr,
             IConsumptionMgr consumptionMgr,
-            IBalanceMgr balanceMgr)
+            IMemberCardMgr memberCardMgr)
         {
             _tutorMgr = tutorMgr;
             _productMgr = productMgr;
             _memberMgr = memberMgr;
             _purchaseMgr = purchaseMgr;
             _consumptionMgr = consumptionMgr;
-            _balanceMgr = balanceMgr;
+            _memberCardMgr = memberCardMgr;
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace MM.Business
 
             using (TransactionScope scope = new TransactionScope())
             {
-                Purchase purchase;
+                SellRecord purchase;
                 Member member = null;
                 if (product is MemberProduct)
                 {
@@ -96,9 +96,9 @@ namespace MM.Business
                             PhoneNumber = phoneNumber
                         };
                     }
-                    var balance = new MemberCard();
-                    purchase = tutor.Sell((MemberProduct)product, member, out balance);
-                    _balanceMgr.Save(balance);
+                    MemberCard memberCard;
+                    purchase = ((MemberProduct)product).Sell(tutor, member, out memberCard);
+                    _memberCardMgr.Save(memberCard);
                     _memberMgr.Save(member);
                     _purchaseMgr.Save(purchase);
                 }
@@ -120,9 +120,35 @@ namespace MM.Business
 
             using (TransactionScope scope = new TransactionScope())
             {
-                Purchase purchase;
-                purchase = tutor.Sell((OneTimeExperience)product);
+                SellRecord purchase;
+                purchase = ((OneTimeExperience)product).Sell(tutor);
                 _purchaseMgr.Save(purchase);
+                scope.Complete();
+            }
+        }
+
+        /// <summary>
+        /// 消费次卡产品
+        /// </summary>
+        /// <param name="tutorId">教师Id</param>
+        /// <param name="timesCardMemberCardId">次卡产品Id</param>
+        void IStudioService.TakeMemberProduct(Guid tutorId, Guid timesCardMemberCardId)
+        {
+            var memberCard = _memberCardMgr.GetById(timesCardMemberCardId);
+            if (memberCard == null)
+                throw new MemberCardNotExistException(string.Format("会员卡[{0}]不存在！", timesCardMemberCardId));
+
+            var tutor = _tutorMgr.GetById(tutorId);
+            if (tutor == null)
+                throw new TutorNotExistException("教师不存在！");
+
+            using (TransactionScope scope = new TransactionScope())
+            {
+                Consumption consumption = (memberCard as TimesCardMemberCard).Consume(tutor);
+
+                _consumptionMgr.Save(consumption);
+                _memberCardMgr.Save(memberCard);
+
                 scope.Complete();
             }
         }
@@ -131,46 +157,24 @@ namespace MM.Business
         /// 消费会员产品
         /// </summary>
         /// <param name="tutorId">教师Id</param>
-        /// <param name="memberProductId">成员产品Id</param>
-        /// <param name="memberPhoneNumber">会员电话号码</param>
-        void IStudioService.TakeMemberProduct(Guid tutorId, Guid memberProductId, string memberPhoneNumber)
-        {
-            ((IStudioService)this).TakeMemberProduct(tutorId, memberProductId, "", memberPhoneNumber);
-        }
-
-        /// <summary>
-        /// 消费会员产品
-        /// </summary>
-        /// <param name="tutorId">教师Id</param>
-        /// <param name="lectureId">课程Id</param>
+        /// <param name="lectureMemberCardId">课程会员卡Id</param>
         /// <param name="lectureDescription">授课内容说明</param>
-        /// <param name="memberPhoneNumber">会员电话号码</param>
-        void IStudioService.TakeMemberProduct(Guid tutorId, Guid lectureId, string lectureDescription, string memberPhoneNumber)
+        void IStudioService.TakeMemberProduct(Guid tutorId, Guid lectureMemberCardId, string lectureDescription)
         {
-            var member = _memberMgr.GetByPhoneNumber(memberPhoneNumber);
-            if (member == null)
-                throw new MemberNotExistException("会员不存在！");
+            var memberCard = _memberCardMgr.GetById(lectureMemberCardId);
+            if (memberCard == null)
+                throw new MemberCardNotExistException(string.Format("会员卡[{0}]不存在！", lectureMemberCardId));
 
             var tutor = _tutorMgr.GetById(tutorId);
             if (tutor == null)
                 throw new TutorNotExistException("教师不存在！");
 
-            var product = _productMgr.GetById(lectureId);
-            if (product == null)
-                throw new ProductNotExistException("产品不存在!");
-            if (product is OneTimeExperience)
-                throw new ArgumentException("一次性体验产品不能进行会员消费！");
-
             using (TransactionScope scope = new TransactionScope())
             {
-                Consumption consumption;
-                if (product is TimesCard)
-                    consumption = member.Consume((TimesCard)product, tutor);
-                else
-                    consumption = member.Consume((Lecture)product, tutor, lectureDescription);
+                Consumption consumption = (memberCard as LectureMemberCard).Learn(tutor, lectureDescription);
 
                 _consumptionMgr.Save(consumption);
-                _memberMgr.Save(member);
+                _memberCardMgr.Save(memberCard);
 
                 scope.Complete();
             }

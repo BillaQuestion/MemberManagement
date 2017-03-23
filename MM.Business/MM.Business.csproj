@@ -46,8 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BalanceMgr.cs" />
-    <Compile Include="IBalanceMgr.cs" />
+    <Compile Include="Exceptions\MemberCardNotExistException.cs" />
+    <Compile Include="MemberCardMgr.cs" />
+    <Compile Include="IMemberCardMgr.cs" />
     <Compile Include="IMediumMgr.cs" />
     <Compile Include="IMemberMgr.cs" />
     <Compile Include="ConsumptionMgr.cs" />
@@ -58,14 +59,14 @@
     <Compile Include="IAuthenticator.cs" />
     <Compile Include="IConsumptionMgr.cs" />
     <Compile Include="IProductMgr.cs" />
-    <Compile Include="IPurchaseMgr.cs" />
+    <Compile Include="ISellRecordMgr.cs" />
     <Compile Include="IStudioService.cs" />
     <Compile Include="ITutorMgr.cs" />
     <Compile Include="MediumMgr.cs" />
     <Compile Include="MemberMgr.cs" />
     <Compile Include="ProductMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseMgr.cs" />
+    <Compile Include="SellRecordMgr.cs" />
     <Compile Include="TutorMgr.cs" />
     <Compile Include="StudioService.cs" />
   </ItemGroup>

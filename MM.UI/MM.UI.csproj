@@ -108,6 +108,12 @@
     <Compile Include="Controls\CtrlMediumManagement.Designer.cs">
       <DependentUpon>CtrlMediumManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CtrlTimesCardConsume.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlTimesCardConsume.Designer.cs">
+      <DependentUpon>CtrlTimesCardConsume.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CtrlTimesCardManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     <EmbeddedResource Include="Controls\CtrlMediumManagement.resx">
       <DependentUpon>CtrlMediumManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrlTimesCardConsume.resx">
+      <DependentUpon>CtrlTimesCardConsume.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CtrlTimesCardManagement.resx">
       <DependentUpon>CtrlTimesCardManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +261,7 @@
     <None Include="Properties\DataSources\MM.Model.Consumption.datasource" />
     <None Include="Properties\DataSources\MM.Model.Lecture.datasource" />
     <None Include="Properties\DataSources\MM.Model.Medium.datasource" />
+    <None Include="Properties\DataSources\MM.Model.MemberCard.datasource" />
     <None Include="Properties\DataSources\MM.Model.MemberPurchase.datasource" />
     <None Include="Properties\DataSources\MM.Model.OneTimeExperience.datasource" />
     <None Include="Properties\DataSources\MM.Model.Product.datasource" />

@@ -35,58 +35,6 @@ namespace MM.Model
         }
 
         /// <summary>
-        /// 向会员销售
-        /// </summary>
-        /// <returns>购买记录</returns>
-        public Purchase Sell(MemberProduct product, Member member, out MemberCard memberCard)
-        {
-            // 1、新建一个购买记录
-            MemberPurchase purchase = new MemberPurchase()
-            {
-                Member = member,
-                Product = product,
-                ProductId = product.Id,
-                Tutor = this,
-                TutorId = this.Id,
-                Price = product.Price,
-                PurchaseDate = DateTime.Now
-            };
-
-            // 2、增加一张新的会员卡
-            memberCard = new MemberCard()
-            {
-                Product = product,
-                MemberProductId = product.Id,
-                Count = product.Count,
-                MediumName = product.Medium.Name,
-                Remainder = product.Count,
-                PurchaseDate = DateTime.Now
-            };
-            member.MemberCards.Add(memberCard);
-
-            return purchase;
-        }
-
-        /// <summary>
-        /// 销售一次性体验产品
-        /// </summary>
-        /// <param name="product">所销售产品</param>
-        /// <returns>购买记录</returns>
-        public Purchase Sell(OneTimeExperience product)
-        {
-            Purchase purchase = new Purchase()
-            {
-                Product = product,
-                ProductId = product.Id,
-                Tutor = this,
-                TutorId = this.Id,
-                Price = product.Price,
-                PurchaseDate = DateTime.Now
-            };
-            return purchase;
-        }
-
-        /// <summary>
         /// 设置密码
         /// </summary>
         /// <param name="password">密码</param>

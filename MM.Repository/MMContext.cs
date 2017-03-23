@@ -99,17 +99,17 @@ namespace MM.Repository
         #endregion
 
         #region 购买集
-        public IDbSet<Purchase> Purchases
+        public IDbSet<SellRecord> Purchases
         {
             get
             {
                 if (_purchases == null)
-                    _purchases = base.Set<Purchase>();
+                    _purchases = base.Set<SellRecord>();
 
                 return _purchases;
             }
         }
-        IDbSet<Purchase> _purchases;
+        IDbSet<SellRecord> _purchases;
         #endregion
 
         #region 余额集
@@ -194,7 +194,7 @@ namespace MM.Repository
             modelBuilder.Configurations.Add(new MemberProductConfiguration());
             modelBuilder.Configurations.Add(new LectureConfiguration());
             modelBuilder.Configurations.Add(new TimesCardConfiguration());
-            modelBuilder.Configurations.Add(new PurchaseConfiguration());
+            modelBuilder.Configurations.Add(new SellRecordConfiguration());
             modelBuilder.Configurations.Add(new MemberCardConfiguration());
             modelBuilder.Configurations.Add(new TutorConfiguration());
             modelBuilder.Configurations.Add(new ConsumptionConfiguration());

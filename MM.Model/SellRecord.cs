@@ -11,7 +11,7 @@ namespace MM.Model
     /// <summary>
     /// 购买
     /// </summary>
-    public class Purchase : Entity
+    public class SellRecord : Entity
     {
         #region Properties
 
@@ -33,7 +33,7 @@ namespace MM.Model
         /// <summary>
         /// 购买日期
         /// </summary>
-        public DateTime PurchaseDate { get; set; }
+        public DateTime SellDate { get; set; }
 
         /// <summary>
         /// 经手教师

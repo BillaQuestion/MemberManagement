@@ -8,7 +8,8 @@ namespace MM.Repository.Mappings
         public MemberCardConfiguration()
         {
             ToTable("MemberCards");
-            //HasRequired(b => b.MemberProduct);
+            HasRequired(mc => mc.SellRecord).WithOptional().WillCascadeOnDelete(false);
+            HasRequired(mc => mc.Product).WithOptional().WillCascadeOnDelete(false);
         }
     }
 }
