@@ -22,28 +22,28 @@ namespace MM.Business
             return _memberCardRepository.GetByKey(memberCardId);
         }
 
-        void IMemberCardMgr.Save(MemberCard balance)
+        void IMemberCardMgr.Save(MemberCard memberCard)
         {
             List<ValidationResult> results = new List<ValidationResult>();
-            bool isValid = Validator.TryValidateObject(balance,
-                new ValidationContext(balance),
+            bool isValid = Validator.TryValidateObject(memberCard,
+                new ValidationContext(memberCard),
                 results);
             if (!isValid)
-                throw new ArgumentException("余额数据不合法！");
+                throw new ArgumentException("会员卡数据不合法！");
 
-            if (balance.Remainder == 0)
+            if (memberCard.Remainder == 0)
             {
-                _memberCardRepository.Remove(balance);
+                _memberCardRepository.Remove(memberCard);
             }
             else
             {
-                if (balance.IsTransient())
+                if (memberCard.IsTransient())
                 {
-                    balance.GenerateNewIdentity();
-                    _memberCardRepository.Add(balance);
+                    memberCard.GenerateNewIdentity();
+                    _memberCardRepository.Add(memberCard);
                 }
                 else
-                    _memberCardRepository.Modify(balance);
+                    _memberCardRepository.Modify(memberCard);
             }
             _memberCardRepository.UnitOfWork.Commit();
         }

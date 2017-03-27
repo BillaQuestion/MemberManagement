@@ -1,10 +1,11 @@
-﻿using System;
-
-namespace MM.Model
+﻿namespace MM.Model
 {
     public class TimesCard : MemberProduct
     {
-        protected override MemberCard CreateMemberCart(Member member, SellRecord sellRecord)
+        /// <summary>
+        /// 创建次卡产品的新卡
+        /// </summary>
+        protected override MemberCard CreateMemberCart()
         {
             var memberCard = new TimesCardMemberCard()
             {
@@ -12,11 +13,10 @@ namespace MM.Model
                 MediumName = this.Medium.Name,
                 TotalCount = this.Count,
                 Remainder = this.Count,
-                SellRecord = sellRecord,
                 Product = this,
-                ProductId = this.Id,
-                PurchaseDate = DateTime.Now
+                ProductId = this.Id
             };
+            memberCard.GenerateNewIdentity();
 
             return memberCard;
         }

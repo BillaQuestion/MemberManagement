@@ -1,14 +1,11 @@
 ﻿using Dayi.Data.Domain.Seedwork.Specification;
-using MM.Business.Exceptions;
 using MM.Model;
-using MM.Model.Enums;
+using MM.Model.Exceptions;
 using MM.Model.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MM.Business
 {
@@ -42,7 +39,6 @@ namespace MM.Business
             {
                 _memberRepository.Modify(member);
             }
-
             _memberRepository.UnitOfWork.Commit();
         }
 
@@ -66,12 +62,9 @@ namespace MM.Business
         void IMemberMgr.Modify(Member member)
         {
             if (member.IsTransient())
-            {
-                member.GenerateNewIdentity();
-                _memberRepository.Add(member);
-            }
-            else
-                _memberRepository.Modify(member);
+                throw new MemberNotExistException("会员不存在！");
+
+            _memberRepository.Modify(member);
             _memberRepository.UnitOfWork.Commit();
         }
 

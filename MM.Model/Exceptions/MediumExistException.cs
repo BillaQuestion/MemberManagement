@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MM.Business.Exceptions
+namespace MM.Model.Exceptions
 {
     [Serializable]
     public class MediumExistException : Exception

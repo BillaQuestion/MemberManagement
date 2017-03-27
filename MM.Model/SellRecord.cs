@@ -50,8 +50,8 @@ namespace MM.Model
         {
             var result = new List<ValidationResult>();
 
-            if (Product == null)
-                result.Add(new ValidationResult("Product必须赋值！", new string[] { "Product" }));
+            if (Product == null && ProductId == Guid.Empty)
+                result.Add(new ValidationResult("Product必须赋值！", new string[] { "Product", "ProductId" }));
 
             return result;
         }

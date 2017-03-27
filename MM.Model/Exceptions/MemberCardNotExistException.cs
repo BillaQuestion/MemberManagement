@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MM.Business.Exceptions
+namespace MM.Model.Exceptions
 {
     /// <summary>
     /// 会员卡不存在

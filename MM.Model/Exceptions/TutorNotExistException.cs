@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MM.Business.Exceptions
+namespace MM.Model.Exceptions
 {
     /// <summary>
     /// 教师不存在

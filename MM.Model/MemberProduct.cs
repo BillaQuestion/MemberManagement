@@ -25,7 +25,7 @@ namespace MM.Model
         /// 向会员销售
         /// </summary>
         /// <returns>购买记录</returns>
-        public SellRecord Sell(Tutor tutor, Member member, out MemberCard memberCard)
+        public SellRecord Sell(Tutor tutor, Member member)
         {
             // 1、新建一个购买记录
             SellRecord sellRecord = new SellRecord()
@@ -38,12 +38,23 @@ namespace MM.Model
                 SellDate = DateTime.Now
             };
 
-            memberCard = CreateMemberCart(member, sellRecord);
-            member.MemberCards.Add(memberCard);
+            // 产生一张新卡
+            MemberCard newMemberCard = CreateMemberCart();
+
+            // 卡中写入会员及销售信息
+            newMemberCard.SellRecord = sellRecord;
+            newMemberCard.PurchaseDate = DateTime.Now;
+            newMemberCard.Member = member;
+
+            // 会员的卡集中增加此卡
+            member.MemberCards.Add(newMemberCard);
 
             return sellRecord;
         }
 
-        protected abstract MemberCard CreateMemberCart(Member member, SellRecord sellRecord);
+        /// <summary>
+        /// 创建产品的新卡
+        /// </summary>
+        protected abstract MemberCard CreateMemberCart();
     }
 }

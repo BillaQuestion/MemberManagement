@@ -98,32 +98,32 @@ namespace MM.Repository
         IDbSet<Medium> _mediums;
         #endregion
 
-        #region 购买集
-        public IDbSet<SellRecord> Purchases
+        #region 销售记录集
+        public IDbSet<SellRecord> SellRecords
         {
             get
             {
-                if (_purchases == null)
-                    _purchases = base.Set<SellRecord>();
+                if (_sellRecords == null)
+                    _sellRecords = base.Set<SellRecord>();
 
-                return _purchases;
+                return _sellRecords;
             }
         }
-        IDbSet<SellRecord> _purchases;
+        IDbSet<SellRecord> _sellRecords;
         #endregion
 
-        #region 余额集
-        public IDbSet<MemberCard> Balances
+        #region 会员卡集
+        public IDbSet<MemberCard> MemberCards
         {
             get
             {
-                if (_balances == null)
-                    _balances = base.Set<MemberCard>();
+                if (_memberCards == null)
+                    _memberCards = base.Set<MemberCard>();
 
-                return _balances;
+                return _memberCards;
             }
         }
-        IDbSet<MemberCard> _balances;
+        IDbSet<MemberCard> _memberCards;
         #endregion
 
         #region 教师集

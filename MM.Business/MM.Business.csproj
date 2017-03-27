@@ -46,16 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\MemberCardNotExistException.cs" />
     <Compile Include="MemberCardMgr.cs" />
     <Compile Include="IMemberCardMgr.cs" />
     <Compile Include="IMediumMgr.cs" />
     <Compile Include="IMemberMgr.cs" />
     <Compile Include="ConsumptionMgr.cs" />
-    <Compile Include="Exceptions\MediumExistException.cs" />
-    <Compile Include="Exceptions\MemberExistException.cs" />
-    <Compile Include="Exceptions\MemberNotExistException.cs" />
-    <Compile Include="Exceptions\TutorNotExistException.cs" />
     <Compile Include="IAuthenticator.cs" />
     <Compile Include="IConsumptionMgr.cs" />
     <Compile Include="IProductMgr.cs" />
@@ -78,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="BusinessDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

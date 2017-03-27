@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\MediumExistException.cs" />
+    <Compile Include="Exceptions\MemberCardNotExistException.cs" />
+    <Compile Include="Exceptions\MemberExistException.cs" />
+    <Compile Include="Exceptions\MemberNotExistException.cs" />
+    <Compile Include="Exceptions\TutorNotExistException.cs" />
     <Compile Include="LectureMemberCard.cs" />
     <Compile Include="MemberCard.cs" />
     <Compile Include="Enums\Gender.cs" />

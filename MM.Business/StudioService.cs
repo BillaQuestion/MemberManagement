@@ -1,18 +1,10 @@
 ﻿using MM.Model;
-using MM.Model.IRepositories;
+using MM.Model.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dayi.Data.Domain.Seedwork.Specification;
-using MM.Business.Exceptions;
 using System.Security.Principal;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Transactions;
-using MM.Model.Exceptions;
-using MM.Model.Enums;
 
 namespace MM.Business
 {
@@ -24,21 +16,21 @@ namespace MM.Business
         ITutorMgr _tutorMgr;
         IProductMgr _productMgr;
         IMemberMgr _memberMgr;
-        ISellRecordMgr _purchaseMgr;
+        ISellRecordMgr _sellRecordMgr;
         IConsumptionMgr _consumptionMgr;
         IMemberCardMgr _memberCardMgr;
 
         public StudioService(ITutorMgr tutorMgr,
             IProductMgr productMgr,
             IMemberMgr memberMgr,
-            ISellRecordMgr purchaseMgr,
+            ISellRecordMgr sellRecordMgr,
             IConsumptionMgr consumptionMgr,
             IMemberCardMgr memberCardMgr)
         {
             _tutorMgr = tutorMgr;
             _productMgr = productMgr;
             _memberMgr = memberMgr;
-            _purchaseMgr = purchaseMgr;
+            _sellRecordMgr = sellRecordMgr;
             _consumptionMgr = consumptionMgr;
             _memberCardMgr = memberCardMgr;
         }
@@ -68,7 +60,7 @@ namespace MM.Business
         }
 
         /// <summary>
-        /// 销售产品
+        /// 销售会员产品
         /// </summary>
         /// <param name="tutorName">教师姓名</param>
         /// <param name="productId">产品Id</param>
@@ -83,7 +75,8 @@ namespace MM.Business
 
             using (TransactionScope scope = new TransactionScope())
             {
-                SellRecord purchase;
+                bool isNewMember = false;
+                SellRecord sellRecord;
                 Member member = null;
                 if (product is MemberProduct)
                 {
@@ -95,19 +88,18 @@ namespace MM.Business
                             Name = customerName,
                             PhoneNumber = phoneNumber
                         };
+                        isNewMember = true;
                     }
-                    MemberCard memberCard;
-                    purchase = ((MemberProduct)product).Sell(tutor, member, out memberCard);
-                    _memberCardMgr.Save(memberCard);
-                    _memberMgr.Save(member);
-                    _purchaseMgr.Save(purchase);
+                    sellRecord = ((MemberProduct)product).Sell(tutor, member);
+                    _sellRecordMgr.Save(sellRecord);
+                   _memberMgr.Save(member);
                 }
                 scope.Complete();
             }
         }
 
         /// <summary>
-        /// 销售产品
+        /// 销售一次性体验产品
         /// </summary>
         /// <param name="tutorName">教师姓名</param>
         /// <param name="productId">产品Id</param>
@@ -120,9 +112,9 @@ namespace MM.Business
 
             using (TransactionScope scope = new TransactionScope())
             {
-                SellRecord purchase;
-                purchase = ((OneTimeExperience)product).Sell(tutor);
-                _purchaseMgr.Save(purchase);
+                SellRecord sellRecord;
+                sellRecord = ((OneTimeExperience)product).Sell(tutor);
+                _sellRecordMgr.Save(sellRecord);
                 scope.Complete();
             }
         }

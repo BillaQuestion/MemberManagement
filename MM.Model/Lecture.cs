@@ -30,7 +30,10 @@ namespace MM.Model
             return result;
         }
 
-        protected override MemberCard CreateMemberCart(Member member, SellRecord sellRecord)
+        /// <summary>
+        /// 创建课程产品的新卡
+        /// </summary>
+        protected override MemberCard CreateMemberCart()
         {
             var memberCard = new LectureMemberCard()
             {
@@ -38,12 +41,12 @@ namespace MM.Model
                 MediumName = this.Medium.Name,
                 TotalCount = this.Count,
                 Remainder = this.Count,
-                SellRecord = sellRecord,
                 Description = this.Description,
                 Product = this,
-                ProductId = this.Id,
-                PurchaseDate = DateTime.Now
+                ProductId = this.Id
             };
+            memberCard.GenerateNewIdentity();
+
 
             return memberCard;
         }
